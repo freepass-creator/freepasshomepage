@@ -186,7 +186,7 @@
         </div>
     </section>
 
-    <!-- 2. 프리패스모빌리티 - 주차장 차 모으기 만화 (레이아웃 고정) -->
+    <!-- 2. 프리패스모빌리티 - 주차장 차 모으기 만화 (레이아웃 고정: 일러스트 좌 / 텍스트 우) -->
     <section id="intro" class="py-20 md:py-28 bg-white border-t border-gray-50 overflow-hidden text-left">
         <div class="max-w-[1600px] mx-auto px-6 md:px-20 lg:px-40 text-left">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center text-left">
@@ -232,31 +232,12 @@
         </div>
     </section>
 
-    <!-- 3. 서비스 가치 - 지원 조력자 만화 (레이아웃 고정) -->
+    <!-- 3. 서비스 가치 - 지원 조력자 만화 (레이아웃 조정: 텍스트 좌 / 일러스트 우) -->
     <section id="value" class="py-20 md:py-28 bg-white border-t border-gray-50 overflow-hidden text-left">
         <div class="max-w-[1600px] mx-auto px-6 md:px-20 lg:px-40 text-left">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center text-left">
-                <!-- 좌측 일러스트 -->
-                <div class="reveal text-left">
-                    <div class="relative aspect-[1.3/1] bg-[#fcfdff] border-2 border-blue-50 flex items-center justify-center shadow-xl p-12 group cursor-pointer text-left">
-                        <div class="flex flex-col items-center space-y-10 transition-transform group-hover:scale-105 duration-500 text-center">
-                            <div class="relative">
-                                <i data-lucide="settings" class="w-32 h-32 text-blue-50 animate-spin-slow"></i>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <i data-lucide="zap" class="w-16 h-16 text-[#0068b7] drop-shadow-lg"></i>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-6">
-                                <div class="p-4 bg-white border-2 border-[#0068b7] rounded-2xl shadow-lg"><i data-lucide="user-check" class="text-[#0068b7] w-8 h-8"></i></div>
-                                <div class="w-10 h-0.5 bg-gray-200"></div>
-                                <div class="p-4 bg-white border border-gray-100 rounded-2xl opacity-40"><i data-lucide="globe" class="text-gray-300 w-8 h-8"></i></div>
-                            </div>
-                            <p class="text-[10px] font-black text-gray-300 tracking-widest uppercase text-center">Backend Support Active</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 우측 텍스트 -->
+                
+                <!-- 좌측 텍스트 -->
                 <div class="reveal text-left">
                     <p class="text-[10px] font-semibold text-[#0068b7] uppercase tracking-[0.4em] mb-4 text-left">Partner Achievement First</p>
                     <h2 class="text-[20px] md:text-[30px] font-semibold tracking-tighter mb-4 leading-tight text-[#555555] text-left">
@@ -272,11 +253,32 @@
                         실속 있는 파트너십 문의 <i data-lucide="arrow-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </button>
                 </div>
+
+                <!-- 우측 일러스트 -->
+                <div class="reveal text-left">
+                    <div class="relative aspect-[1.3/1] bg-[#fcfdff] border-2 border-blue-50 flex items-center justify-center shadow-xl p-12 group cursor-pointer text-left">
+                        <div class="flex flex-col items-center space-y-10 transition-transform group-hover:scale-105 duration-500 text-center">
+                            <div class="relative">
+                                <i data-lucide="settings" class="w-32 h-32 text-blue-50 animate-spin-slow"></i>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i data-lucide="zap" class="w-16 h-16 text-[#0068b7] drop-shadow-lg"></i>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-6">
+                                <div class="p-4 bg-white border-2 border-[#0068b7] rounded-2xl shadow-lg"><i data-lucide="user-check" class="text-[#0068b7] w-8 h-8"></i></div>
+                                <div class="w-10 h-0.5 bg-gray-200"></div>
+                                <div class="p-4 bg-white border border-gray-100 rounded-2xl opacity-40"><i data-lucide="globe" class="text-gray-300 w-8 h-8"></i></div>
+                            </div>
+                            <p class="text-[10px] font-black text-gray-300 tracking-widest uppercase">Backend Support Active</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 4. ERP 안내 - 뉴 컬러 인터랙티브 대시보드 (레이아웃 고정) -->
+    <!-- 4. ERP 안내 - 뉴 컬러 인터랙티브 대시보드 (레이아웃 고정: 일러스트 좌 / 텍스트 우) -->
     <section id="erp" class="py-20 md:py-28 bg-white border-t border-gray-50 overflow-hidden text-left">
         <div class="max-w-[1600px] mx-auto px-6 md:px-20 lg:px-40 text-left">
             <div class="grid lg:grid-cols-2 gap-12 md:gap-40 items-center text-left">
@@ -321,7 +323,8 @@
 
                 <!-- 우측 텍스트 -->
                 <div class="reveal text-right">
-                    <p class="text-[10px] font-semibold text-gray-300 uppercase tracking-[0.4em] mb-4 text-right">Efficient Business Tool</p>
+                    <!-- 퍼런색(#0068b7) 적용 -->
+                    <p class="text-[10px] font-semibold text-[#0068b7] uppercase tracking-[0.4em] mb-4 text-right">Efficient Business Tool</p>
                     <h2 class="text-[20px] md:text-[30px] font-semibold tracking-tighter mb-4 leading-tight text-[#555555] text-right">
                         복잡한 절차는 걷어내고 <br /><span class="font-normal text-[#111]/80 text-right text-right">데이터 기반의 합리적인 이익을 정렬합니다.</span>
                     </h2>
