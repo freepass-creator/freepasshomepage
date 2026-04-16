@@ -3,7 +3,11 @@
    ============================================================ */
 
 :root {
-  --blue:   #0D4E8B;
+  /* CI 3색 체계 (freepass) */
+  --main:   #1B2A4A;   /* 메인 딥네이비 */
+  --accent: #9EC5F3;   /* 보조 라이트블루 */
+  --base:   #7F93B3;   /* 바닥 네이비그레이 */
+  --blue:   var(--main); /* 레거시 호환 */
   --blue-l: #e8f4fd;
   --text:   #1A1A1A;
   --text2:  #555;
@@ -49,18 +53,18 @@ nav.scrolled {
   justify-content: space-between;
 }
 
-/* 로고 */
+/* 로고 — CI 규격: Exo 2 + Pretendard, weight 300/600 */
 .logo {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Exo 2', 'Pretendard', sans-serif;
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 300;
   text-decoration: none;
   letter-spacing: -0.5px;
   color: var(--text2);
   display: inline-flex;
   align-items: baseline;
 }
-.logo b { font-weight: 700; color: var(--blue); margin-left: 3px; }
+.logo b { font-weight: 600; color: var(--main); margin-left: 3px; }
 
 /* 네비 링크 */
 .nav-links {
@@ -774,15 +778,15 @@ footer { padding: 56px 0; }
 }
 .ft-left {}
 .ft-logo {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Exo 2', 'Pretendard', sans-serif;
   font-size: 15px;
-  font-weight: 200;
+  font-weight: 300;
   letter-spacing: -0.5px;
   color: var(--text3);
   display: inline-flex;
   align-items: baseline;
 }
-.ft-logo b { font-weight: 700; color: var(--blue); opacity: 0.4; margin-left: 3px; }
+.ft-logo b { font-weight: 600; color: var(--main); opacity: 0.4; margin-left: 3px; }
 .ft-tagline {
   font-size: 9.5px;
   font-weight: 300;
