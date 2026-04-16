@@ -44,10 +44,10 @@ nav.scrolled {
   border-bottom: 1px solid var(--line);
 }
 .nav-inner {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 48px;
-  height: 60px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,25 +56,25 @@ nav.scrolled {
 /* 로고 — CI 규격: Exo 2 + Pretendard, freepass=600 main, mobility=300 base */
 .logo {
   font-family: 'Exo 2', 'Pretendard', sans-serif;
-  font-size: 20px;
+  font-size: 28px;
   text-decoration: none;
   letter-spacing: -0.5px;
   display: inline-flex;
   align-items: baseline;
 }
 .logo span { font-weight: 600; color: var(--main); }
-.logo b { font-weight: 300; color: var(--base); margin-left: 3px; }
+.logo b { font-weight: 300; color: var(--base); margin-left: 4px; }
 
 /* 네비 링크 */
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 36px;
   list-style: none;
 }
 .nav-links a {
   text-decoration: none;
-  font-size: 12.5px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: 0.3px;
   color: var(--text3);
   transition: color 0.4s;
