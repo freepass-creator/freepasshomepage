@@ -53,18 +53,17 @@ nav.scrolled {
   justify-content: space-between;
 }
 
-/* 로고 — CI 규격: Exo 2 + Pretendard, weight 300/600 */
+/* 로고 — CI 규격: Exo 2 + Pretendard, freepass=600 main, mobility=300 base */
 .logo {
   font-family: 'Exo 2', 'Pretendard', sans-serif;
   font-size: 20px;
-  font-weight: 300;
   text-decoration: none;
   letter-spacing: -0.5px;
-  color: var(--text2);
   display: inline-flex;
   align-items: baseline;
 }
-.logo b { font-weight: 600; color: var(--main); margin-left: 3px; }
+.logo span { font-weight: 600; color: var(--main); }
+.logo b { font-weight: 300; color: var(--base); margin-left: 3px; }
 
 /* 네비 링크 */
 .nav-links {
@@ -83,13 +82,13 @@ nav.scrolled {
 .nav-links a:hover { color: var(--text); }
 
 /* 히어로 위 네비 (어두운 배경) */
-body.hero-dark .logo span { color: rgba(255,255,255,0.4); }
-body.hero-dark .logo b { color: rgba(255,255,255,0.85); }
+body.hero-dark .logo span { color: rgba(255,255,255,0.95); }  /* freepass: 강조 */
+body.hero-dark .logo b { color: rgba(255,255,255,0.5); }      /* mobility: 약 */
 body.hero-dark .nav-links a { color: rgba(255,255,255,0.3); }
 body.hero-dark .nav-mobile-btn svg { stroke: rgba(255,255,255,0.5); }
 /* 스크롤 후 */
-body:not(.hero-dark) .logo span { color: var(--text2); }
-body:not(.hero-dark) .logo b { color: var(--blue); }
+body:not(.hero-dark) .logo span { color: var(--main); }        /* freepass: main */
+body:not(.hero-dark) .logo b { color: var(--base); }           /* mobility: base */
 
 /* 모바일 메뉴 */
 .nav-mobile-btn {
@@ -136,21 +135,21 @@ body:not(.hero-dark) .logo b { color: var(--blue); }
   position: relative;
   z-index: 2;
 }
-.hero-content { max-width: 520px; }
+.hero-content { max-width: 780px; }
 .hero-tag {
-  font-size: 11px;
-  font-weight: 300;
-  letter-spacing: 5px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 28px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
   animation: heroFade 0.8s ease both;
 }
 .hero h1 {
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(40px, 6vw, 72px);
   font-weight: 200;
-  line-height: 1.4;
-  letter-spacing: -1px;
+  line-height: 1.25;
+  letter-spacing: -1.5px;
   color: rgba(255,255,255,0.95);
   animation: heroFade 0.8s 0.1s ease both;
 }
@@ -780,13 +779,13 @@ footer { padding: 56px 0; }
 .ft-logo {
   font-family: 'Exo 2', 'Pretendard', sans-serif;
   font-size: 15px;
-  font-weight: 300;
   letter-spacing: -0.5px;
-  color: var(--text3);
   display: inline-flex;
   align-items: baseline;
+  opacity: 0.5;
 }
-.ft-logo b { font-weight: 600; color: var(--main); opacity: 0.4; margin-left: 3px; }
+.ft-logo span { font-weight: 600; color: var(--main); }   /* freepass */
+.ft-logo b    { font-weight: 300; color: var(--base); margin-left: 3px; }  /* mobility */
 .ft-tagline {
   font-size: 9.5px;
   font-weight: 300;
@@ -898,7 +897,7 @@ footer { padding: 56px 0; }
   .nav-mobile-btn { display: block; }
 
   .hero { min-height: 100svh; padding: 100px 0 80px; }
-  .hero h1 { font-size: clamp(24px, 7vw, 34px); }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px); line-height: 1.25; }
   .hero-sub { font-size: 14px; }
   .hero-deco { display: none; }
 
