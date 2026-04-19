@@ -63,7 +63,7 @@ nav.scrolled {
   align-items: baseline;
 }
 .logo span { font-weight: 600; color: var(--main); }
-.logo b { font-weight: 300; color: var(--base); margin-left: 4px; }
+.logo b { font-weight: 300; color: var(--base); }
 
 /* 네비 링크 */
 .nav-links {
@@ -158,6 +158,8 @@ body:not(.hero-dark) .logo b { color: var(--base); }           /* mobility: base
   font-weight: 500;
   color: #fff;
 }
+.br-d { display: inline; }
+@media (max-width: 768px) { .br-d { display: none; } }
 .hero-sub {
   font-size: 15px;
   font-weight: 300;
@@ -785,7 +787,7 @@ footer { padding: 56px 0; }
   opacity: 0.5;
 }
 .ft-logo span { font-weight: 600; color: var(--main); }   /* freepass */
-.ft-logo b    { font-weight: 300; color: var(--base); margin-left: 3px; }  /* mobility */
+.ft-logo b    { font-weight: 300; color: var(--base); }  /* mobility */
 .ft-tagline {
   font-size: 9.5px;
   font-weight: 300;
