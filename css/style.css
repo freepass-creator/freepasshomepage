@@ -125,10 +125,11 @@ a{color:inherit;text-decoration:none} img,svg,canvas{display:block}
 .contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;margin-top:48px;align-items:start}
 .info div{margin-bottom:24px}.info .k{display:block;font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--blue)}
 .info .v{display:block;font-size:15.5px;color:var(--ink);margin-top:6px;line-height:1.7}
+.contact>*{min-width:0}
 .form{background:var(--panel);border-radius:20px;padding:32px;box-shadow:var(--sh);display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}.field.full{grid-column:1/-1}
 .field label{font-size:13px;color:var(--ink3);font-weight:600}
-.field input,.field textarea,.field select{background:var(--soft);border:0;border-radius:10px;padding:14px 15px;color:var(--ink);font-family:inherit;font-size:15px;transition:.18s}
+.field input,.field textarea,.field select{width:100%;background:var(--soft);border:0;border-radius:10px;padding:14px 15px;color:var(--ink);font-family:inherit;font-size:15px;transition:.18s}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none;background:#fff;box-shadow:0 0 0 2px var(--blue)}
 .field textarea{min-height:118px;resize:vertical}
 .send{grid-column:1/-1;justify-self:start;margin-top:4px}
@@ -156,5 +157,7 @@ section{scroll-margin-top:80px}
   .stats{grid-template-columns:repeat(2,1fr)}
   .feat{grid-template-columns:1fr}
   .supplier,.contact,.form{grid-template-columns:1fr}.supplier{padding:30px}
+  .form{background:none;box-shadow:none;border-radius:0;padding:0;gap:14px}
+  .field input,.field textarea,.field select{background:#fff;box-shadow:inset 0 0 0 1px #d4e1f5}
 }
 @media(max-width:440px){.wrap,.nav-in{padding-left:20px;padding-right:20px}.stats{grid-template-columns:1fr 1fr}.hero{padding-top:calc(var(--nav-h) + 40px)}}
