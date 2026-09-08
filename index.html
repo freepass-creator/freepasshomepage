@@ -21,12 +21,21 @@
       <a href="#about">소개</a><a href="#partner">서비스</a>
       <a href="#platform">플랫폼</a><a href="#eco">생태계</a><a href="#contact">함께하기</a>
     </nav>
-    <a href="#partner" class="cta">파트너 시작<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <!--
+      ★상단 CTA = «상품 찾기» — 매물 화면(freepassmobility.com)으로 건너간다.
+        여기 「파트너 시작」이 있었는데 그건 이 페이지 «안»의 #partner 로 내려가는 앵커였다.
+        매물 화면이 메인이 됐으므로(2026-09-08), 머리에서 나가는 문은 그쪽이어야 한다.
+        · 매물 화면 머리띠의 「회사 소개」와 짝이다 — 두 화면이 서로를 물고 있다.
+        · 파트너 모집은 히어로의 「영업파트너 신청」과 #contact 폼이 그대로 받는다.
+    -->
+    <a href="https://freepassmobility.com/" class="cta">상품 찾기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
   </div>
   <nav class="drawer" id="drawer">
     <a href="#about">소개</a><a href="#partner">서비스</a>
     <a href="#platform">플랫폼</a><a href="#eco">생태계</a><a href="#contact">함께하기</a>
+    <!-- ⚠ 폰에서는 상단 CTA 가 숨는다(`.cta{display:none}` @900). 여기 없으면 폰에서 갈 길이 없다. -->
+    <a href="https://freepassmobility.com/">상품 찾기</a>
   </nav>
 </header>
 <span id="top"></span>
