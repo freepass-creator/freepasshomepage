@@ -157,12 +157,20 @@
         <div><span class="k">EMAIL</span><span class="v">pyh@teamjpk.com</span></div>
         <div><span class="k">ADDRESS</span><span class="v">서울시 강서구 양천로 53길 30<br>서서울모터리움 1004호</span></div>
       </div>
-      <form class="form reveal" onsubmit="return false">
-        <div class="field"><label>회사명 / 소속</label><input type="text" /></div>
-        <div class="field"><label>담당자</label><input type="text" /></div>
-        <div class="field"><label>연락처</label><input type="tel" inputmode="tel" /></div>
-        <div class="field"><label>문의 유형</label><select><option>영업파트너 신청</option><option>공급사 입점</option><option>일반 문의</option></select></div>
-        <div class="field full"><label>문의 내용</label><textarea placeholder="자유롭게 작성해 주세요."></textarea></div>
+      <!--
+        ★FormSubmit.co로 pyh@teamjpk.com에 바로 꽂는다 — 서버·계정 없이 정적 폼만으로 이메일 수신.
+          ⚠ 이 주소로 첫 제출이 오면 FormSubmit이 pyh@teamjpk.com으로 "활성화 확인" 메일을 한 번 보낸다.
+            그 메일의 확인 링크를 눌러야 그 뒤 제출부터 정상 수신된다(최초 1회만).
+      -->
+      <form class="form reveal" action="https://formsubmit.co/pyh@teamjpk.com" method="POST">
+        <input type="hidden" name="_subject" value="[프리패스모빌리티 홈페이지] 새 문의" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <div class="field"><label>회사명 / 소속</label><input type="text" name="회사명_소속" required /></div>
+        <div class="field"><label>담당자</label><input type="text" name="담당자" required /></div>
+        <div class="field"><label>연락처</label><input type="tel" inputmode="tel" name="연락처" required /></div>
+        <div class="field"><label>문의 유형</label><select name="문의_유형"><option>영업파트너 신청</option><option>공급사 입점</option><option>일반 문의</option></select></div>
+        <div class="field full"><label>문의 내용</label><textarea name="문의_내용" placeholder="자유롭게 작성해 주세요."></textarea></div>
         <button class="btn btn-fill send" type="submit">문의 보내기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </form>
     </div>
