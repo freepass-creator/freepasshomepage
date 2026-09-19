@@ -18,8 +18,8 @@
   <div class="nav-in">
     <a class="logo" href="#top" aria-label="freepass mobility"><b>freepass</b><span class="lt">mobility</span></a>
     <nav class="menu">
-      <a href="#about">회사</a><a href="#business">본업</a>
-      <a href="#platform">운영체계</a><a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
+      <a href="#about">회사</a><a href="#business">본업</a><a href="#services">서비스</a>
+      <a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
     </nav>
     <!--
       ★상단 CTA = «상품 찾기» — 매물 화면(freepassmobility.com)으로 건너간다.
@@ -32,8 +32,8 @@
     <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
   </div>
   <nav class="drawer" id="drawer">
-    <a href="#about">회사</a><a href="#business">본업</a>
-    <a href="#platform">운영체계</a><a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
+    <a href="#about">회사</a><a href="#business">본업</a><a href="#services">서비스</a>
+    <a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
     <!-- ⚠ 폰에서는 상단 CTA 가 숨는다(`.cta{display:none}` @900). 여기 없으면 폰에서 갈 길이 없다. -->
     <a href="https://freepassmobility.com/">상품 찾기</a>
   </nav>
@@ -128,6 +128,54 @@
   </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services" class="sec services-sec alt">
+  <div class="wrap">
+    <div class="section-split reveal">
+      <div>
+        <p class="eyebrow">SERVICES</p>
+        <h2 class="sec-h">필요한 순간마다<br><em>다른 도구로 연결합니다</em></h2>
+      </div>
+      <p class="lead">프리패스의 서비스는 하나의 화면에 모든 기능을 몰아넣지 않습니다. 상품을 찾는 사람, 영업하는 사람, 거래를 운영하는 사람, 렌터카를 관리하는 사람이 각자 필요한 도구를 쓰고 같은 흐름으로 연결됩니다.</p>
+    </div>
+
+    <div class="service-grid reveal">
+      <a class="service-card service-card--public" href="https://freepassmobility.com/" target="_blank" rel="noopener">
+        <div class="service-card__top"><span>01 / PRODUCT FINDER</span><b>↗</b></div>
+        <h3>상품 찾기</h3>
+        <p>차량과 조건을 빠르게 찾고 비교하는 상품 탐색 화면입니다. 복잡한 내부 업무는 숨기고, 필요한 상품 정보에 바로 접근합니다.</p>
+        <div class="service-meta"><span>상품 검색</span><span>조건 비교</span><span>공개 화면</span></div>
+      </a>
+
+      <a class="service-card" href="https://freepasserp.com" target="_blank" rel="noopener">
+        <div class="service-card__top"><span>02 / FREEPASS ERP</span><b>↗</b></div>
+        <h3>FreePass ERP</h3>
+        <p>상품·접수·계약·인도·실적·정산을 같은 기준으로 관리하는 운영 시스템입니다. 거래가 어디까지 왔는지 한 흐름에서 확인합니다.</p>
+        <div class="service-meta"><span>접수</span><span>계약</span><span>정산</span></div>
+      </a>
+
+      <div class="service-card">
+        <div class="service-card__top"><span>03 / RENTAL MANAGER</span></div>
+        <h3>렌터카매니저</h3>
+        <p>렌터카사가 여러 법인과 차량을 운영할 때 필요한 자산·계약·보험·과태료·운영현황을 관리하는 렌터카 업무 시스템입니다.</p>
+        <div class="service-meta"><span>차량관리</span><span>계약·보험</span><span>운영현황</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__top"><span>04 / FREEPASS SALES</span></div>
+        <h3>FreePass Sales</h3>
+        <p>고객 DB를 놓치지 않고 통화하고, 관심·견적·다음 행동까지 이어가는 모바일 중심 영업 운영 도구입니다.</p>
+        <div class="service-meta"><span>통화</span><span>관심고객</span><span>후속관리</span></div>
+      </div>
+    </div>
+
+    <div class="service-connection reveal">
+      <span>FIND</span><i>→</i><span>SELL</span><i>→</i><span>OPERATE</span><i>→</i><span>MANAGE</span>
+      <p>상품을 찾는 순간부터 영업·계약·운영·관리까지, 서로 다른 화면이 같은 비즈니스 흐름을 지원합니다.</p>
+    </div>
+  </div>
+</section>
+
 <!-- OPERATING SYSTEM -->
 <section id="platform" class="sec platform-sec alt">
   <div class="wrap">
@@ -198,26 +246,38 @@
     <div class="reveal">
       <p class="eyebrow">WITH MEWCAR</p>
       <h2 class="sec-h">같은 방향,<br><em>더 넓은 선택지</em></h2>
-      <p class="lead">프리패스가 현장에서 쌓아온 영업·운영 경험과 MEWCAR가 시장에서 축적해온 경험이 만납니다. 서로의 본업은 존중하면서, 변화하는 시장에서도 실제로 작동할 수 있는 더 다양한 가능성을 함께 준비합니다.</p>
-      <p class="mewcar-note">무엇을 새로 시작한다는 설명보다, 서로 다른 강점이 만나 더 나은 판단과 더 많은 선택지를 만든다는 것이 핵심입니다.</p>
+      <p class="lead">프리패스의 운영 경험과 MEWCAR의 시장 경험이 만나, 변화하는 시장에서도 실제로 작동할 수 있는 더 다양한 선택지를 함께 준비합니다.</p>
+      <p class="mewcar-note">각자의 본업과 브랜드는 분명하게 유지합니다. 필요한 곳에서 경험과 인프라를 연결해 더 나은 모빌리티 서비스를 만드는 것이 함께 가는 방식입니다.</p>
     </div>
 
-    <div class="mewcar-alliance reveal" aria-label="프리패스모빌리티와 MEWCAR">
-      <div class="mewcar-alliance__brand">
-        <div class="alliance-brand"><b>freepass</b><span>mobility</span></div>
-        <small>RESPONSIBLE OPERATIONS</small>
-      </div>
-      <span class="mewcar-alliance__plus">×</span>
-      <a class="mewcar-alliance__brand mewcar-link" href="https://mewcar.co.kr/" target="_blank" rel="noopener" aria-label="MEWCAR 공식 홈페이지">
-        <img class="mewcar-ci" src="assets/mewcar-ci.svg" alt="뮤카 MEWCAR - Drive a Better Tomorrow" />
-        <small>mewcar.co.kr <span>↗</span></small>
+    <div class="mewcar-family reveal">
+      <a class="mewcar-family__row" href="https://mewcar.co.kr/" target="_blank" rel="noopener" aria-label="MEWCAR 공식 홈페이지">
+        <div class="mewcar-family__logo">
+          <img class="mewcar-ci" src="assets/mewcar-ci.svg" alt="뮤카 MEWCAR - Drive a Better Tomorrow" />
+        </div>
+        <div>
+          <span>MEWCAR</span>
+          <strong>자동차 시장 경험과 유통 전문성</strong>
+          <p>차량의 가치를 보고, 시장에서 가장 현실적인 선택을 만들어온 경험.</p>
+        </div>
+        <b>↗</b>
       </a>
-      <div class="mewcar-synergy">
-        <span>MARKET EXPERIENCE</span>
-        <i></i>
-        <span>OPERATING EXPERIENCE</span>
-        <i></i>
-        <span>MORE OPTIONS</span>
+
+      <div class="mewcar-family__divider"></div>
+
+      <div class="mewcar-family__row mewcar-family__row--mobility">
+        <div class="mewcar-mobility-mark">
+          <strong>뮤카</strong><span>모빌리티</span>
+        </div>
+        <div>
+          <span>MEWCAR MOBILITY</span>
+          <strong>프리미엄 자동차 구독 서비스</strong>
+          <p>차량을 소유하는 방식에서 벗어나, 더 유연하고 가치 있는 이용 경험을 제안합니다.</p>
+        </div>
+      </div>
+
+      <div class="mewcar-family__foot">
+        <span>MARKET EXPERIENCE</span><i></i><span>OPERATING EXPERIENCE</span><i></i><span>PREMIUM SUBSCRIPTION</span>
       </div>
     </div>
   </div>
