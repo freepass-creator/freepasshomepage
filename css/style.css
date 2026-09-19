@@ -214,3 +214,12 @@ section{scroll-margin-top:80px}
   .principle-item strong{margin-top:22px}
   .alliance{align-items:flex-start}
 }
+
+/* MEWCAR CI lockup — source: Mewcar subscription-business approved visual */
+.alliance-side{display:flex;flex-direction:column;justify-content:center;min-height:76px}
+.alliance-side-mewcar{min-width:240px}
+.mewcar-ci{display:block;width:240px;height:auto;max-width:100%;object-fit:contain}
+@media(max-width:620px){
+  .alliance-side-mewcar{min-width:0;width:210px}
+  .mewcar-ci{width:210px}
+}
