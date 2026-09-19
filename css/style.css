@@ -228,3 +228,93 @@ section{scroll-margin-top:80px}
 .mewcar-site{display:inline-flex;align-items:center;gap:5px;margin-top:7px;color:var(--ink3);font-family:"Exo 2","Pretendard",sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;transition:color .2s}
 .mewcar-link:hover .mewcar-site{color:var(--blue)}
 .mewcar-link:hover .mewcar-ci{opacity:.88}
+
+
+/* 2026-09 information architecture expansion */
+.company-grid,.mewcar-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:76px;align-items:start}
+.company-note,.mewcar-note{margin-top:24px;max-width:680px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;line-height:1.8;color:var(--ink2)}
+.company-definition{border-left:1px solid var(--line);padding-left:54px}
+.definition-kicker{display:block;font-family:"Exo 2","Pretendard",sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--blue)}
+.company-definition>strong{display:block;margin-top:16px;font-size:30px;letter-spacing:-1px;color:var(--ink)}
+.company-definition>p{margin-top:10px;font-size:15px;line-height:1.75;color:var(--ink2)}
+.company-definition dl{margin-top:34px;border-top:1px solid var(--line)}
+.company-definition dl div{display:grid;grid-template-columns:72px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.company-definition dt{font-family:"Exo 2","Pretendard",sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--blue)}
+.company-definition dd{font-size:14px;color:var(--ink2)}
+
+.section-split{display:grid;grid-template-columns:.86fr 1.14fr;gap:80px;align-items:end}
+.section-split .lead{margin-top:0;max-width:620px}
+.business-sec{background:var(--bg)}
+.business-lines{display:grid;grid-template-columns:repeat(3,1fr);margin-top:58px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.business-lines article{min-height:285px;padding:30px 28px;border-right:1px solid var(--line)}
+.business-lines article:last-child{border-right:0}
+.business-lines span,.platform-grid span{font-family:"Exo 2","Pretendard",sans-serif;font-size:9px;font-weight:700;letter-spacing:.13em;color:var(--blue)}
+.business-lines h3{margin-top:76px;font-size:21px;letter-spacing:-.4px}
+.business-lines p{margin-top:10px;font-size:14px;line-height:1.78;color:var(--ink2)}
+.business-flow{display:grid;grid-template-columns:1fr auto 1.1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:12px;margin-top:28px}
+.business-flow div{padding:17px 14px;border:1px solid var(--line);border-radius:11px;background:var(--panel);text-align:center}
+.business-flow span{display:block;font-family:"Exo 2","Pretendard",sans-serif;font-size:8px;letter-spacing:.12em;color:var(--ink3)}
+.business-flow b{display:block;margin-top:4px;font-size:13px}
+.business-flow i{font-style:normal;color:var(--ink3)}
+
+.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.platform-grid article{min-height:230px;padding:28px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.platform-grid h3{margin-top:68px;font-size:19px}
+.platform-grid p{margin-top:9px;font-size:13.5px;line-height:1.75;color:var(--ink2)}
+.system-band{display:grid;grid-template-columns:repeat(4,1fr);margin-top:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.system-band div{padding:17px 20px;border-right:1px solid var(--line)}
+.system-band div:last-child{border-right:0}
+.system-band b{font-family:"Exo 2","Pretendard",sans-serif;font-size:10px;letter-spacing:.11em;color:var(--blue)}
+.system-band span{display:block;margin-top:4px;font-size:12px;color:var(--ink2)}
+
+.philosophy-sec{background:#fff}
+.philosophy-head{max-width:830px;margin-bottom:52px}
+.philosophy-head .lead{max-width:760px}
+.philosophy-sec .principles{margin-top:0}
+
+.vision-sec{background:var(--navy);color:#fff}
+.vision-grid{display:grid;grid-template-columns:1fr .9fr;gap:90px;align-items:start}
+.vision-eyebrow{color:#87b5f2}
+.vision-copy h2{font-size:clamp(36px,4.5vw,56px);line-height:1.14;letter-spacing:-1.6px;font-weight:560}
+.vision-copy h2 strong{font-weight:800}
+.vision-copy p:last-child{margin-top:24px;max-width:590px;color:rgba(255,255,255,.68);font-size:15px;line-height:1.9}
+.vision-points{border-top:1px solid rgba(255,255,255,.16)}
+.vision-points div{display:grid;grid-template-columns:46px 1fr;gap:18px;padding:21px 0;border-bottom:1px solid rgba(255,255,255,.16);align-items:center}
+.vision-points span{font-family:"Exo 2","Pretendard",sans-serif;font-size:10px;font-weight:700;color:#7fb2f1}
+.vision-points p{font-size:16px;color:rgba(255,255,255,.72)}
+.vision-points b{color:#fff}
+
+.mewcar-sec{background:#f8fafc}
+.mewcar-alliance{min-height:300px;padding:38px 42px;border-left:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
+.mewcar-alliance__brand{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.mewcar-alliance__brand small{font-family:"Exo 2","Pretendard",sans-serif;font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink3)}
+.mewcar-alliance__plus{font-size:22px;color:var(--ink3);font-weight:300}
+.mewcar-synergy{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-family:"Exo 2","Pretendard",sans-serif;font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink3)}
+.mewcar-synergy i{width:4px;height:4px;border-radius:50%;background:#6ca8a2}
+.mewcar-sec .mewcar-ci{width:220px}
+.mewcar-sec .alliance-brand{font-size:26px}
+
+.contact-sec{background:var(--bg)}
+
+@media(max-width:1080px){
+  .company-grid,.mewcar-grid,.section-split,.vision-grid{grid-template-columns:1fr;gap:44px}
+  .company-definition,.mewcar-alliance{border-left:0;border-top:1px solid var(--line);padding:34px 0 0}
+  .business-lines{grid-template-columns:1fr}
+  .business-lines article{min-height:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .business-lines article:last-child{border-bottom:0}
+  .business-lines h3{margin-top:34px}
+  .business-flow{grid-template-columns:1fr;gap:8px}
+  .business-flow i{transform:rotate(90deg);justify-self:center}
+  .platform-grid{grid-template-columns:repeat(2,1fr)}
+  .vision-points{margin-top:4px}
+}
+@media(max-width:680px){
+  .platform-grid,.system-band{grid-template-columns:1fr}
+  .platform-grid article{min-height:190px}
+  .platform-grid h3{margin-top:42px}
+  .system-band div{border-right:0;border-bottom:1px solid var(--line)}
+  .system-band div:last-child{border-bottom:0}
+  .mewcar-alliance{grid-template-columns:1fr;gap:22px}
+  .mewcar-alliance__plus{justify-self:start}
+  .mewcar-synergy{grid-column:auto;justify-content:flex-start;flex-wrap:wrap}
+}
