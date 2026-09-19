@@ -513,3 +513,96 @@ section{scroll-margin-top:80px}
     gap:14px;
   }
 }
+
+
+/* Verified FreePass admin/operations capabilities */
+.ops-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:56px;
+}
+.ops-feature-grid article{
+  min-height:315px;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+}
+.ops-feature-grid article>span{
+  display:block;
+  font-family:"Exo 2","Pretendard",sans-serif;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:var(--blue);
+}
+.ops-feature-grid h3{
+  margin-top:60px;
+  font-size:20px;
+  letter-spacing:-.45px;
+}
+.ops-feature-grid p{
+  margin-top:10px;
+  font-size:13.5px;
+  line-height:1.75;
+  color:var(--ink2);
+}
+.ops-feature-grid ul{
+  list-style:none;
+  margin-top:20px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.ops-feature-grid li{
+  position:relative;
+  padding:5px 0 5px 13px;
+  font-size:11.5px;
+  color:var(--ink2);
+}
+.ops-feature-grid li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--blue);
+  opacity:.55;
+}
+.ops-process{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
+  padding:20px 0;
+  border-top:1px solid var(--line);
+}
+.ops-process>span{
+  font-size:11px;
+  font-weight:700;
+  color:var(--ink);
+}
+.ops-process>i{
+  font-style:normal;
+  color:var(--ink3);
+}
+.ops-process>p{
+  margin-left:auto;
+  max-width:500px;
+  font-size:12px;
+  line-height:1.7;
+  color:var(--ink2);
+}
+
+@media(max-width:1000px){
+  .ops-feature-grid{grid-template-columns:repeat(2,1fr)}
+  .ops-process>p{width:100%;max-width:none;margin-left:0}
+}
+@media(max-width:650px){
+  .ops-feature-grid{grid-template-columns:1fr}
+  .ops-feature-grid article{min-height:0}
+  .ops-feature-grid h3{margin-top:40px}
+}
