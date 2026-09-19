@@ -75,6 +75,32 @@
     document.querySelectorAll("[data-count]").forEach(function (el) { nio.observe(el); });
   }
 
+
+  /* 문의 폼: 별도 서버 없이 기본 메일앱으로 구조화된 문의를 전달 */
+  var contactForm = $("#contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var data = new FormData(contactForm);
+      var company = String(data.get("company") || "").trim();
+      var name = String(data.get("name") || "").trim();
+      var phone = String(data.get("phone") || "").trim();
+      var type = String(data.get("type") || "일반 문의").trim();
+      var message = String(data.get("message") || "").trim();
+      var subject = "[프리패스모빌리티] " + type + " - " + (company || name || "홈페이지 문의");
+      var body = [
+        "회사명 / 소속: " + (company || "-"),
+        "담당자: " + (name || "-"),
+        "연락처: " + (phone || "-"),
+        "문의 유형: " + type,
+        "",
+        "문의 내용",
+        message || "-"
+      ].join("\n");
+      window.location.href = "mailto:pyh@teamjpk.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /* 네비 + 드로어 */
   var nav = $("#nav");
   function onScroll() { nav.classList.toggle("scr", window.scrollY > 30); }
