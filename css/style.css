@@ -366,3 +366,150 @@ section{scroll-margin-top:80px}
   .mewcar-family__row,.mewcar-family__row--mobility{grid-template-columns:1fr;gap:16px}
   .mewcar-family__row>b{position:absolute;right:0;top:30px}
 }
+
+
+/* FreePass service stack — product SSOT, role-specific surfaces */
+.service-stack{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:14px;
+  margin-top:56px;
+}
+.service-stack .service-card{
+  min-height:280px;
+  padding:28px;
+}
+.service-stack .service-card--finder,
+.service-stack .service-card--white{grid-column:span 6}
+.service-stack .service-card--admin,
+.service-stack .service-card--sales,
+.service-stack .service-card--estimate{grid-column:span 4}
+.service-card__top em{
+  font-style:normal;
+  color:var(--ink3);
+  font-size:8px;
+  letter-spacing:.1em;
+}
+.service-card__body{
+  display:grid;
+  grid-template-columns:minmax(170px,.8fr) 1.2fr;
+  gap:28px;
+  align-items:end;
+  margin-top:64px;
+}
+.service-card__body small{
+  display:block;
+  margin-bottom:8px;
+  font-family:"Exo 2","Pretendard",sans-serif;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.11em;
+  color:var(--ink3);
+}
+.service-card__body h3{
+  margin:0;
+  font-size:24px;
+}
+.service-card__body>p{
+  margin:0;
+  color:var(--ink2);
+  font-size:13.5px;
+  line-height:1.78;
+}
+.service-card__body>p strong{
+  color:var(--ink);
+  font-weight:700;
+}
+.service-card--finder{
+  background:linear-gradient(145deg,#f9fcff,#eef5fc);
+}
+.service-card--white{
+  background:linear-gradient(145deg,#fff,#f7f9fc);
+}
+.service-card--admin,
+.service-card--sales,
+.service-card--estimate{
+  background:#fff;
+}
+.service-stack .service-card--admin .service-card__body,
+.service-stack .service-card--sales .service-card__body,
+.service-stack .service-card--estimate .service-card__body{
+  grid-template-columns:1fr;
+  gap:16px;
+  margin-top:48px;
+}
+.service-stack .service-card--admin .service-card__body h3,
+.service-stack .service-card--sales .service-card__body h3,
+.service-stack .service-card--estimate .service-card__body h3{
+  font-size:22px;
+}
+.service-architecture{
+  display:grid;
+  grid-template-columns:.8fr 1.4fr 1fr;
+  gap:30px;
+  align-items:center;
+  margin-top:24px;
+  padding:24px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.service-architecture__title span{
+  display:block;
+  font-family:"Exo 2","Pretendard",sans-serif;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.13em;
+  color:var(--blue);
+}
+.service-architecture__title strong{
+  display:block;
+  margin-top:5px;
+  font-size:16px;
+}
+.service-architecture__flow{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+}
+.service-architecture__flow span{
+  font-size:11px;
+  font-weight:700;
+  color:var(--ink);
+}
+.service-architecture__flow i{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--blue);
+  opacity:.45;
+}
+.service-architecture>p{
+  color:var(--ink2);
+  font-size:11.5px;
+  line-height:1.7;
+}
+
+@media(max-width:1000px){
+  .service-stack .service-card--finder,
+  .service-stack .service-card--white,
+  .service-stack .service-card--admin,
+  .service-stack .service-card--sales,
+  .service-stack .service-card--estimate{grid-column:span 6}
+  .service-architecture{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:650px){
+  .service-stack{grid-template-columns:1fr}
+  .service-stack .service-card--finder,
+  .service-stack .service-card--white,
+  .service-stack .service-card--admin,
+  .service-stack .service-card--sales,
+  .service-stack .service-card--estimate{grid-column:auto}
+  .service-stack .service-card{min-height:0}
+  .service-card__body,
+  .service-stack .service-card--admin .service-card__body,
+  .service-stack .service-card--sales .service-card__body,
+  .service-stack .service-card--estimate .service-card__body{
+    grid-template-columns:1fr;
+    margin-top:42px;
+    gap:14px;
+  }
+}
