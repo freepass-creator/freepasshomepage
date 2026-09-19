@@ -318,3 +318,51 @@ section{scroll-margin-top:80px}
   .mewcar-alliance__plus{justify-self:start}
   .mewcar-synergy{grid-column:auto;justify-content:flex-start;flex-wrap:wrap}
 }
+
+
+/* SERVICES */
+.services-sec{background:#fff}
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:56px}
+.service-card{min-height:300px;padding:28px;border:1px solid var(--line);border-radius:15px;background:#fff;display:flex;flex-direction:column;transition:.23s}
+.service-card:hover{border-color:rgba(23,99,214,.24);box-shadow:0 16px 40px -30px rgba(16,24,40,.32);transform:translateY(-2px)}
+.service-card--public{background:linear-gradient(145deg,#fbfdff,#f4f8fd)}
+.service-card__top{display:flex;align-items:center;justify-content:space-between;font-family:"Exo 2","Pretendard",sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--blue)}
+.service-card__top b{font-size:16px;font-weight:400}
+.service-card h3{margin-top:80px;font-size:25px;letter-spacing:-.7px}
+.service-card>p{margin-top:10px;max-width:480px;color:var(--ink2);font-size:14px;line-height:1.78}
+.service-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:26px}
+.service-meta span{padding:6px 9px;border:1px solid var(--line);border-radius:999px;color:var(--ink3);font-size:10px;font-weight:600}
+.service-connection{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:28px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.service-connection>span{font-family:"Exo 2","Pretendard",sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--blue)}
+.service-connection>i{font-style:normal;color:var(--ink3)}
+.service-connection>p{margin-left:auto;max-width:520px;color:var(--ink2);font-size:12.5px}
+
+/* MEWCAR + MEWCAR MOBILITY */
+.mewcar-family{border-left:1px solid var(--line);padding-left:54px}
+.mewcar-family__row{position:relative;display:grid;grid-template-columns:190px 1fr auto;gap:28px;align-items:center;padding:28px 0;color:inherit}
+.mewcar-family__row>div:nth-child(2)>span{display:block;font-family:"Exo 2","Pretendard",sans-serif;font-size:9px;font-weight:700;letter-spacing:.13em;color:var(--ink3)}
+.mewcar-family__row>div:nth-child(2)>strong{display:block;margin-top:7px;font-size:18px;letter-spacing:-.35px}
+.mewcar-family__row>div:nth-child(2)>p{margin-top:6px;color:var(--ink2);font-size:12.5px;line-height:1.7}
+.mewcar-family__row>b{color:var(--blue);font-size:17px}
+.mewcar-family__divider{height:1px;background:var(--line)}
+.mewcar-family__logo{display:flex;align-items:center}
+.mewcar-family__logo .mewcar-ci{width:175px}
+.mewcar-family__row--mobility{grid-template-columns:190px 1fr}
+.mewcar-mobility-mark{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
+.mewcar-mobility-mark strong{font-size:25px;letter-spacing:-1.1px;color:#14344d}
+.mewcar-mobility-mark span{font-size:18px;font-weight:500;color:#4d9b91}
+.mewcar-family__foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line);font-family:"Exo 2","Pretendard",sans-serif;font-size:8px;font-weight:700;letter-spacing:.11em;color:var(--ink3)}
+.mewcar-family__foot i{width:4px;height:4px;border-radius:50%;background:#5da49c}
+
+@media(max-width:900px){
+  .service-grid{grid-template-columns:1fr 1fr}
+  .service-connection>p{width:100%;max-width:none;margin-left:0}
+  .mewcar-family{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
+}
+@media(max-width:650px){
+  .service-grid{grid-template-columns:1fr}
+  .service-card{min-height:250px}
+  .service-card h3{margin-top:50px}
+  .mewcar-family__row,.mewcar-family__row--mobility{grid-template-columns:1fr;gap:16px}
+  .mewcar-family__row>b{position:absolute;right:0;top:30px}
+}
