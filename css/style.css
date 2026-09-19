@@ -606,3 +606,98 @@ section{scroll-margin-top:80px}
   .ops-feature-grid article{min-height:0}
   .ops-feature-grid h3{margin-top:40px}
 }
+
+
+/* 2026-09 simplified service presentation */
+.simple-service-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:54px;
+}
+.simple-service-card{
+  min-height:285px;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+.simple-service-card--primary{
+  background:linear-gradient(145deg,#f9fcff,#eef5fc);
+}
+.simple-service-card>span{
+  font-family:"Exo 2","Pretendard",sans-serif;
+  font-size:10px;
+  font-weight:700;
+  color:var(--blue);
+  letter-spacing:.1em;
+}
+.simple-service-card h3{
+  margin-top:54px;
+  font-size:22px;
+  letter-spacing:-.45px;
+}
+.simple-service-card p{
+  margin-top:12px;
+  font-size:13.5px;
+  line-height:1.78;
+  color:var(--ink2);
+}
+.simple-service-card small{
+  display:block;
+  margin-top:auto;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  color:var(--ink3);
+  font-size:10.5px;
+  line-height:1.65;
+}
+.simple-service-flow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:24px;
+  padding:20px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.simple-service-flow span{
+  font-size:11px;
+  font-weight:700;
+}
+.simple-service-flow i{
+  font-style:normal;
+  color:var(--ink3);
+}
+.simple-service-foot{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px;
+}
+.simple-service-foot>div{
+  padding:22px 24px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--bg);
+}
+.simple-service-foot strong{
+  font-size:15px;
+}
+.simple-service-foot p{
+  margin-top:7px;
+  font-size:12.5px;
+  line-height:1.7;
+  color:var(--ink2);
+}
+@media(max-width:1000px){
+  .simple-service-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  .simple-service-grid,.simple-service-foot{grid-template-columns:1fr}
+  .simple-service-card{min-height:0}
+  .simple-service-card h3{margin-top:38px}
+}
