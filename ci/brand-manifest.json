@@ -1,0 +1,179 @@
+{
+  "$schema": "./brand-manifest.schema.json",
+  "manifestId": "freepass.brand.manifest",
+  "version": "0.1.0-hold.1",
+  "status": "HOLD",
+  "publishedAt": "2026-09-21",
+  "owner": {
+    "repository": "freepass-creator/freepasshomepage",
+    "path": "ci/",
+    "system": "FreePass CI Center"
+  },
+  "release": {
+    "digestAlgorithm": "sha256",
+    "digestFile": "brand-manifest.sha256",
+    "hotlinkPolicy": "FORBIDDEN",
+    "consumerPolicy": "PIN_VERSION_AND_MANIFEST_DIGEST_THEN_COPY",
+    "approvedAssetCount": 0,
+    "holdReason": "The observed wordmark and check-symbol families have no shared authoritative source package or explicit owner approval."
+  },
+  "brandBoundary": {
+    "included": ["FreePass Mobility wordmark candidates", "FreePass check-symbol app icon candidates"],
+    "excluded": ["MEWCAR", "Welrix", "partner and white-label brands", "vehicle maker marks"],
+    "rule": "Excluded brands remain owned by their respective projects or rights holders and must not be copied into this manifest."
+  },
+  "rightsAndApproval": {
+    "rightsHolder": "UNKNOWN",
+    "license": "UNKNOWN",
+    "redistributionScope": "EVIDENCE_ONLY",
+    "approvalAuthority": "Explicit decision by the FreePass brand owner is required.",
+    "releaseApprovalEvidence": null
+  },
+  "assets": [
+    {
+      "assetId": "freepass.wordmark.mobility.candidate.vector.001",
+      "semanticRole": "wordmark",
+      "status": "HOLD_FONT_DEPENDENT",
+      "version": "candidate-2026-09-19",
+      "path": "assets/candidates/freepass-wordmark-font-dependent.svg",
+      "sha256": "fcafd091c97e2b6c28a4baec12ae869c5c8024da019bfdb3196c30405e9c01e3",
+      "format": "image/svg+xml",
+      "dimensions": { "width": 340, "height": 56, "unit": "px" },
+      "viewBox": "0 0 340 56",
+      "backgroundRule": "Preview on white or very light neutral only until an approved inverse variant exists.",
+      "minimumSize": { "width": 170, "unit": "px", "status": "PROVISIONAL" },
+      "clearSpace": { "formula": "0.5x cap height on every side", "status": "PROVISIONAL" },
+      "allowedFormats": ["svg"],
+      "provenance": {
+        "sourceRepository": "freepass-creator/freepass-estimate",
+        "sourcePath": "apps/new/public/freepass-wordmark.svg",
+        "sourceCommit": "b1257b4e3ac141b027f404eec350a29bd5f3f878",
+        "firstRecordedAt": "2026-09-19",
+        "evidence": "Used by the FreePass company configuration and brand-theme runtime.",
+        "limitations": "Contains SVG text elements using Exo 2/Pretendard/Arial and is not an outlined portable master."
+      }
+    },
+    {
+      "assetId": "freepass.wordmark.mobility.candidate.raster.001",
+      "semanticRole": "wordmark",
+      "status": "HOLD_PROVENANCE_UNVERIFIED",
+      "version": "candidate-observed-2026-07-02",
+      "path": "assets/candidates/freepass-wordmark-raster.png",
+      "sha256": "8238bc4eb7fc628f7f2aa7b30d3499380fc024d51e5752ab37e9e01a47648bdd",
+      "format": "image/png",
+      "dimensions": { "width": 3180, "height": 720, "unit": "px" },
+      "viewBox": null,
+      "backgroundRule": "Transparent background; preview on white or very light neutral only.",
+      "minimumSize": { "width": 170, "unit": "px", "status": "PROVISIONAL" },
+      "clearSpace": { "formula": "0.5x cap height on every side", "status": "PROVISIONAL" },
+      "allowedFormats": ["png"],
+      "provenance": {
+        "sourceRepository": "local-docshub-non-git",
+        "sourcePath": "양식/assets/logo-freepass.png",
+        "sourceCommit": null,
+        "firstRecordedAt": "2026-07-02",
+        "evidence": "Observed in one legacy document-template reference.",
+        "limitations": "No generator, vector original, owner approval, or Git history was found."
+      }
+    },
+    {
+      "assetId": "freepass.symbol.check.candidate.vector.001",
+      "semanticRole": "symbol",
+      "status": "HOLD_FAMILY_BINDING_UNVERIFIED",
+      "version": "candidate-2026-08-23",
+      "path": "assets/candidates/freepass-check-symbol.svg",
+      "sha256": "5863db6b1515691ce31fe2ad7523ffbdc7978bdbe3040f32838226f978957096",
+      "format": "image/svg+xml",
+      "dimensions": { "width": 512, "height": 512, "unit": "px" },
+      "viewBox": "0 0 512 512",
+      "backgroundRule": "Self-contained navy tile with white check; do not recolor or remove the tile.",
+      "minimumSize": { "width": 24, "unit": "px", "status": "PROVISIONAL" },
+      "clearSpace": { "formula": "0.1875x symbol width on every side", "status": "PROVISIONAL" },
+      "allowedFormats": ["svg"],
+      "provenance": {
+        "sourceRepository": "freepass-creator/freepasserp4",
+        "sourcePath": "public/icon.svg",
+        "sourceCommit": "c6b135bbec80d2ffb605a2ca1f68ad329196024f",
+        "firstRecordedAt": "2026-08-23",
+        "evidence": "Used by PWA metadata, electronic-signature UI, product-photo UI, and deterministic icon checks.",
+        "limitations": "Operational use is strong evidence for the symbol itself, but no authoritative package binds it to the wordmark family."
+      }
+    },
+    {
+      "assetId": "freepass.symbol.check.candidate.png.192",
+      "semanticRole": "app-icon",
+      "status": "HOLD_DERIVED_FROM_CANDIDATE",
+      "version": "candidate-2026-08-23",
+      "path": "assets/candidates/freepass-check-symbol-192.png",
+      "sha256": "1cd6ccbd40b1d1f26db4914a8cbe308e417e56e3e097bc21a30b6ed8b14e38b3",
+      "format": "image/png",
+      "dimensions": { "width": 192, "height": 192, "unit": "px" },
+      "viewBox": null,
+      "backgroundRule": "Self-contained icon tile.",
+      "minimumSize": { "width": 24, "unit": "px", "status": "PROVISIONAL" },
+      "clearSpace": { "formula": "Built into the tile", "status": "PROVISIONAL" },
+      "allowedFormats": ["png"],
+      "provenance": {
+        "sourceRepository": "freepass-creator/freepasserp4",
+        "sourcePath": "public/icon-192.png",
+        "sourceCommit": "c6b135bbec80d2ffb605a2ca1f68ad329196024f",
+        "firstRecordedAt": "2026-08-23",
+        "evidence": "Generated from public/icon.svg by scripts/build-icons.mjs.",
+        "limitations": "Derivative of a HOLD candidate."
+      }
+    },
+    {
+      "assetId": "freepass.symbol.check.candidate.png.512",
+      "semanticRole": "app-icon",
+      "status": "HOLD_DERIVED_FROM_CANDIDATE",
+      "version": "candidate-2026-08-23",
+      "path": "assets/candidates/freepass-check-symbol-512.png",
+      "sha256": "c9608bef6addc8cf3d3436f17b99cc7bc28a26cfa5c22aeb814bcf239474011a",
+      "format": "image/png",
+      "dimensions": { "width": 512, "height": 512, "unit": "px" },
+      "viewBox": null,
+      "backgroundRule": "Self-contained icon tile.",
+      "minimumSize": { "width": 24, "unit": "px", "status": "PROVISIONAL" },
+      "clearSpace": { "formula": "Built into the tile", "status": "PROVISIONAL" },
+      "allowedFormats": ["png"],
+      "provenance": {
+        "sourceRepository": "freepass-creator/freepasserp4",
+        "sourcePath": "public/icon-512.png",
+        "sourceCommit": "c6b135bbec80d2ffb605a2ca1f68ad329196024f",
+        "firstRecordedAt": "2026-08-23",
+        "evidence": "Generated from public/icon.svg by scripts/build-icons.mjs.",
+        "limitations": "Derivative of a HOLD candidate."
+      }
+    },
+    {
+      "assetId": "freepass.symbol.check.candidate.maskable.512",
+      "semanticRole": "maskable-app-icon",
+      "status": "HOLD_DERIVED_FROM_CANDIDATE",
+      "version": "candidate-2026-08-23",
+      "path": "assets/candidates/freepass-check-symbol-maskable-512.png",
+      "sha256": "83b1d6dc59adadfd36eee5b2133ccae2fa22c626a9324e80787e9581362b9164",
+      "format": "image/png",
+      "dimensions": { "width": 512, "height": 512, "unit": "px" },
+      "viewBox": null,
+      "backgroundRule": "Navy safe-zone padding is part of the maskable asset.",
+      "minimumSize": { "width": 48, "unit": "px", "status": "PROVISIONAL" },
+      "clearSpace": { "formula": "Built into the maskable safe zone", "status": "PROVISIONAL" },
+      "allowedFormats": ["png"],
+      "provenance": {
+        "sourceRepository": "freepass-creator/freepasserp4",
+        "sourcePath": "public/icon-maskable-512.png",
+        "sourceCommit": "c6b135bbec80d2ffb605a2ca1f68ad329196024f",
+        "firstRecordedAt": "2026-08-23",
+        "evidence": "Generated from public/icon.svg with safe-zone padding by scripts/build-icons.mjs.",
+        "limitations": "Derivative of a HOLD candidate."
+      }
+    }
+  ],
+  "missingRequiredVariants": [
+    { "semanticRole": "outlined-wordmark-master", "status": "HOLD_NOT_SUPPLIED" },
+    { "semanticRole": "wordmark-monochrome", "status": "HOLD_NOT_SUPPLIED" },
+    { "semanticRole": "wordmark-inverse", "status": "HOLD_NOT_SUPPLIED" },
+    { "semanticRole": "symbol-monochrome", "status": "HOLD_NOT_SUPPLIED" },
+    { "semanticRole": "favicon-16-32", "status": "HOLD_NOT_SUPPLIED" }
+  ]
+}
