@@ -1,17 +1,17 @@
 {
   "schema": "ai-core-starter-kit/v1",
-  "core_revision": "a73b9616592f71d0aea81d297ac48ffa273586dd",
-  "generated_at": "2026-09-22T00:03:11.034Z",
-  "task": "AI Core 규격과 전체 프로젝트 지식을 설치한다",
+  "core_revision": "87b0f4f6c75dbb313ec4684081b83b1ef0c53da2",
+  "generated_at": "2026-09-22T02:23:53.120Z",
+  "task": "최신 AI Core 규격과 GitHub 동기화 부트스트랩 적용",
   "track": "development",
   "target": {
     "project_id": "freepass-homepage",
     "repository": "freepass-creator/freepasshomepage",
-    "branch": "codex/ai-core-starter-kit-20260922",
-    "revision": "1a1dc7c49433a99e71bd0802e807221ca9a7937d",
-    "registry_revision": "5f0152c26ac1f106a5f5aee46a3e0020d653c8f5",
-    "root": "C:\\dev\\freepasshomepage",
-    "display_name": "freepasshomepage"
+    "branch": "codex/refresh-ai-core-kit-v2-20260922",
+    "revision": "24a09c2893be1c2b31a1cd7282d2128d6ffe79be",
+    "registry_revision": "24a09c2893be1c2b31a1cd7282d2128d6ffe79be",
+    "root": "C:\\dev\\ai-core-kit-rollout-20260922-v2\\freepass-homepage",
+    "display_name": "freepass-homepage"
   },
   "files": [
     {
@@ -33,6 +33,11 @@
       "path": "standards/shared-services/SHARED_RELEASE_GATE.md",
       "sha256": "098ba568b40d6fcd7c5830e7a024048a52ad156ed7a6f0374af2a9ac545eb03b",
       "source": "docs/shared-services/SHARED_RELEASE_GATE.md"
+    },
+    {
+      "path": "session-bootstrap.mjs",
+      "sha256": "60b0ccc3a8217aa2b7415f3830fec94fd894fab294155e294d7ede71edd8c900",
+      "source": "generated:session-bootstrap/v2"
     }
   ],
   "verification": {

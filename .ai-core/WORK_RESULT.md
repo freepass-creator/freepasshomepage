@@ -1,7 +1,7 @@
 # AI Work Result
 
-- 목적: AI Core 규격과 전체 프로젝트 지식을 설치한다
-- 대상 revision: 1a1dc7c49433a99e71bd0802e807221ca9a7937d
+- 목적: 최신 AI Core 규격과 GitHub 동기화 부트스트랩 적용
+- 대상 revision: 24a09c2893be1c2b31a1cd7282d2128d6ffe79be
 - 변경:
 - 검증:
 - 남음:
