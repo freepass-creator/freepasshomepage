@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://freepassmobility.com/ci/brand-manifest.schema.json",
+  "title": "FreePass Brand Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifestId", "version", "status", "owner", "release", "brandBoundary", "rightsAndApproval", "assets", "missingRequiredVariants"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "manifestId": { "const": "freepass.brand.manifest" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$" },
+    "status": { "enum": ["HOLD", "APPROVED", "RETIRED"] },
+    "publishedAt": { "type": "string", "format": "date" },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "path", "system"],
+      "properties": {
+        "repository": { "type": "string" },
+        "path": { "type": "string" },
+        "system": { "type": "string" }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["digestAlgorithm", "digestFile", "hotlinkPolicy", "consumerPolicy", "approvedAssetCount", "holdReason"],
+      "properties": {
+        "digestAlgorithm": { "const": "sha256" },
+        "digestFile": { "type": "string" },
+        "hotlinkPolicy": { "const": "FORBIDDEN" },
+        "consumerPolicy": { "const": "PIN_VERSION_AND_MANIFEST_DIGEST_THEN_COPY" },
+        "approvedAssetCount": { "type": "integer", "minimum": 0 },
+        "holdReason": { "type": ["string", "null"] }
+      }
+    },
+    "brandBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["included", "excluded", "rule"],
+      "properties": {
+        "included": { "type": "array", "items": { "type": "string" } },
+        "excluded": { "type": "array", "items": { "type": "string" } },
+        "rule": { "type": "string" }
+      }
+    },
+    "rightsAndApproval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rightsHolder", "license", "redistributionScope", "approvalAuthority", "releaseApprovalEvidence"],
+      "properties": {
+        "rightsHolder": { "type": "string" },
+        "license": { "type": "string" },
+        "redistributionScope": { "enum": ["EVIDENCE_ONLY", "INTERNAL", "PUBLIC"] },
+        "approvalAuthority": { "type": "string" },
+        "releaseApprovalEvidence": { "type": ["string", "null"] }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/asset" }
+    },
+    "missingRequiredVariants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["semanticRole", "status"],
+        "properties": {
+          "semanticRole": { "type": "string" },
+          "status": { "const": "HOLD_NOT_SUPPLIED" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "semanticRole", "status", "version", "path", "sha256", "format", "dimensions", "viewBox", "backgroundRule", "minimumSize", "clearSpace", "allowedFormats", "provenance"],
+      "properties": {
+        "assetId": { "type": "string", "pattern": "^freepass\\.[a-z0-9.-]+$" },
+        "semanticRole": { "type": "string" },
+        "status": { "type": "string", "pattern": "^(APPROVED|HOLD_[A-Z0-9_]+|RETIRED)$" },
+        "version": { "type": "string" },
+        "path": { "type": "string", "pattern": "^assets/" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "format": { "enum": ["image/svg+xml", "image/png"] },
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height", "unit"],
+          "properties": {
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 },
+            "unit": { "const": "px" }
+          }
+        },
+        "viewBox": { "type": ["string", "null"] },
+        "backgroundRule": { "type": "string" },
+        "minimumSize": { "$ref": "#/$defs/rule" },
+        "clearSpace": { "$ref": "#/$defs/rule" },
+        "allowedFormats": { "type": "array", "minItems": 1, "items": { "enum": ["svg", "png"] } },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceRepository", "sourcePath", "sourceCommit", "firstRecordedAt", "evidence", "limitations"],
+          "properties": {
+            "sourceRepository": { "type": "string" },
+            "sourcePath": { "type": "string" },
+            "sourceCommit": { "type": ["string", "null"], "pattern": "^[a-f0-9]{40}$" },
+            "firstRecordedAt": { "type": "string", "format": "date" },
+            "evidence": { "type": "string" },
+            "limitations": { "type": "string" }
+          }
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "unit": { "const": "px" },
+        "formula": { "type": "string" },
+        "status": { "enum": ["PROVISIONAL", "APPROVED"] }
+      }
+    }
+  }
+}

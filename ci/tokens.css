@@ -1,0 +1,15 @@
+:root {
+  /* Candidate observations only. Pin tokens.json version + digest before consumption. */
+  --freepass-brand-navy: #1b2a4a;
+  --freepass-brand-steel: #7f93b3;
+  --freepass-brand-white: #ffffff;
+  --freepass-brand-surface: #f7f8fa;
+  --freepass-font-interface: "Pretendard", Arial, sans-serif;
+  --freepass-space-1: 4px;
+  --freepass-space-2: 8px;
+  --freepass-space-3: 12px;
+  --freepass-space-4: 16px;
+  --freepass-space-6: 24px;
+  --freepass-space-8: 32px;
+  --freepass-space-12: 48px;
+}
