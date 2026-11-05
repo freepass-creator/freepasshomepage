@@ -22,3 +22,15 @@ index.html, css/style.css, js/main.js를 기존 정적 홈페이지의 동일 �
 - .ai-core/verify-kit.mjs: 전체 Git 이력 fetch 후 PASS. 기존 bootstrap의 중앙 Core freshness 경고는 별도 미해결이며, 번들 무결성은 확인.
 
 next_start_here: 이 문서와 index.html. 현재 브랜치에서 시안 의견을 반영하고 운영 배포 경로를 확인합니다.
+
+## v2: 이미지·인포그래픽 보강 (2026-11-05)
+- 기존 뮤카 사이트용 연출 차량 사진 재사용: mewcar-mobility/apps/sales-portal/assets/mewcar-web-benz-parked-20261012-v1.webp → assets/mobility-lifestyle.webp. 픽셀 확인 후 사용. 실제 판매 매물 오인 방지 설명 포함.
+- 신규 assets/mobility-map.svg: 편집 가능한 자동차·도로·상품/상담/계약·인도/운영 흐름 일러스트.
+- 차량/기간/대여 조건/출고상태 비교 기준을 선택하는 접근성 탭 인포그래픽 추가.
+- 기존 임시 f 심벌을 제거하고 ci_center의 freepassmobility 워드마크 색상·굵기 기준을 적용.
+- 뮤카패스 CI: GitHub의 freepasshomepage/ci_center/mewcar/mewcar-mobility, 연결 PC의 C:\dev·사용자 폴더, Drive 이미지 이름을 조사했으나 정확한 CI 원본을 찾지 못함. 뮤카·뮤카모빌리티 CI와 혼동하여 대체하지 않음. 사용자에게 위치 확인 질문 전달, 답변 대기.
+- 검증: 앵커/고유 ID/로컬 자산, SVG XML 파싱, JS 구문, 비교 기준 본문 변경/키보드 이동/파트너 탭과의 상태 독립성 검사 PASS. 지정 브라우저 도구 미제공으로 모바일 렌더링은 미검증.
+- 새 시안: https://dynamic-seed-a9vgv4s.shipstatic.com
+- 영구 보관: https://my.shipstatic.com/claim/d91e47f3802cf1164417d8bfd4bc7dd2
+- 이전 시안은 유지되며 v2는 위 새 링크를 사용합니다. 운영 홈페이지는 변경하지 않음.
+- next_start_here: 뮤카패스 CI의 정확한 파일을 확인한 후 브랜드 영역에 반영.

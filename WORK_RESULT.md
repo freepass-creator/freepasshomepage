@@ -10,3 +10,11 @@
 - false completion: 0
 - 학습환류: NONE
 - next_start_here: reports/DESIGN_HANDOFF.md
+
+## v2
+- 사용자 요청: 사진·인포그래픽 활용 확대, 기존 뮤카패스 CI 활용.
+- 변경: 브랜드 연출 사진, 자동차 여정 SVG, 4개 비교 기준 인터랙션, 공식 자료 기반 프리패스 워드마크.
+- 검증: SVG/자산/앵커/JS 구문/키보드 탭/상태 독립성 PASS.
+- 남음: 뮤카패스 CI 정확한 원본 위치 확인, 모바일 실제 렌더링 검증.
+- 게시: https://dynamic-seed-a9vgv4s.shipstatic.com
+- next_start_here: reports/DESIGN_HANDOFF.md v2.
