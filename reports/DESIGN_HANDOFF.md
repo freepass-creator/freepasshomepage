@@ -30,7 +30,7 @@ next_start_here: 이 문서와 index.html. 현재 브랜치에서 시안 의견�
 - 기존 임시 f 심벌을 제거하고 ci_center의 freepassmobility 워드마크 색상·굵기 기준을 적용.
 - 뮤카패스 CI: GitHub의 freepasshomepage/ci_center/mewcar/mewcar-mobility, 연결 PC의 C:\dev·사용자 폴더, Drive 이미지 이름을 조사했으나 정확한 CI 원본을 찾지 못함. 뮤카·뮤카모빌리티 CI와 혼동하여 대체하지 않음. 사용자에게 위치 확인 질문 전달, 답변 대기.
 - 검증: 앵커/고유 ID/로컬 자산, SVG XML 파싱, JS 구문, 비교 기준 본문 변경/키보드 이동/파트너 탭과의 상태 독립성 검사 PASS. 지정 브라우저 도구 미제공으로 모바일 렌더링은 미검증.
-- 새 시안: https://dynamic-seed-a9vgv4s.shipstatic.com
-- 영구 보관: https://my.shipstatic.com/claim/d91e47f3802cf1164417d8bfd4bc7dd2
+- 새 시안: https://lucid-kernel-efbm3m2.shipstatic.com
+- 영구 보관: https://my.shipstatic.com/claim/2276e877db0fe9c8bfcb4b8399cb0d8e
 - 이전 시안은 유지되며 v2는 위 새 링크를 사용합니다. 운영 홈페이지는 변경하지 않음.
 - next_start_here: 뮤카패스 CI의 정확한 파일을 확인한 후 브랜드 영역에 반영.
