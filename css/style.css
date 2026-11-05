@@ -2431,3 +2431,283 @@ footer {
     gap: 5px;
   }
 }
+/* Canonical CI artwork, reused without redrawing or recoloring. */
+.official-ci {
+  position: relative;
+  display: block !important;
+  width: 220px;
+  height: 34px;
+  overflow: hidden;
+  flex: none;
+}
+.official-ci img {
+  position: absolute;
+  width: 252px !important;
+  height: auto !important;
+  max-width: none;
+  left: -15.8px;
+  top: -19.6px;
+  display: block;
+}
+.logo {
+  flex: none;
+}
+.brand-alliance {
+  background: #f8fafb;
+  border-bottom: 1px solid var(--line);
+}
+.alliance-visual {
+  display: grid;
+  grid-template-columns: 1fr 70px 1fr;
+  align-items: center;
+  padding: 40px 28px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.alliance-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.alliance-brand > .official-ci {
+  width: 300px;
+  height: 44px;
+}
+.alliance-brand > .official-ci img {
+  width: 344px !important;
+  left: -21.5px;
+  top: -26.8px;
+}
+.alliance-brand > span:last-child {
+  font-size: 12px;
+  color: var(--muted);
+}
+.alliance-brand .mewcar-source-logo {
+  width: 165px;
+  height: auto;
+}
+.alliance-connector {
+  font-size: 28px;
+  color: #a2b7bd;
+  text-align: center;
+  font-weight: 300;
+}
+.alliance-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 24px 15px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.alliance-flow i {
+  font-style: normal;
+  color: #b1c4c7;
+}
+.alliance-flow strong {
+  font-weight: 650;
+  color: var(--teal);
+}
+.mobility-brand-card {
+  display: grid;
+  grid-template-columns: 230px 1fr auto;
+  gap: 35px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px;
+}
+.mobility-brand-logo {
+  padding-right: 28px;
+  border-right: 1px solid var(--line);
+}
+.mobility-brand-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mobility-brand-card .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.1px;
+}
+.mobility-brand-card h3 {
+  font-size: 17px;
+  color: var(--navy);
+  letter-spacing: -0.4px;
+  margin-top: 10px;
+  font-weight: 650;
+}
+.mobility-brand-card p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 9px;
+  line-height: 1.9;
+}
+.brand-visit {
+  font-size: 11px;
+  color: var(--teal);
+  font-weight: 650;
+  white-space: nowrap;
+}
+.brand-visit span {
+  margin-left: 10px;
+  font-size: 17px;
+}
+@media (max-width: 1100px) {
+  .official-ci {
+    width: 195px;
+    height: 30px;
+  }
+  .official-ci img {
+    width: 224px !important;
+    left: -14px;
+    top: -17.4px;
+  }
+  .alliance-brand > .official-ci {
+    width: 265px;
+    height: 40px;
+  }
+  .alliance-brand > .official-ci img {
+    width: 303px !important;
+    left: -19px;
+    top: -23.5px;
+  }
+  .mobility-brand-card {
+    grid-template-columns: 190px 1fr;
+    gap: 28px;
+  }
+  .brand-visit {
+    grid-column: 2;
+  }
+}
+@media (max-width: 850px) {
+  .alliance-brand > .official-ci {
+    width: 235px;
+    height: 35px;
+  }
+  .alliance-brand > .official-ci img {
+    width: 269px !important;
+    left: -16.8px;
+    top: -21px;
+  }
+  .alliance-visual {
+    padding: 30px 15px;
+    grid-template-columns: 1fr 40px 1fr;
+  }
+  .alliance-brand .mewcar-source-logo {
+    width: 140px;
+  }
+  .alliance-brand > span:last-child {
+    font-size: 10px;
+  }
+  .alliance-flow {
+    font-size: 10px;
+    gap: 16px;
+  }
+  .mobility-brand-card h3 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .official-ci {
+    width: 174px;
+    height: 27px;
+  }
+  .official-ci img {
+    width: 199px !important;
+    left: -12.4px;
+    top: -15.5px;
+  }
+  .alliance-visual {
+    grid-template-columns: 1fr;
+    padding: 29px 20px;
+    gap: 20px;
+  }
+  .alliance-brand > .official-ci {
+    width: 235px;
+    height: 35px;
+  }
+  .alliance-brand > .official-ci img {
+    width: 269px !important;
+    left: -16.8px;
+    top: -21px;
+  }
+  .alliance-brand {
+    gap: 12px;
+  }
+  .alliance-connector {
+    font-size: 23px;
+    line-height: 1;
+  }
+  .alliance-brand .mewcar-source-logo {
+    width: 135px;
+  }
+  .alliance-brand > span:last-child {
+    font-size: 11px;
+  }
+  .alliance-flow {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr;
+    gap: 12px 5px;
+    text-align: center;
+    font-size: 10px;
+    padding: 24px 0;
+  }
+  .alliance-flow > i:nth-of-type(2) {
+    display: none;
+  }
+  .mobility-brand-card {
+    grid-template-columns: 1fr;
+    padding: 26px;
+    gap: 20px;
+  }
+  .mobility-brand-logo {
+    border: 0;
+    padding: 0;
+    width: 230px;
+    max-width: 100%;
+  }
+  .mobility-brand-card h3 {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .mobility-brand-card p {
+    font-size: 12px;
+  }
+  .brand-visit {
+    grid-column: auto;
+  }
+  .footer-top .official-ci {
+    width: 190px;
+    height: 30px;
+  }
+  .footer-top .official-ci img {
+    width: 217px !important;
+    left: -13.6px;
+    top: -16.8px;
+  }
+}
+@media (max-width: 370px) {
+  .nav .official-ci {
+    width: 155px;
+    height: 24px;
+  }
+  .nav .official-ci img {
+    width: 177px !important;
+    left: -11.1px;
+    top: -13.7px;
+  }
+  .alliance-brand > .official-ci {
+    width: 215px;
+    height: 32px;
+  }
+  .alliance-brand > .official-ci img {
+    width: 246px !important;
+    left: -15.4px;
+    top: -19.2px;
+  }
+}

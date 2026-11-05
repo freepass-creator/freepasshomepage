@@ -34,3 +34,16 @@ next_start_here: 이 문서와 index.html. 현재 브랜치에서 시안 의견�
 - 영구 보관: https://my.shipstatic.com/claim/2276e877db0fe9c8bfcb4b8399cb0d8e
 - 이전 시안은 유지되며 v2는 위 새 링크를 사용합니다. 운영 홈페이지는 변경하지 않음.
 - next_start_here: 뮤카패스 CI의 정확한 파일을 확인한 후 브랜드 영역에 반영.
+
+## v3: 기존 CI 원본 직접 확인·반영
+- 확보 및 픽셀 확인한 자산:
+  - freepasserp5/public/assets/freepassmobility-ci-reference.png → assets/freepass-mobility-ci.png
+  - mewcar-mobility/apps/sales-portal/assets/mewcar-ci.png → assets/mewcar-original-ci.png
+  - mewcar-mobility/apps/sales-portal/assets/mewcar-mobility-ci-20261020.png → assets/mewcar-mobility-ci.png
+- 위 자산은 각각 프리패스모빌리티, 뮤카, 뮤카모빌리티 CI입니다. 확인되지 않은 합성 브랜드명이나 새 CI를 만들지 않았습니다.
+- 상단·하단의 CSS 텍스트 워드마크를 원본 PNG로 변경. 투명 여백은 CSS 뷰포트로 처리하고 픽셀 원본은 그대로 보관.
+- 브랜드 협업 영역을 프리패스 × 뮤카 로고, 상품→영업→운영→고객 선택 흐름, 뮤카모빌리티 가로형 CI로 확대.
+- 검증: 자산 존재/alt, JS 구문, Git diff 공백 검사 PASS. 모바일 실브라우저 렌더링 미검증.
+- 최신 시안: https://edgy-byte-7w2peuf.shipstatic.com
+- 영구 보관: https://my.shipstatic.com/claim/a1956a5d0bbc78cb8cbfd301895db5bf
+- next_start_here: index.html #brands 및 위 원본 CI 자산. 운영 홈페이지 적용 전 시안 검토.

@@ -18,3 +18,9 @@
 - 남음: 뮤카패스 CI 정확한 원본 위치 확인, 모바일 실제 렌더링 검증.
 - 게시: https://lucid-kernel-efbm3m2.shipstatic.com
 - next_start_here: reports/DESIGN_HANDOFF.md v2.
+
+## v3
+- 기존 CI 원본 3종 확보·픽셀 확인 후 실제 이미지로 적용: 프리패스모빌리티, 뮤카, 뮤카모빌리티.
+- 브랜드 협업 영역 확대 및 원본 자산 경로·적용 기록 완료.
+- 최신 게시: https://edgy-byte-7w2peuf.shipstatic.com
+- 남음: 모바일 실브라우저 검증, 운영 홈페이지 반영 여부 검토.
