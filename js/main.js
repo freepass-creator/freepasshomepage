@@ -1,110 +1,82 @@
-/* 프리패스모빌리티 — network panel + restrained interactions */
 (function () {
   "use strict";
-  var $ = function (s) { return document.querySelector(s); };
-
-  /* 라이트 네트워크 패널: 공급사(좌) ─ freepass 허브 ─ 영업파트너(우), 블루 빛 흐름 */
-  var cv = $("#net");
-  if (cv) {
-    var cx = cv.getContext("2d"), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var L = [], R = [], hub = [0, 0], motes = [];
-    function rand(a, b) { return a + Math.random() * (b - a); }
-    function size() {
-      var p = cv.parentElement; W = p.clientWidth; H = p.clientHeight;
-      cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      hub = [W * 0.4, H * 0.5];                                  // 허브 왼쪽으로 (비대칭)
-      L = [[W * 0.1, H * 0.4], [W * 0.12, H * 0.64]];            // 공급사 — 적게(2)
-      R = [[W * 0.74, H * 0.16], [W * 0.9, H * 0.34], [W * 0.93, H * 0.56], [W * 0.82, H * 0.76], [W * 0.62, H * 0.88]]; // 영업파트너 — 많게(5), 부채꼴
-      motes = [];
-    }
-    function node(n, big) {
-      var R0 = big ? 30 : 13;
-      var g = cx.createRadialGradient(n[0], n[1], 0, n[0], n[1], R0);
-      g.addColorStop(0, big ? "rgba(23,99,214,.32)" : "rgba(59,141,240,.28)");
-      g.addColorStop(1, "rgba(59,141,240,0)");
-      cx.fillStyle = g; cx.beginPath(); cx.arc(n[0], n[1], R0, 0, 6.283); cx.fill();
-      cx.fillStyle = big ? "#1763d6" : "#3b8df0"; cx.beginPath(); cx.arc(n[0], n[1], big ? 6 : 3.4, 0, 6.283); cx.fill();
-      if (big) { cx.fillStyle = "#fff"; cx.beginPath(); cx.arc(n[0], n[1], 2.4, 0, 6.283); cx.fill(); }
-    }
-    function frame() {
-      cx.clearRect(0, 0, W, H);
-      // 배경 부유 점
-      for (var i = 0; i < motes.length; i++) {
-        var m = motes[i]; m.x += m.vx; m.y += m.vy;
-        if (m.x < 0) m.x = W; if (m.x > W) m.x = 0; if (m.y < 0) m.y = H; if (m.y > H) m.y = 0;
-        cx.beginPath(); cx.arc(m.x, m.y, m.r, 0, 6.283); cx.fillStyle = "rgba(23,99,214," + m.a + ")"; cx.fill();
-      }
-      var now = performance.now(), links = [], k, A, B;
-      for (i = 0; i < L.length; i++) links.push([L[i], hub]);
-      for (i = 0; i < R.length; i++) links.push([hub, R[i]]);
-      cx.strokeStyle = "rgba(23,99,214,.16)"; cx.lineWidth = 1.3;
-      for (i = 0; i < links.length; i++) { cx.beginPath(); cx.moveTo(links[i][0][0], links[i][0][1]); cx.lineTo(links[i][1][0], links[i][1][1]); cx.stroke(); }
-      for (i = 0; i < links.length; i++) {
-        A = links[i][0]; B = links[i][1];
-        for (k = 0; k < 2; k++) {
-          var t = ((now / 5600) + i * 0.11 + k * 0.5) % 1;
-          var px = A[0] + (B[0] - A[0]) * t, py = A[1] + (B[1] - A[1]) * t;
-          cx.beginPath(); cx.arc(px, py, 2.6, 0, 6.283);
-          cx.fillStyle = "rgba(25,182,232," + (0.4 + 0.55 * Math.sin(t * Math.PI)) + ")"; cx.fill();
-        }
-      }
-      for (i = 0; i < L.length; i++) node(L[i]);
-      for (i = 0; i < R.length; i++) node(R[i]);
-      var pa = 0.62 + 0.38 * Math.sin(now / 1600);
-      cx.save(); cx.globalAlpha = pa; node(hub, true); cx.restore();
-      requestAnimationFrame(frame);
-    }
-    size(); frame();
-    var rz; window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(size, 200); });
+  const menu = document.querySelector(".menu-toggle"),
+    nav = document.querySelector("#navigation");
+  function closeMenu() {
+    nav.classList.remove("open");
+    menu.setAttribute("aria-expanded", "false");
+    menu.setAttribute("aria-label", "메뉴 열기");
   }
-
-  /* 스크롤 리빌 */
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
-  } else { document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); }); }
-
-  /* 카운트업 */
-  function countUp(el) {
-    var target = +el.dataset.count, dur = 1400, t0 = null;
-    function tick(t) { if (!t0) t0 = t; var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(target * e).toLocaleString(); if (p < 1) requestAnimationFrame(tick); }
-    requestAnimationFrame(tick);
-  }
-  if ("IntersectionObserver" in window) {
-    var nio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { countUp(e.target); nio.unobserve(e.target); } }); }, { threshold: 0.6 });
-    document.querySelectorAll("[data-count]").forEach(function (el) { nio.observe(el); });
-  }
-
-
-  /* 문의 폼: 별도 서버 없이 기본 메일앱으로 구조화된 문의를 전달 */
-  var contactForm = $("#contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var data = new FormData(contactForm);
-      var company = String(data.get("company") || "").trim();
-      var name = String(data.get("name") || "").trim();
-      var phone = String(data.get("phone") || "").trim();
-      var type = String(data.get("type") || "일반 문의").trim();
-      var message = String(data.get("message") || "").trim();
-      var subject = "[프리패스모빌리티] " + type + " - " + (company || name || "홈페이지 문의");
-      var body = [
-        "회사명 / 소속: " + (company || "-"),
-        "담당자: " + (name || "-"),
-        "연락처: " + (phone || "-"),
-        "문의 유형: " + type,
-        "",
-        "문의 내용",
-        message || "-"
-      ].join("\n");
-      window.location.href = "mailto:pyh@teamjpk.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  menu.addEventListener("click", () => {
+    const open = menu.getAttribute("aria-expanded") !== "true";
+    nav.classList.toggle("open", open);
+    menu.setAttribute("aria-expanded", String(open));
+    menu.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+  });
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) closeMenu();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      closeMenu();
+      menu.focus();
+    }
+  });
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  function selectTab(tab) {
+    tabs.forEach((t) => {
+      const active = t === tab;
+      t.setAttribute("aria-selected", String(active));
+      t.tabIndex = active ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !active;
     });
   }
-
-  /* 네비 + 드로어 */
-  var nav = $("#nav");
-  function onScroll() { nav.classList.toggle("scr", window.scrollY > 30); }
-  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
-  $("#burger").addEventListener("click", function () { nav.classList.toggle("open"); });
-  $("#drawer").addEventListener("click", function (e) { if (e.target.tagName === "A") nav.classList.remove("open"); });
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => selectTab(tab));
+    tab.addEventListener("keydown", (e) => {
+      let next;
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft")
+        next =
+          tabs[
+            (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length
+          ];
+      if (e.key === "Home") next = tabs[0];
+      if (e.key === "End") next = tabs[tabs.length - 1];
+      if (next) {
+        e.preventDefault();
+        selectTab(next);
+        next.focus();
+      }
+    });
+  });
+  document.querySelectorAll("[data-inquiry]").forEach((a) =>
+    a.addEventListener("click", () => {
+      document.querySelector('select[name="type"]').value = a.dataset.inquiry;
+    }),
+  );
+  const form = document.querySelector("#contact-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form),
+      v = (k) => String(data.get(k) || "").trim();
+    const subject =
+      "[프리패스모빌리티] " + v("type") + " - " + (v("company") || v("name"));
+    const body = [
+      "회사명 / 소속: " + (v("company") || "-"),
+      "담당자: " + v("name"),
+      "연락처: " + (v("phone") || "-"),
+      "문의 유형: " + v("type"),
+      "",
+      "문의 내용",
+      v("message") || "-",
+    ].join("\n");
+    document.querySelector("#form-status").textContent =
+      "이메일 앱을 열었습니다. 전송을 완료해 주세요. 앱이 열리지 않으면 pyh@teamjpk.com으로 직접 문의해 주세요.";
+    window.location.href =
+      "mailto:pyh@teamjpk.com?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body);
+  });
 })();

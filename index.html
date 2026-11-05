@@ -1,303 +1,564 @@
 <!doctype html>
 <html lang="ko">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-<title>프리패스모빌리티 — 모빌리티 중개 플랫폼</title>
-<meta name="description" content="공급사와 영업 파트너 사이의 상품·계약·인도·정산을 하나의 흐름으로 연결하는 모빌리티 중개 플랫폼, 프리패스모빌리티." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-<link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-
-<!-- NAV -->
-<header class="nav" id="nav">
-  <div class="nav-in">
-    <a class="logo" href="#top" aria-label="freepass mobility"><b>freepass</b><span class="lt">mobility</span></a>
-    <nav class="menu">
-      <a href="#sales">영업파트너</a><a href="#services">서비스</a><a href="#supplier">공급사</a>
-      <a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
-    </nav>
-    <!--
-      ★상단 CTA = «상품 찾기» — 매물 화면(freepassmobility.com)으로 건너간다.
-        여기 「파트너 시작」이 있었는데 그건 이 페이지 «안»의 #partner 로 내려가는 앵커였다.
-        매물 화면이 메인이 됐으므로(2026-09-08), 머리에서 나가는 문은 그쪽이어야 한다.
-        · 매물 화면 머리띠의 「회사 소개」와 짝이다 — 두 화면이 서로를 물고 있다.
-        · 파트너 모집은 히어로의 「영업파트너 신청」과 #contact 폼이 그대로 받는다.
-    -->
-    <a href="https://freepasserp.com/" class="cta">상품 찾기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span></button>
-  </div>
-  <nav class="drawer" id="drawer">
-    <a href="#sales">영업파트너</a><a href="#services">서비스</a><a href="#supplier">공급사</a>
-    <a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
-    <!-- ⚠ 폰에서는 상단 CTA 가 숨는다(`.cta{display:none}` @900). 여기 없으면 폰에서 갈 길이 없다. -->
-    <a href="https://freepasserp.com/">상품 찾기</a>
-  </nav>
-</header>
-<span id="top"></span>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-c reveal">
-      <span class="kicker">FREEPASS MOBILITY</span>
-      <h1>흩어진 기회를<br><em>영업실적</em>으로<br>엮어냅니다</h1>
-      <p class="lede">여러 렌터카사의 상품을 한 곳에서 찾고 비교해 고객에게 바로 제안하세요. 상품부터 계약·청구·정산까지 이어지는 장기렌트 <b>중개 플랫폼</b>입니다.</p>
-      <div class="hero-acts">
-        <a href="https://freepasserp.com/" target="_blank" rel="noopener" class="btn btn-fill">상품 찾기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#sales" class="btn btn-ghost">영업파트너 안내<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>프리패스모빌리티 | 좋은 선택을 잇다</title>
+    <meta
+      name="description"
+      content="여러 렌터카사의 상품을 한 곳에서 비교하고, 상담부터 계약까지. 프리패스모빌리티가 더 나은 자동차 이용을 연결합니다."
+    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">본문 바로가기</a>
+    <header class="header">
+      <div class="container nav">
+        <a class="logo" href="#" aria-label="프리패스모빌리티 홈"
+          ><span class="brand-icon">f<span>↗</span></span
+          ><span>freepass<small>MOBILITY</small></span></a
+        >
+        <nav id="navigation" aria-label="주 메뉴">
+          <a href="#services">서비스 소개</a><a href="#journey">이용 안내</a
+          ><a href="#partners">파트너십</a><a href="#about">회사 소개</a>
+        </nav>
+        <a class="nav-contact" href="#contact">제휴 문의 <span>↗</span></a
+        ><a
+          class="button green nav-product"
+          href="https://freepasserp.com/"
+          target="_blank"
+          rel="noopener"
+          >상품 둘러보기 <span>↗</span></a
+        >
+        <button
+          class="menu-toggle"
+          aria-controls="navigation"
+          aria-expanded="false"
+          aria-label="메뉴 열기"
+        >
+          <span></span><span></span>
+        </button>
       </div>
-      <div class="trust">영업자는 고객에 집중하고, 프리패스는 상품과 운영을 연결합니다</div>
-    </div>
-    <div class="hero-net reveal" aria-hidden="true">
-      <canvas id="net"></canvas>
-      <span class="tagL">공급사 · 매물</span>
-      <span class="tagC">freepass</span>
-      <span class="tagR">영업파트너 · 손님</span>
-    </div>
-  </div>
-</section>
-
-
-<!-- SALES PARTNER -->
-<section id="sales" class="sec sales-first-sec alt">
-  <div class="wrap">
-    <div class="section-split reveal">
-      <div>
-        <p class="eyebrow">FOR SALES PARTNERS</p>
-        <h2 class="sec-h">상품 찾는 시간은 줄이고,<br><em>고객에게 더 집중하세요</em></h2>
-      </div>
-      <p class="lead">여러 공급사의 상품과 조건을 한 곳에서 확인하고, 고객에게 맞는 차량을 빠르게 비교·제안할 수 있습니다. 계약 이후의 반복 업무도 같은 흐름으로 이어집니다.</p>
-    </div>
-
-    <div class="sales-benefit-grid reveal">
-      <article>
-        <span>01</span>
-        <h3>여러 공급사의 상품을 한 곳에서</h3>
-        <p>차량·기간·대여료·보증금·출고상태를 같은 기준으로 확인해 필요한 상품을 빠르게 찾습니다.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>고객에게 바로 비교·제안</h3>
-        <p>상품 상세와 조건을 확인하고, 화이트라벨과 견적기를 통해 고객에게 필요한 정보만 전달합니다.</p>
-      </article>
-      <article>
-        <span>03</span>
-        <h3>계약 이후도 한 흐름으로</h3>
-        <p>전자계약, 진행상태, 청구와 정산까지 거래의 다음 단계를 이어서 관리할 수 있습니다.</p>
-      </article>
-    </div>
-
-    <div class="sales-quick reveal">
-      <div><b>SEARCH</b><span>상품 검색</span></div>
-      <i>→</i>
-      <div><b>COMPARE</b><span>조건 비교</span></div>
-      <i>→</i>
-      <div><b>PROPOSE</b><span>견적·제안</span></div>
-      <i>→</i>
-      <div><b>CONTRACT</b><span>전자계약</span></div>
-      <i>→</i>
-      <div><b>SETTLE</b><span>청구·정산</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="sec services-sec">
-  <div class="wrap">
-    <div class="section-split reveal">
-      <div>
-        <p class="eyebrow">FREEPASS SERVICES</p>
-        <h2 class="sec-h">영업에 필요한 기능을<br><em>복잡하지 않게</em></h2>
-      </div>
-      <p class="lead">서비스 이름을 많이 늘어놓기보다 실제 영업 현장에서 자주 쓰는 기능을 네 가지로 정리했습니다.</p>
-    </div>
-
-    <div class="simple-service-grid reveal">
-      <a class="simple-service-card simple-service-card--primary" href="https://freepasserp.com/" target="_blank" rel="noopener">
-        <span>01</span>
-        <h3>FreePassERP.com</h3>
-        <p>차량·대여기간·대여료·보증금·출고상태를 검색하고 비교하는 상품 찾기 화면입니다.</p>
-        <small>상품 검색 · 조건 비교 · 상세 보기 · 공유</small>
-      </a>
-
-      <div class="simple-service-card">
-        <span>02</span>
-        <h3>White Label</h3>
-        <p>같은 상품 데이터를 영업회사와 채널의 CI·담당자 정보로 보여주는 고객용 상품 화면입니다.</p>
-        <small>파트너 CI · 담당자 귀속 · 고객 공유 · 모바일</small>
-      </div>
-
-      <div class="simple-service-card">
-        <span>03</span>
-        <h3>견적기</h3>
-        <p>차량과 기간, 보증금·선납금·잔가·원가 조건을 조합해 대여료와 제안 조건을 설계합니다.</p>
-        <small>차종 선택 · 기간별 대여료 · 조건 설계 · 견적서</small>
-      </div>
-
-      <div class="simple-service-card">
-        <span>04</span>
-        <h3>청구·정산</h3>
-        <p>계약과 인도 이후 실적을 기준으로 공급사 청구, 영업채널 지급, 정산원장과 문서 발행 상태를 관리합니다.</p>
-        <small>정산원장 · 공급사 청구 · 지급명세 · 발행 관리</small>
-      </div>
-    </div>
-
-    <div class="simple-service-foot reveal">
-      <div>
-        <strong>전자계약</strong>
-        <p>계약 초안, 고객 링크, 전자서명, 부속서류와 완료문서까지 이어집니다.</p>
-      </div>
-      <div>
-        <strong>회원·파트너 관리</strong>
-        <p>영업자, 공급사, 파트너사의 소속·역할·활성상태와 운영 기준을 관리합니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SUPPLIER -->
-<section id="supplier" class="sec supplier-audience-sec alt">
-  <div class="wrap supplier-audience-grid">
-    <div class="reveal">
-      <p class="eyebrow">FOR SUPPLIERS</p>
-      <h2 class="sec-h">좋은 상품이<br><em>더 많은 영업 현장에 닿도록</em></h2>
-      <p class="lead">공급사의 상품을 단순히 등록하는 데서 끝나지 않습니다. 영업자가 이해하기 쉬운 기준으로 정리하고, 판매 과정과 계약 이후의 운영까지 이어지도록 연결합니다.</p>
-    </div>
-
-    <div class="supplier-value-list reveal">
-      <div>
-        <span>01</span>
-        <strong>상품과 조건을 같은 기준으로</strong>
-        <p>차량·대여료·보증금·출고상태와 계약조건을 영업 현장에서 비교하기 쉬운 규격으로 정리합니다.</p>
-      </div>
-      <div>
-        <span>02</span>
-        <strong>영업채널과 실제 판매 흐름으로</strong>
-        <p>상품 정보가 영업 파트너의 검색과 제안으로 이어지고, 어떤 거래가 진행 중인지 같은 흐름에서 확인할 수 있습니다.</p>
-      </div>
-      <div>
-        <span>03</span>
-        <strong>계약 이후 청구·정산까지</strong>
-        <p>실적과 계약 정보를 기준으로 공급사 청구와 영업채널 지급 흐름을 분리해 관리합니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE HAVE -->
-<section id="capability" class="sec capability-sec">
-  <div class="wrap">
-    <div class="capability-head reveal">
-      <p class="eyebrow">WHAT WE HAVE</p>
-      <h2 class="sec-h">프리패스가 쌓아온<br><em>운영 기반</em></h2>
-    </div>
-
-    <div class="capability-strip reveal">
-      <div><span>PRODUCT</span><strong>상품 데이터</strong><p>공급사별 상품과 조건을 같은 기준으로 관리합니다.</p></div>
-      <div><span>NETWORK</span><strong>영업 파트너</strong><p>상품을 실제 고객 제안으로 연결하는 영업 접점을 보유합니다.</p></div>
-      <div><span>CONTRACT</span><strong>전자계약</strong><p>계약 초안부터 전자서명과 완료문서까지 이어집니다.</p></div>
-      <div><span>SETTLEMENT</span><strong>청구·정산</strong><p>공급사 청구와 영업채널 지급을 거래 이력과 연결합니다.</p></div>
-      <div><span>DATA</span><strong>운영 데이터</strong><p>상품·접수·계약·인도·정산의 경험을 데이터로 남깁니다.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- VISION -->
-<section id="vision" class="sec vision-sec">
-  <div class="wrap vision-grid">
-    <div class="vision-copy reveal">
-      <p class="eyebrow vision-eyebrow">VISION</p>
-      <h2>시장이 바뀌어도,<br><strong>다음 선택지가 남도록</strong></h2>
-      <p>가격과 수요, 금융조건은 계속 바뀝니다. 프리패스는 한 가지 상품이나 한 가지 방식에만 기대지 않고, 공급사와 영업 파트너가 변화 속에서도 계속 거래할 수 있는 선택지와 운영 기반을 준비합니다.</p>
-    </div>
-    <div class="vision-points reveal">
-      <div><span>01</span><p><b>시장에 맞는 상품과 조건</b>을 연결하고</p></div>
-      <div><span>02</span><p><b>영업과 공급의 전문성</b>을 그대로 살리고</p></div>
-      <div><span>03</span><p><b>운영 경험을 데이터</b>로 축적하고</p></div>
-      <div><span>04</span><p><b>다음 선택지</b>를 미리 준비합니다</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MEWCAR -->
-<section id="mewcar" class="sec mewcar-sec alt">
-  <div class="wrap mewcar-grid">
-    <div class="reveal">
-      <p class="eyebrow">WITH MEWCAR</p>
-      <h2 class="sec-h">같은 방향,<br><em>더 넓은 선택지</em></h2>
-      <p class="lead">프리패스의 영업·운영 경험과 MEWCAR의 시장 경험이 만나 더 다양한 모빌리티의 가능성을 함께 준비합니다.</p>
-      <p class="mewcar-note">각자의 본업과 브랜드는 그대로 유지하면서, 필요한 곳에서 경험과 인프라를 연결해 시너지를 만들어갑니다.</p>
-    </div>
-
-    <div class="mewcar-family reveal">
-      <a class="mewcar-family__row" href="https://mewcar.co.kr/" target="_blank" rel="noopener" aria-label="MEWCAR 공식 홈페이지">
-        <div class="mewcar-family__logo">
-          <img class="mewcar-ci" src="assets/mewcar-ci.svg" alt="뮤카 MEWCAR - Drive a Better Tomorrow" />
+    </header>
+    <main id="main">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="dot"></span> BETTER CHOICES. CONNECTED.
+            </div>
+            <h1>좋은 차를 만나는<br />더 나은 <span>연결.</span></h1>
+            <p>
+              여러 렌터카사의 상품을 한 곳에서.<br />나에게 맞는 조건을 찾고,
+              다음 단계까지<br class="mobile-only" />
+              프리패스로 이어가세요.
+            </p>
+            <div class="actions">
+              <a
+                class="button green"
+                href="https://freepasserp.com/"
+                target="_blank"
+                rel="noopener"
+                >내게 맞는 상품 찾기 <span>↗</span></a
+              ><a class="text-link" href="#journey"
+                >어떻게 이용하나요? <span>↓</span></a
+              >
+            </div>
+            <div class="hero-caption">
+              <span class="check">✓</span> 상품 비교부터 상담·계약까지, 하나의
+              흐름으로
+            </div>
+          </div>
+          <div
+            class="connection"
+            aria-label="여러 공급사의 상품을 프리패스에서 비교하고 나에게 맞는 선택으로 연결하는 흐름"
+          >
+            <div class="diagram-top">
+              <span><i></i> THE FREEPASS CONNECTION</span><span>01 — 03</span>
+            </div>
+            <div class="network">
+              <div class="network-ring r1"></div>
+              <div class="network-ring r2"></div>
+              <svg
+                class="wires"
+                viewBox="0 0 550 350"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M65 80 H170 Q195 80 195 105 V175 H275 M65 175 H275 M65 270 H170 Q195 270 195 245 V175 M275 175 H375 Q400 175 400 150 V90 H480 M275 175 H480 M275 175 H375 Q400 175 400 200 V260 H480"
+                />
+              </svg>
+              <div class="node supplier s1">
+                <span class="mini-icon">▤</span>
+                <div>다양한 공급사<small>렌터카 · 모빌리티 상품</small></div>
+              </div>
+              <div class="node supplier s2">
+                <span class="mini-icon">≋</span>
+                <div>여러 가지 조건<small>차량 · 기간 · 대여료</small></div>
+              </div>
+              <div class="node supplier s3">
+                <span class="mini-icon">◇</span>
+                <div>새로운 선택지<small>고객에 맞춘 제안</small></div>
+              </div>
+              <div class="hub">
+                <span>f<span>↗</span></span
+                ><strong>freepass</strong><small>좋은 선택의 중심</small>
+              </div>
+              <div class="destination">
+                <span class="person"
+                  ><svg viewBox="0 0 40 40" aria-hidden="true">
+                    <circle cx="20" cy="13" r="6" />
+                    <path d="M8 33v-3a12 12 0 0 1 24 0v3" /></svg></span
+                ><strong>나에게 맞는 선택</strong
+                ><small>비교하고, 상담하고, 시작하세요</small
+                ><span class="destination-check">✓ 연결 완료</span>
+              </div>
+              <span class="flow-dot d1"></span><span class="flow-dot d2"></span>
+            </div>
+            <div class="diagram-bottom">
+              <span>다양한 상품</span><b>→</b><span>한 곳에서 비교</span><b>→</b
+              ><strong>더 나은 선택</strong>
+            </div>
+          </div>
         </div>
-        <div>
-          <span>MEWCAR</span>
-          <strong>자동차 시장 경험과 유통 전문성</strong>
-          <p>차량의 가치와 시장을 읽어온 경험을 바탕으로 새로운 가능성을 함께 만듭니다.</p>
+        <div class="container hero-base">
+          <span>MOBILITY, SIMPLIFIED.</span>
+          <p>상품은 다양하게. 선택은 간결하게.</p>
+          <a href="#services" aria-label="서비스 소개로 내려가기">↓</a>
         </div>
-        <b>↗</b>
-      </a>
-
-      <div class="mewcar-family__divider"></div>
-
-      <div class="mewcar-family__row mewcar-family__row--mobility">
-        <div class="mewcar-mobility-mark">
-          <strong>뮤카</strong><span>모빌리티</span>
+      </section>
+      <section class="service-section section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">01 / OUR SERVICES</div>
+              <h2>복잡한 과정 대신,<br />필요한 것만 명확하게.</h2>
+            </div>
+            <p>
+              상품을 찾는 순간부터 계약 이후의 운영까지.<br />각 단계에 필요한
+              정보를 연결합니다.
+            </p>
+          </div>
+          <div class="service-layout">
+            <a
+              class="product-feature"
+              href="https://freepasserp.com/"
+              target="_blank"
+              rel="noopener"
+              ><div class="feature-top">
+                <span class="pill">PRODUCT FINDER</span
+                ><span class="round-arrow">↗</span>
+              </div>
+              <h3>여러 상품을,<br />하나의 기준으로.</h3>
+              <p>
+                차량·기간·대여료·보증금·출고상태를<br />한 곳에서 확인하고
+                비교하세요.
+              </p>
+              <div class="comparison" aria-hidden="true">
+                <div class="comparison-head">
+                  <span>상품 비교</span><span>조건을 한눈에</span>
+                </div>
+                <div>
+                  <span class="car-icon">▰</span
+                  ><span><b>차량</b><small>나에게 맞는 차종</small></span
+                  ><span class="bar"></span><span class="tick">✓</span>
+                </div>
+                <div>
+                  <span class="car-icon">◷</span
+                  ><span><b>기간</b><small>이용 계획에 맞게</small></span
+                  ><span class="bar short"></span><span class="tick">✓</span>
+                </div>
+                <div>
+                  <span class="car-icon">₩</span
+                  ><span
+                    ><b>대여 조건</b><small>대여료와 보증금 비교</small></span
+                  ><span class="bar mid"></span><span class="tick">✓</span>
+                </div>
+              </div>
+              <span class="feature-link"
+                >FreePassERP.com에서 상품 찾기 <span>→</span></span
+              ></a
+            >
+            <div class="service-list">
+              <article>
+                <span class="service-number">01</span>
+                <div>
+                  <h3>상품 검색 · 조건 비교</h3>
+                  <p>
+                    여러 공급사의 상품 정보를 같은 기준으로.<br />필요한 조건을
+                    확인하고 선택의 폭을 넓힙니다.
+                  </p>
+                </div>
+                <span class="line-icon">⌕</span>
+              </article>
+              <article>
+                <span class="service-number">02</span>
+                <div>
+                  <h3>견적 · 맞춤 제안</h3>
+                  <p>
+                    이용 기간과 보증금 등 원하는 조건을 바탕으로<br />영업
+                    파트너와 적합한 제안을 살펴보세요.
+                  </p>
+                </div>
+                <span class="line-icon">▤</span>
+              </article>
+              <article>
+                <span class="service-number">03</span>
+                <div>
+                  <h3>전자계약 · 진행 확인</h3>
+                  <p>
+                    계약 초안부터 전자서명, 완료문서까지.<br />다음 단계가
+                    끊기지 않도록 연결합니다.
+                  </p>
+                </div>
+                <span class="line-icon">✎</span>
+              </article>
+            </div>
+          </div>
         </div>
-        <div>
-          <span>PREMIUM CAR SUBSCRIPTION</span>
-          <strong>프리미엄 자동차 구독 서비스</strong>
-          <p>새로운 이용 방식과 상품 선택지를 준비하는 신규 구독 법인입니다.</p>
+      </section>
+      <section class="journey-section section" id="journey">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">02 / HOW IT WORKS</div>
+              <h2>처음이어도, 흐름은 간단합니다.</h2>
+            </div>
+            <p>선택에 필요한 정보를 차근차근 확인하세요.</p>
+          </div>
+          <div class="journey">
+            <article>
+              <span class="step">STEP 01</span>
+              <div class="step-visual">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <rect x="10" y="12" width="38" height="34" rx="4" />
+                  <path d="M10 23h38M17 18h2m4 0h2m4 0h2M19 31h11M19 38h8" />
+                  <circle cx="43" cy="43" r="10" />
+                  <path d="m50 50 7 7" />
+                </svg>
+              </div>
+              <h3>상품을 살펴보세요</h3>
+              <p>
+                원하는 차량과 이용 조건에 맞춰<br />여러 공급사의 상품을
+                비교합니다.
+              </p>
+              <a href="https://freepasserp.com/" target="_blank" rel="noopener"
+                >상품 둘러보기 ↗</a
+              >
+            </article>
+            <article>
+              <span class="step">STEP 02</span>
+              <div class="step-visual">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <path d="M12 12h40v29H30L18 51V41h-6zM21 23h22M21 31h14" />
+                </svg>
+              </div>
+              <h3>조건을 상담하세요</h3>
+              <p>
+                마음에 드는 상품의 상세 조건과<br />진행 가능 여부를 확인합니다.
+              </p>
+              <span class="step-note">상품별 조건 · 출고상태 확인</span>
+            </article>
+            <article>
+              <span class="step">STEP 03</span>
+              <div class="step-visual">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <path
+                    d="M18 8h22l10 10v38H18zM39 9v12h11M25 30h17M25 37h10m-9 9 5 5 12-12"
+                  />
+                </svg>
+              </div>
+              <h3>계약으로 이어가세요</h3>
+              <p>
+                안내받은 계약 조건을 확인한 뒤<br />전자계약과 다음 절차를
+                진행합니다.
+              </p>
+              <span class="step-note">조건 확인 · 전자서명 · 완료문서</span>
+            </article>
+          </div>
+          <p class="journey-notice">
+            <span>ⓘ</span> 실제 상품 조건과 출고 가능 여부는 상담 시 공급사
+            확인을 거쳐 안내합니다.
+          </p>
+        </div>
+      </section>
+      <section class="partners-section section" id="partners">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">03 / GROW TOGETHER</div>
+              <h2>각자의 전문성은 그대로.<br />함께하는 가능성은 더 크게.</h2>
+            </div>
+            <p>
+              공급사와 영업 파트너 사이,<br />프리패스가 상품과 운영을
+              연결합니다.
+            </p>
+          </div>
+          <div class="audience-tabs" role="tablist" aria-label="파트너 유형">
+            <button
+              id="sales-tab"
+              role="tab"
+              aria-selected="true"
+              aria-controls="sales-panel"
+              tabindex="0"
+            >
+              영업 파트너 <span>↗</span></button
+            ><button
+              id="supplier-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="supplier-panel"
+              tabindex="-1"
+            >
+              상품 공급사 <span>↗</span>
+            </button>
+          </div>
+          <div
+            class="partner-panel"
+            id="sales-panel"
+            role="tabpanel"
+            aria-labelledby="sales-tab"
+          >
+            <div class="partner-copy">
+              <span class="pill">FOR SALES PARTNERS</span>
+              <h3>상품 찾는 시간은 줄이고,<br />고객에게 더 집중하세요.</h3>
+              <p>
+                상품 검색과 비교·제안부터 계약 이후의 반복 업무까지.<br />영업에
+                필요한 도구를 같은 흐름으로 연결합니다.
+              </p>
+              <a class="button navy" href="#contact" data-inquiry="영업 파트너"
+                >영업 파트너 문의 <span>↗</span></a
+              >
+            </div>
+            <div class="partner-flow">
+              <div>
+                <span>01</span><strong>상품 검색 · 비교</strong
+                ><small>여러 공급사의 조건을 한 곳에서</small>
+              </div>
+              <div>
+                <span>02</span><strong>화이트라벨 · 견적</strong
+                ><small>파트너의 브랜드로 고객에게 제안</small>
+              </div>
+              <div>
+                <span>03</span><strong>계약 · 청구 · 정산</strong
+                ><small>거래 이후의 운영까지 연결</small>
+              </div>
+            </div>
+          </div>
+          <div
+            class="partner-panel"
+            id="supplier-panel"
+            role="tabpanel"
+            aria-labelledby="supplier-tab"
+            hidden
+          >
+            <div class="partner-copy">
+              <span class="pill">FOR SUPPLIERS</span>
+              <h3>좋은 상품이<br />더 많은 고객에게 닿도록.</h3>
+              <p>
+                공급사의 상품을 비교하기 쉬운 기준으로 정리하고,<br />영업채널의
+                제안부터 계약 이후 운영까지 연결합니다.
+              </p>
+              <a class="button navy" href="#contact" data-inquiry="공급사 협업"
+                >상품 공급 제휴 문의 <span>↗</span></a
+              >
+            </div>
+            <div class="partner-flow">
+              <div>
+                <span>01</span><strong>상품 · 조건 정리</strong
+                ><small>영업 현장에서 이해하기 쉬운 기준</small>
+              </div>
+              <div>
+                <span>02</span><strong>영업채널 연결</strong
+                ><small>검색에서 실제 고객 제안으로</small>
+              </div>
+              <div>
+                <span>03</span><strong>청구 · 정산 관리</strong
+                ><small>거래 이력과 이어지는 운영</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="about-section section" id="about">
+        <div class="container about-grid">
+          <div>
+            <div class="eyebrow">04 / ABOUT FREEPASS</div>
+            <h2>상품과 사람 사이,<br />가능성을 연결하는 일.</h2>
+            <p>
+              프리패스모빌리티는 공급사와 영업채널, 고객을 잇는<br />모빌리티
+              중개 플랫폼입니다. 상품 안내부터 계약·인도·정산까지,<br />거래가
+              이어지는 운영 기반을 만들어갑니다.
+            </p>
+            <a class="text-link" href="#contact"
+              >프리패스와 이야기하기 <span>↗</span></a
+            >
+          </div>
+          <div class="ecosystem">
+            <span class="ecosystem-label">ONE CONNECTED FLOW</span>
+            <div class="eco-top">
+              <span>공급사의 상품</span><span>영업 파트너의 전문성</span>
+            </div>
+            <div class="eco-center">freepass <small>mobility</small></div>
+            <div class="eco-bottom">
+              <span>상품</span><i>→</i><span>계약</span><i>→</i><span>인도</span
+              ><i>→</i><span>정산</span>
+            </div>
+            <p>운영 경험을 데이터로, 다음 선택지의 기반으로.</p>
+          </div>
+        </div>
+      </section>
+      <section class="mewcar-section">
+        <div class="container mewcar-inner">
+          <span class="eyebrow">WITH MEWCAR</span
+          ><img src="assets/mewcar-ci.svg" alt="뮤카 MEWCAR" />
+          <div>
+            <h3>같은 방향, 더 넓은 선택지.</h3>
+            <p>
+              프리패스의 영업·운영 경험과 MEWCAR의 자동차 시장 경험을
+              연결합니다.
+            </p>
+          </div>
+          <a
+            href="https://mewcar.co.kr/"
+            target="_blank"
+            rel="noopener"
+            aria-label="MEWCAR 홈페이지 새 창으로 열기"
+            >↗</a
+          >
+        </div>
+      </section>
+      <section class="faq-section section">
+        <div class="container faq-grid">
+          <div>
+            <div class="eyebrow">GOOD TO KNOW</div>
+            <h2>궁금한 점을<br />먼저 확인하세요.</h2>
+          </div>
+          <div class="faqs">
+            <details>
+              <summary>어떤 상품을 비교할 수 있나요?<span>+</span></summary>
+              <p>
+                FreePassERP.com에서 여러 공급사의 장기렌트 상품과
+                차량·대여기간·대여료·보증금·출고상태를 확인할 수 있습니다. 현재
+                제공되는 상품과 조건은 상품 화면에서 확인해 주세요.
+              </p>
+            </details>
+            <details>
+              <summary>
+                홈페이지에서 바로 계약할 수 있나요?<span>+</span>
+              </summary>
+              <p>
+                먼저 상품 조건과 진행 가능 여부를 상담으로 확인합니다. 이후
+                안내받은 절차에 따라 계약 내용을 검토하고 전자계약을 진행할 수
+                있습니다.
+              </p>
+            </details>
+            <details>
+              <summary>
+                영업 파트너나 공급사로 함께하고 싶어요.<span>+</span>
+              </summary>
+              <p>
+                아래 제휴 문의에서 ‘영업 파트너’ 또는 ‘공급사 협업’을 선택해
+                소속과 연락처, 협업 내용을 남겨 주세요. 작성한 내용으로 이메일
+                앱을 열어 문의를 보낼 수 있습니다.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section class="contact-section section" id="contact">
+        <div class="container contact-grid">
+          <div>
+            <div class="eyebrow">LET’S CONNECT</div>
+            <h2>다음 기회,<br />함께 이어갈까요?</h2>
+            <p>
+              상품 공급, 영업 파트너, 새로운 사업 제휴.<br />필요한 연결을 함께
+              이야기합니다.
+            </p>
+            <a class="email-link" href="mailto:pyh@teamjpk.com"
+              >pyh@teamjpk.com ↗</a
+            ><a class="phone-link" href="tel:01063849260">010-6384-9260</a>
+          </div>
+          <form id="contact-form">
+            <div class="field-grid">
+              <label
+                >회사명 / 소속<input
+                  name="company"
+                  autocomplete="organization"
+                  placeholder="회사 또는 소속을 입력하세요"
+                  maxlength="150" /></label
+              ><label
+                >담당자 <span>*</span
+                ><input
+                  name="name"
+                  autocomplete="name"
+                  placeholder="성함을 입력하세요"
+                  required
+                  maxlength="80" /></label
+              ><label
+                >연락처<input
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="연락 가능한 번호"
+                  maxlength="50" /></label
+              ><label
+                >문의 유형<select name="type">
+                  <option>사업 제휴</option>
+                  <option>공급사 협업</option>
+                  <option>영업 파트너</option>
+                  <option>일반 문의</option>
+                </select></label
+              >
+            </div>
+            <label
+              >문의 내용<textarea
+                name="message"
+                rows="3"
+                placeholder="함께하고 싶은 내용을 알려주세요."
+                maxlength="5000"
+              ></textarea>
+            </label>
+            <div class="form-bottom">
+              <p>
+                작성 후 기본 이메일 앱으로 연결됩니다.<br />이메일 앱에서
+                전송하면 문의가 전달됩니다.
+              </p>
+              <button class="button green" type="submit">
+                이메일 문의 작성 <span>↗</span>
+              </button>
+            </div>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-top">
+          <a class="logo" href="#"
+            ><span class="brand-icon">f<span>↗</span></span
+            ><span>freepass<small>MOBILITY</small></span></a
+          >
+          <p>좋은 선택을 잇다.<br />FREEPASS MOBILITY</p>
+          <a href="#" class="back-top">BACK TO TOP ↑</a>
+        </div>
+        <div class="footer-bottom">
+          <div>
+            프리패스모빌리티 주식회사 <span>대표자 박영협</span>
+            <span>사업자등록번호 528-88-02988</span><br />서울시 강서구 양천로
+            53길 30, 서서울모터리움 1004호
+          </div>
+          <p>© 2026 FREEPASS MOBILITY.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="sec contact-sec">
-  <div class="wrap">
-    <p class="eyebrow reveal">BUSINESS CONTACT</p>
-    <h2 class="sec-h reveal">필요한 구조를<br><em>함께 만듭니다</em></h2>
-    <p class="lead reveal">정해진 답을 파는 것보다 서로의 강점을 어떻게 연결할지부터 이야기합니다. 상품 공급, 영업 운영, 사업 제휴에 대해 함께 논의합니다.</p>
-    <div class="contact">
-      <div class="info reveal">
-        <div><span class="k">TEL</span><span class="v">010-6384-9260</span></div>
-        <div><span class="k">EMAIL</span><span class="v">pyh@teamjpk.com</span></div>
-        <div><span class="k">ADDRESS</span><span class="v">서울시 강서구 양천로 53길 30<br>서서울모터리움 1004호</span></div>
-      </div>
-      <form class="form reveal" id="contact-form">
-        <div class="field"><label for="contact-company">회사명 / 소속</label><input id="contact-company" name="company" type="text" /></div>
-        <div class="field"><label for="contact-name">담당자</label><input id="contact-name" name="name" type="text" required /></div>
-        <div class="field"><label for="contact-phone">연락처</label><input id="contact-phone" name="phone" type="tel" inputmode="tel" /></div>
-        <div class="field"><label for="contact-type">문의 유형</label><select id="contact-type" name="type"><option>사업 제휴</option><option>공급사 협업</option><option>영업 파트너</option><option>일반 문의</option></select></div>
-        <div class="field full"><label for="contact-message">문의 내용</label><textarea id="contact-message" name="message" placeholder="자유롭게 작성해 주세요."></textarea></div>
-        <button class="btn btn-fill send" type="submit">이메일 문의 보내기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-logo"><b>freepass</b><span class="lt">mobility</span></div>
-    <p class="foot-info"><span class="seg">프리패스모빌리티 주식회사</span> <span class="sep">·</span> <span class="seg">대표자 박영협</span> <span class="sep">·</span> <span class="seg">사업자등록번호 528-88-02988</span><br>
-    <span class="seg">서울시 강서구 양천로 53길 30, 서서울모터리움 1004호</span> <span class="sep">·</span> <span class="seg">pyh@teamjpk.com</span> <span class="sep">·</span> <span class="seg">freepassmobility.com</span></p>
-    <p class="copy">© 2026 freepass mobility. All rights reserved.</p>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
-<!-- deploy-refresh: 2026-09-19 production -->
-</body>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
 </html>
