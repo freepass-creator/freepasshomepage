@@ -58,3 +58,15 @@ next_start_here: 이 문서와 index.html. 현재 브랜치에서 시안 의견�
 - 최신 시안: https://fractal-halo-9vspwx9.shipstatic.com
 - 영구 보관: https://my.shipstatic.com/claim/4ba289e15b9314ae57f45795ca9b7f50
 - next_start_here: index.html 및 css/style.css의 art 장면 매핑.
+
+## v5: 프리패스모빌리티 회사 홈페이지로 목적 복원
+- 사용자 정정: 붕붕마켓은 이미지 표현 참고 대상이며, 프리패스 홈페이지를 소비자 마켓으로 바꾸라는 뜻이 아님.
+- 회사 소개 정본: origin/main:index.html. 공급사·영업 파트너·서비스·비전·MEWCAR 협업·사업 문의 구조와 원문의 확인된 기능만 사용.
+- 제거: 나의 드라이브, 출근/가족/여행 추천, 소비자 차량 쇼핑 캠페인, 생활 장면 이미지.
+- 신규 아트: /workspace/generated_images/exec-4f835860-530f-4c45-9787-2014ed4d90da.png. 공급사→프리패스→영업 파트너 사업 구조, 상품 정보 정리, 영업 제안, 전자계약·청구·정산, 공급사 협업, 기업 간 협업의 6장면. 원본 보존, assets/freepass-corporate-scenes.webp로 웹 최적화. 장면은 실제 사옥/직원/고객 사진이 아닌 사업 설명용 일러스트.
+- 첫 화면: 기존 문구 '흩어진 기회를 영업실적으로 엮어냅니다'와 모빌리티 중개 플랫폼 소개 복원. 상품 링크는 상품 플랫폼으로 구분하고, 사업 소개·제휴 문의를 안내.
+- CI 원본 3종 유지. 운영 홈페이지에는 적용하지 않고 검토용 링크 게시.
+- 검증: 회사 핵심 기능과 주체의 콘텐츠 포함/소비자 캠페인 제거, 앵커/고유 ID/자산 경로/이미지 접근성 설명, JS 구문, diff 검사 PASS. 모바일 실브라우저 렌더링은 미검증.
+- 최신 시안: https://intense-diode-pt7c5y2.shipstatic.com
+- 보관: https://my.shipstatic.com/claim/227653486425829db994c3b7f633558b
+- next_start_here: 이 v5 절과 index.html. 홈페이지 목적은 프리패스의 회사·사업 소개이며 소비자 매물 마켓이 아님.
