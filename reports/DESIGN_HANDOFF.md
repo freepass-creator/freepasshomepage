@@ -47,3 +47,14 @@ next_start_here: 이 문서와 index.html. 현재 브랜치에서 시안 의견�
 - 최신 시안: https://edgy-byte-7w2peuf.shipstatic.com
 - 영구 보관: https://my.shipstatic.com/claim/a1956a5d0bbc78cb8cbfd301895db5bf
 - next_start_here: index.html #brands 및 위 원본 CI 자산. 운영 홈페이지 적용 전 시안 검토.
+
+## v4: 붕붕마켓 참고, 실제 이미지 중심으로 전면 재구성
+- 사용자 수정: 선·표·텍스트 중심의 이전 시안은 의도와 다름. 붕붕마켓 디자인을 참고해 실제 그림/이미지를 적극 활용하도록 정정.
+- 확인한 근거: boongboong-market/design/b2c-concept-v2.txt, design/concept-images.json, 연결 PC의 production-desktop.png 및 차량 캠페인 원본. 큰 차량 연출, 생활 장면 그림, 이미지 기반 이용 절차를 적용.
+- 신규 이미지 생성: /workspace/generated_images/exec-fb1c8dc5-c74b-4afa-b9fc-6d51b8a3b9d4.png (1536×1024, 2열×3행). 생성 원본 보존. assets/freepass-scenes.webp에 웹 최적화본 저장.
+- 6개 장면: SUV 히어로, 가족, 출근, 주말, 상담, 계약·인도. CSS sprite로 각 장면 배치, 글자와 버튼은 별도 HTML 유지. 이미지 내 실제 상품 조건·가격 고정 없음. 연출 이미지 표시.
+- 첫 화면 도식, 비교표, 선형 네트워크 삭제. 이미지 10개 배치와 기존 사진/정식 CI 3종 유지. 모바일은 하나의 콘텐츠 트리로 세로 배치.
+- 검증: JS 구문, 모든 섹션 링크/ID/로컬 자산, 생성 이미지 접근성 라벨, 메뉴/문의 링크 동작 PASS. 게시 서비스 제공 첫 화면 캡처 확인. 모바일 실브라우저 렌더링은 도구 제한으로 미검증.
+- 최신 시안: https://fractal-halo-9vspwx9.shipstatic.com
+- 영구 보관: https://my.shipstatic.com/claim/4ba289e15b9314ae57f45795ca9b7f50
+- next_start_here: index.html 및 css/style.css의 art 장면 매핑.
