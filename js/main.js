@@ -15,7 +15,7 @@
     team: {
       title: "우리 이름으로, 같은 상품을 보여 드릴 수 있어요.",
       points: [
-        "회사 CI·담당자 정보까지, <b>원하는 대로 만들어 드리는 고객용 상품 화면(화이트라벨)</b>",
+        "우리 팀 이름·로고·담당자 정보까지, <b>원하는 대로 만들어 드리는 고객용 상품 화면(화이트라벨)</b>",
         "담당자별로 고객이 이어지는 <b>귀속 관리</b>",
         "팀 실적 기준의 <b>청구·정산</b>까지 한 번에"
       ],
@@ -84,8 +84,7 @@
     }
   });
 
-  /* 폰 하단 문의 버튼: 설명(하는 일·일하는 방식)을 지나야 나타나고, 다른 문의 버튼이 보이는 동안에는 숨긴다.
-     대표 11-18 «설명도 없는데 카톡 문의하기가 바로 나오냐». */
+  
   var dock = document.getElementById("dock");
   var gate = document.getElementById("flow");
   var watch = document.querySelectorAll(".last .cta, .start-answer .cta");
@@ -138,7 +137,7 @@
     });
   }
 
-  /* 지금 보고 있는 구역의 메뉴에 밑줄(대표 11-18 «위치한곳 밑줄») — 화면 위쪽 40% 선을 지나는 구역을 고른다 */
+  
   if (nav) {
     var spy = [];
     nav.querySelectorAll('a[href^="#"]').forEach(function (a) {
@@ -161,8 +160,7 @@
     }
   }
 
-  /* 머리띠: 내려가면 위로 접혀 올라가고, 올리면 다시 내려온다(대표 11-18 «스크롤할때 맨위에가 촤르륵 접혀 올라가야»).
-     메뉴가 열려 있거나 맨 위 근처에서는 항상 보인다. */
+  
   var top = document.getElementById("top");
   if (!top) return;
   var lastY = window.scrollY;
