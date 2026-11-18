@@ -1,6 +1,8 @@
 /* 뮤카패스 — «누구세요» 입구 + 문구 복사 + 폰 하단 문의 버튼 */
 (function () {
   "use strict";
+  /* 첫 화면을 먼저 그린 뒤에 시작한다(아래쪽 등장 효과·메뉴 연결은 그려진 다음이어도 눈에 띄지 않는다) */
+  function boot() {
 
   var START = {
     channel: {
@@ -134,8 +136,12 @@
         setTimeout(function () { el.classList.remove("rv", "in"); el.style.removeProperty("--d"); }, 900);
       });
     }, { rootMargin: "0px 0px -8% 0px" });
+    /* 아래쪽 구역 속까지 재면 배치를 미리 다 하게 되므로, 구역(섹션) 위치로만 첫 화면 밖인지 판단한다 */
+    var vh = window.innerHeight, below = new Map();
     document.querySelectorAll(rvSel).forEach(function (el) {
-      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      var sec = el.closest("section, footer") || el;
+      if (!below.has(sec)) below.set(sec, sec.getBoundingClientRect().top >= vh);
+      if (!below.get(sec)) return;
       var i = Array.prototype.indexOf.call(el.parentNode.children, el);
       el.style.setProperty("--d", Math.min(i, 5) * 0.06 + "s");
       el.classList.add("rv"); rvIo.observe(el);
@@ -179,4 +185,7 @@
     if (Math.abs(y - lastY) > 4) lastY = y;
   }
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
+  else requestAnimationFrame(function () { setTimeout(boot, 0); });
 })();
