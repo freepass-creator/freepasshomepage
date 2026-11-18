@@ -4,18 +4,18 @@
 
   var START = {
     channel: {
-      title: "상품 찾는 시간은 줄이고,<br>고객에게만 <em class=\"pop\">집중</em>할 수 있어요.",
+      title: "상품 찾는 시간은 줄이고,<br>고객에게만 <span class=\"nw\"><em class=\"pop\">집중</em>할 수 있어요.</span>",
       points: [
-        "여러 공급사의 차량·기간·대여료·보증금·출고상태를 <b>같은 기준</b>으로 검색",
+        "여러 공급사의 차량·기간·대여료·보증금·출고 상태를 <b>같은 기준</b>으로 검색",
         "견적기와 <b>우리 팀 이름을 단 고객용 화면(화이트라벨)</b>으로 바로 제안",
-        "전자계약부터 팀 실적 기준의 <b>청구·정산</b>까지 한 흐름"
+        "전자계약부터 실적 기준 <b>영업 정산</b>까지 한 흐름"
       ],
       msg: "[뮤카패스] 영업 채널(영업팀·대리점)입니다. 상품 찾기와 파트너 등록이 궁금해요."
     },
     supplier: {
       title: "차만 <em class=\"pop\">잘</em> 준비해 주시면,<br>세일즈와 계약은 파트너분들이 이어 드려요.",
       points: [
-        "차량·대여료·보증금·출고상태를 <b>영업 채널이 비교하기 쉬운 기준</b>으로 정리",
+        "차량·대여료·보증금·출고 상태를 <b>영업 채널이 비교하기 쉬운 기준</b>으로 정리",
         "상품이 영업 채널의 <b>검색과 제안으로 바로 연결</b>",
         "계약 이후 <b>공급사 청구까지</b> 거래 기준으로 관리"
       ],
@@ -46,6 +46,7 @@
     status.textContent = "";
     buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.start === key)); });
   }
+  if (hasStart) pick("channel");  /* 처음 화면도 01번과 같은 문구로 */
   buttons.forEach(function (b) {
     b.addEventListener("click", function () {
       pick(b.dataset.start);
