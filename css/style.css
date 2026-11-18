@@ -98,16 +98,27 @@ h2 .main{display:block}
 .hint a{color:var(--teal-ink);font-weight:700}
 
 .hero-art{position:relative;padding-top:64px}
+/* 히어로 그림 — 왼쪽 포스터와 같은 결(검은 테두리·딱딱한 그림자), 공급사→뮤카패스→영업자 흐름이 움직인다(대표 11-18 «여기도 분위기 봐봐») */
+.board{position:relative;display:grid;grid-template-columns:1fr 28px auto 28px 1fr;align-items:center;gap:0;background:#fff;border:2px solid var(--ink);border-radius:28px;padding:30px 20px 22px;box-shadow:8px 8px 0 var(--ink)}
+.board::before{content:"";position:absolute;inset:0;border-radius:26px;background:radial-gradient(circle at 50% 46%,var(--mint) 0,rgba(201,241,243,0) 46%),radial-gradient(rgba(14,106,112,.13) 1.2px,transparent 1.3px) 0 0/16px 16px;z-index:0}
+.board>*{position:relative;z-index:1}
+.board-col{display:flex;flex-direction:column;gap:10px}
+.board-tag{font-family:var(--poster);font-size:17px;color:var(--ink);text-align:center;margin-bottom:2px}
+.board-tag small{display:block;font-family:Pretendard,sans-serif;font-size:12px;font-weight:600;color:var(--sub);margin-top:2px;letter-spacing:0}
+.chip{border:2px solid var(--ink);border-radius:12px;padding:10px 6px;text-align:center;font-size:14px;font-weight:800;background:#fff;box-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+.board-col--sales .chip{background:var(--teal);color:#fff;border-color:var(--teal-ink);box-shadow:3px 3px 0 var(--teal-ink)}
+.wire{height:4px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--teal) 0 8px,transparent 8px 14px);background-size:28px 4px;animation:wireRun .9s linear infinite}
+@keyframes wireRun{to{background-position:28px 0}}
+.board-hub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:142px;height:142px;border-radius:50%;background:var(--teal);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink),0 0 0 12px rgba(33,177,186,.16)}
+.board-hub img{width:112px;height:auto}
+.board-hub small{font-size:11px;font-weight:800;color:#fff;opacity:.9;letter-spacing:.02em}
+.board-steps{grid-column:1/-1;display:flex;justify-content:center;gap:6px;list-style:none;margin:22px 0 0;padding:0;counter-reset:st}
+.board-steps li{counter-increment:st;display:flex;align-items:center;gap:6px;background:var(--ink);color:#fff;border-radius:999px;padding:7px 12px 7px 7px;font-size:13px;font-weight:700}
+.board-steps li::before{content:counter(st);display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--teal);font-size:11.5px;font-weight:800}
+
 .bubble{position:absolute;top:0;right:8%;z-index:2;margin:0;background:#fff;border:2px solid var(--ink);border-radius:18px;padding:12px 18px;font-family:var(--poster);font-size:19px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
 .bubble small{display:block;font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;color:var(--sub)}
 .bubble::after{content:"";position:absolute;left:28px;bottom:-11px;width:18px;height:18px;background:#fff;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
-.board{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;background:var(--mint-2);border-radius:28px;padding:34px 20px 28px}
-.board-col{display:flex;flex-direction:column;gap:10px}
-.board-tag{font-family:var(--poster);font-size:15px;color:var(--teal-ink);text-align:center}
-.chip{background:#fff;border-radius:12px;padding:11px 6px;text-align:center;font-size:14px;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.06)}
-.board-hub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:124px;height:124px;border-radius:50%;background:#fff;box-shadow:0 0 0 8px rgba(33,177,186,.18),0 12px 24px -12px rgba(23,138,146,.6)}
-.board-hub img{width:76px;height:auto}
-.board-hub small{font-size:11px;font-weight:700;color:var(--sub)}
 
 .assurance{margin:24px 0 0;padding:20px 0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);font-size:18px;text-align:center}
 .assurance strong{color:var(--teal-ink)}
@@ -163,7 +174,6 @@ h2 .main{display:block}
 .family-tag{font-size:13px;font-weight:700;color:var(--sub)}
 .family b{font-family:var(--poster);font-size:20px}
 .family-desc{font-size:15px;color:var(--ink-2)}
-.family:hover b{text-decoration:underline}
 
 /* FAQ */
 .faq{max-width:none} /* 대표 11-18 «규격 안맞고» — 다른 구역과 같은 폭(.wrap) */
@@ -214,9 +224,12 @@ h2 .main{display:block}
   .sec-lead{font-size:16px}
   .hero-art{padding-top:78px}
   .bubble{right:auto;left:8px;font-size:17px}
-  .board{padding:26px 12px 20px;gap:8px}
-  .board-hub{width:92px;height:92px}.board-hub img{width:56px}.board-hub small{font-size:9.5px}
-  .chip{font-size:12.5px;padding:9px 3px}
+  .board{grid-template-columns:1fr 14px auto 14px 1fr;padding:24px 12px 18px;box-shadow:6px 6px 0 var(--ink)}
+  .board-hub{width:96px;height:96px;box-shadow:4px 4px 0 var(--ink),0 0 0 8px rgba(33,177,186,.16)}.board-hub img{width:76px}.board-hub small{font-size:9px}
+  .board-tag{font-size:15px}.board-tag small{font-size:10.5px}
+  .chip{font-size:12px;padding:8px 2px;box-shadow:2px 2px 0 var(--ink)}
+  .board-col--sales .chip{box-shadow:2px 2px 0 var(--teal-ink)}
+  .board-steps{gap:4px;margin-top:18px}.board-steps li{font-size:11.5px;padding:5px 9px 5px 5px;gap:4px}.board-steps li::before{width:17px;height:17px;font-size:10px}
   .assurance{font-size:16px}
   .start-grid{grid-template-columns:1fr}
   .start-answer{position:static;padding:26px 20px}
@@ -244,3 +257,72 @@ h2 .main{display:block}
 .foot-svc{font-size:12.5px;color:#9aa0a6;font-weight:700;letter-spacing:.02em;width:100%}
 .foot-dot{color:#6b7076}
 .nw{white-space:nowrap}
+/* 회사 소개 — 뮤카(모회사) 아래 뮤카모빌리티·뮤카패스(대표 11-18 «모회사 뮤카와 형제회사 뮤카모빌리티와 뮤카패스», «뮤카패스 이야기») */
+.family-sec{background:var(--mint-2)}
+.fam{display:flex;flex-direction:column;align-items:center}
+.fam-parent{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:22px 40px 18px;box-shadow:5px 5px 0 var(--ink);text-align:center}
+.fam-parent p,.fam-card p{margin:0;font-size:15px;color:var(--ink-2)}
+.fam-role{display:inline-block;font-size:12.5px;font-weight:800;color:var(--teal-ink);background:var(--mint);border-radius:999px;padding:4px 11px}
+.fam-logo{height:34px;width:auto;display:block}
+.fam-logo--ci{height:38px}
+.fam-kids{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;width:100%;margin-top:56px}
+.fam-kids::before{content:"";position:absolute;left:calc(25% - 6px);right:calc(25% - 6px);top:-30px;height:30px;border:2px solid var(--ink);border-bottom:0;border-radius:14px 14px 0 0}
+.fam-kids::after{content:"";position:absolute;left:calc(50% - 1px);top:-56px;height:26px;border-left:2px solid var(--ink)}
+.fam-card{display:flex;flex-direction:column;align-items:flex-start;gap:14px;background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:26px 26px 24px;box-shadow:5px 5px 0 var(--ink)}
+.fam-card--us{border-color:var(--teal-ink);box-shadow:7px 7px 0 var(--teal);outline:4px solid rgba(33,177,186,.18);outline-offset:4px}
+.fam-card--us .fam-role{background:var(--teal);color:#fff}
+.fam-svc{list-style:none;margin:4px 0 0;padding:14px 0 0;border-top:1px solid var(--line);width:100%;display:grid;gap:10px}
+.fam-svc li{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fam-svc .bi-fpe{font-size:20px}
+.fam-svc img{height:20px;width:auto}
+.fam-svc small{font-size:13.5px;color:var(--sub);font-weight:600}
+.fam-note{margin:30px 0 0;text-align:center;font-size:15px;color:var(--ink-2)}
+@media (max-width:860px){
+  .fam-parent{padding:18px 28px 16px}
+  .fam-kids{grid-template-columns:1fr;gap:16px;margin-top:40px}
+  .fam-kids::before{display:none}
+  .fam-kids::after{top:-40px;height:40px}
+  .fam-card{padding:22px 20px}
+  .fam-card--us{outline-width:3px;outline-offset:2px}
+  .fam-logo{height:28px}.fam-logo--ci{height:32px}
+  .fam-note{text-align:left}
+}
+/* 착한거래 전자계약 — 착한거래는 전자계약만 연다(대표 11-18 «착한거래는 전자계약만 오픈해», «착한거래 전자계약») */
+.family-name,.chakhan-ec{display:inline-flex;align-items:center;gap:7px}
+.family-name b,.chakhan-ec b{font-family:var(--poster);font-size:19px;letter-spacing:-.03em;color:#009867;line-height:1}
+.chakhan-ec img{height:20px;width:auto}
+.chakhan-ec--dark b{font-size:15px;color:#38CA91}
+.chakhan-ec--dark img{height:17px}
+/* 회사 소개는 별도 페이지(about) — 대표 11-18 «이거는 별도 페이지로». 첫 페이지에는 링크 띠 하나 */
+.about-strip{padding:8px 0 104px}
+.about-link{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;padding:22px 26px;border:2px solid var(--ink);border-radius:var(--r);background:var(--mint-2);box-shadow:5px 5px 0 var(--ink);text-decoration:none;color:var(--ink);transition:transform .15s}
+.about-link:hover{transform:translateY(-3px)}
+.about-link img{height:30px;width:auto}
+.about-link span{font-family:var(--poster);font-size:19px;letter-spacing:-.03em}
+.about-link small{display:block;font-family:Pretendard,sans-serif;font-size:14px;font-weight:500;color:var(--sub);letter-spacing:0;margin-top:3px}
+.about-link b{font-size:15px;font-weight:800;color:var(--teal-ink);white-space:nowrap}
+.top-nav a[aria-current="page"]{color:var(--teal-ink)}
+.about-page{padding-top:72px}
+.about-info .info{margin:0;border-top:2px solid var(--ink)}
+.about-info .info>div{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.about-info dt{font-weight:800;color:var(--sub);font-size:15px}
+.about-info dd{margin:0;font-size:17px;font-weight:600}
+.about-info dd small{color:var(--sub);font-weight:500;font-size:14px}
+.about-info dd a{color:inherit;text-decoration:none}
+.about-info .bi-fpe{font-size:19px}
+.about-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.about-acts .cta{margin-top:0;width:auto;max-width:none;flex:1 1 0;font-size:19px;min-height:62px}
+@media (max-width:860px){
+  .about-link{grid-template-columns:1fr;gap:10px;padding:20px}
+  .about-link img{height:24px}
+  .about-page{padding-top:48px}
+  .about-info .info>div{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  .about-acts{flex-direction:column}.about-acts .cta{flex:none;width:100%}
+  .about-strip{padding:0 0 76px}
+}
+.family{color:inherit}
+.family .family-go{margin-left:auto;font-family:Pretendard,sans-serif;font-size:14px;font-weight:800;color:#009867;white-space:nowrap}
+.family:hover{box-shadow:inset 0 0 0 2px #009867}
+.fam-svc a{display:flex;align-items:center;gap:12px;flex-wrap:wrap;text-decoration:none;color:inherit}
+.fam-svc a:hover small{color:var(--ink)}
+.chakhan-ec--dark{text-decoration:none}

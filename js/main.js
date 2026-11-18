@@ -15,7 +15,7 @@
     team: {
       title: "우리 이름으로, 같은 상품을 보여 드릴 수 있어요.",
       points: [
-        "회사 CI·담당자 정보로 보이는 <b>고객용 상품 화면(화이트라벨)</b>",
+        "회사 CI·담당자 정보까지, <b>원하는 대로 만들어 드리는 고객용 상품 화면(화이트라벨)</b>",
         "담당자별로 고객이 이어지는 <b>귀속 관리</b>",
         "팀 실적 기준의 <b>청구·정산</b>까지 한 번에"
       ],
@@ -45,9 +45,10 @@
   var msg = document.getElementById("start-msg");
   var status = document.getElementById("copy-status");
   var buttons = document.querySelectorAll("[data-start]");
+  var hasStart = !!(title && list && msg && status);   /* 회사 소개(about) 페이지에는 «누구세요» 입구가 없다 */
 
   function pick(key) {
-    var s = START[key]; if (!s) return;
+    var s = START[key]; if (!s || !hasStart) return;
     title.textContent = s.title;
     list.innerHTML = s.points.map(function (p) { return "<li>" + p + "</li>"; }).join("");
     msg.textContent = s.msg;
@@ -65,7 +66,7 @@
 
   /* 문구 복사: 복사는 방문자가 직접 누를 때만 */
   var copyBtn = document.getElementById("start-copy");
-  copyBtn.addEventListener("click", function () {
+  if (copyBtn) copyBtn.addEventListener("click", function () {
     var text = msg.textContent;
     function done() { status.textContent = "복사했어요. 카톡 대화창에 붙여넣어 주세요."; }
     if (navigator.clipboard && window.isSecureContext) {
@@ -117,6 +118,7 @@
   /* 머리띠: 내려가면 위로 접혀 올라가고, 올리면 다시 내려온다(대표 11-18 «스크롤할때 맨위에가 촤르륵 접혀 올라가야»).
      메뉴가 열려 있거나 맨 위 근처에서는 항상 보인다. */
   var top = document.getElementById("top");
+  if (!top) return;
   var lastY = window.scrollY;
   function onScroll() {
     var y = window.scrollY;
