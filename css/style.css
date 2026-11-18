@@ -376,7 +376,7 @@ html{-webkit-tap-highlight-color:transparent}
 .copy{transition:background .15s,border-color .15s,transform .1s}
 .copy:active{transform:scale(.97)}
 .copy.done{background:var(--teal);border-color:var(--teal)}
-/* FAQ: 마우스를 올리면 질문이 짙어지고, 열리면 + 가 돌아 − 가 되며 답이 내려온다 */
+/* FAQ: 마우스를 올리면 질문이 짙어지고, 열리면 + 가 45도 돌아 × 가 되며 답이 내려온다 */
 .faq summary{transition:color .15s}
 .faq summary:hover{color:var(--teal-ink)}
 .faq summary::after{content:"+";transition:transform .22s cubic-bezier(.2,.8,.2,1)}
@@ -576,8 +576,8 @@ h2.poster,h1.h1-sec{margin-bottom:var(--head)}
 .last{padding:var(--sec) 0}
 .foot{padding-top:64px}
 @media (min-width:861px){.foot{padding-bottom:64px}}
-@media (max-width:860px){.hero{padding:28px 0 0}#faq{padding-bottom:48px}.about-page{padding-top:56px}}
 .about-page{padding-top:80px}
+@media (max-width:860px){.hero{padding:28px 0 0}#faq{padding-bottom:48px}.about-page{padding-top:56px}}
 /* 마우스 반응이 없던 곳 */
 .logo{transition:transform .2s cubic-bezier(.2,.8,.2,1)}
 .logo:hover{transform:translateY(-1px) scale(1.03)}
@@ -602,9 +602,32 @@ h2.poster,h1.h1-sec{margin-bottom:var(--head)}
 .about-info dd a{display:inline-block;padding:8px 4px;margin:-8px -4px}
 .fam-role{font-size:14px;padding:5px 12px}
 /* 줄 끝에 한 단어만 남지 않게 — 제목·말풍선·안내 문장은 줄 길이를 고르게 */
-h1,h2,h3,.say,.last p,.sec-lead,.lead,.bubble,.family-desc,.ai-list p{text-wrap:balance}
+h1,h2,h3,.say,.last p,.sec-lead,.lead,.family-desc,.ai-list p{text-wrap:balance}
 /* 착한거래 CI 규정: 카테고리형(착한거래 | 전자계약) 최소 높이 28px — 모든 자리 28px 이상 */
 .family-name img,.chakhan-ec img,.chakhan-ec--dark img,.foot-ci{height:28px;width:auto}
 .foot-ci{vertical-align:-8px}
 .foot-links .bi-fpe{font-size:20px}
 @media (max-width:860px){.foot-links .foot-dot{display:none}.foot-links{column-gap:18px}}
+
+/* 글자 명암비(WCAG): 큰 단추(18.66px 굵게 이상)는 3:1, 작은 글자는 4.5:1 이상. 브랜드 청록 #21B1BA 는 강조·형광펜에 그대로 두고, 흰 글자를 얹는 바탕만 한 단계 짙게 */
+:root{--teal-btn:#1a9aa2;--teal-btn-edge:#0e6a70;--teal-small:#14808a}
+.cta{background:var(--teal-btn);box-shadow:0 6px 0 var(--teal-btn-edge),0 16px 26px -12px rgba(14,106,112,.55)}
+.cta:hover{box-shadow:0 8px 0 var(--teal-btn-edge),0 20px 30px -12px rgba(14,106,112,.55)}
+.cta:active{box-shadow:0 2px 0 var(--teal-btn-edge),0 8px 16px -10px rgba(14,106,112,.55)}
+.cta--line{background:#fff;box-shadow:0 6px 0 var(--ink)}
+.cta--line:hover{background:var(--mint-2);box-shadow:0 8px 0 var(--ink)}
+.cta--line:active{box-shadow:0 2px 0 var(--ink)}
+.top-erp{background:var(--teal-small);box-shadow:0 4px 0 #0b5a5f}
+.top-erp:hover{box-shadow:0 6px 0 #0b5a5f}
+.top-erp:active{box-shadow:0 1px 0 #0b5a5f}
+@keyframes erpGlow{0%,100%{box-shadow:0 4px 0 #0b5a5f,0 0 0 0 rgba(33,177,186,0)}50%{box-shadow:0 4px 0 #0b5a5f,0 0 22px 5px rgba(33,177,186,.6)}}
+.what-who,.say,.fam-card--us .fam-role{background:var(--teal-small)}
+.board-col--sales .chip{background:var(--teal-small);border-color:var(--teal-btn-edge);box-shadow:3px 3px 0 var(--teal-btn-edge)}
+.board-hub{background:var(--teal-btn)}
+.stamp{background:var(--teal-small)}
+.dock{background:var(--teal-btn);box-shadow:0 5px 0 var(--teal-btn-edge),0 14px 28px -10px rgba(14,106,112,.7)}
+.dock:not(.show){visibility:hidden;transition:transform .25s,visibility 0s .25s}   /* 숨은 동안 Tab 으로 들어가지 않게 */
+.start-choices .no{color:var(--teal-ink)}
+.tool--main>span{color:#2d6ea6}
+.family .family-go{color:#00744f}
+.copyright{color:#9aa0a6}
