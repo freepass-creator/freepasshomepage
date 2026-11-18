@@ -5,7 +5,7 @@
     {
       "source": "/:path((?!(?:about|about[.]html|index[.]html|robots[.]txt|sitemap[.]xml)$|(?:assets|css|js)/).+)",
       "destination": "https://freepasserp.com/:path",
-      "permanent": true
+      "permanent": false
     }
   ]
 }
