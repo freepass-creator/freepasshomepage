@@ -46,12 +46,12 @@
     status.textContent = "";
     buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.start === key)); });
   }
-  if (hasStart) pick("channel");  /* 처음 화면도 01번과 같은 문구로 */
   buttons.forEach(function (b) {
     b.addEventListener("click", function () {
       pick(b.dataset.start);
       if (window.matchMedia("(max-width: 860px)").matches) {
-        document.querySelector(".start-answer").scrollIntoView({ behavior: "smooth", block: "start" });
+        var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;  /* 움직임 줄이기 설정 존중 */
+        document.querySelector(".start-answer").scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" });
       }
     });
   });
@@ -63,20 +63,23 @@
 
   /* 문구 복사: 복사는 방문자가 직접 누를 때만 */
   var copyBtn = document.getElementById("start-copy");
+  var copyLabel = copyBtn ? copyBtn.textContent : "", copyTimer = 0;   /* 두 번 눌러도 원래 글자로 돌아오게 고정 */
   if (copyBtn) copyBtn.addEventListener("click", function () {
     var text = msg.textContent;
     function done() {
       status.textContent = "복사했어요. 카톡 대화창에 붙여넣으시면 돼요.";
-      var t0 = copyBtn.textContent; copyBtn.classList.add("done"); copyBtn.textContent = "복사됨 ✓";
-      setTimeout(function () { copyBtn.classList.remove("done"); copyBtn.textContent = t0; }, 1600);
+      copyBtn.classList.add("done"); copyBtn.textContent = "복사됨 ✓";
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function () { copyBtn.classList.remove("done"); copyBtn.textContent = copyLabel; }, 1600);
     }
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text).then(done, fallback);
     } else { fallback(); }
     function fallback() {
       var t = document.createElement("textarea"); t.value = text; t.setAttribute("readonly", "");
-      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
-      try { document.execCommand("copy"); done(); } catch (e) { status.textContent = "복사가 안 되면 문구를 길게 눌러 복사하시면 돼요."; }
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); t.setSelectionRange(0, text.length);
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }   /* 실패하면 false 만 돌려주는 브라우저가 있다 */
+      if (ok) done(); else status.textContent = "복사가 안 되면 문구를 길게 눌러 복사하시면 돼요.";
       document.body.removeChild(t);
     }
   });
@@ -111,7 +114,12 @@
     burger.addEventListener("click", function (e) { e.stopPropagation(); setMenu(!nav.classList.contains("open")); });
     nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
     document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setMenu(false); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape" || !nav.classList.contains("open")) return;
+      var inside = nav.contains(document.activeElement);
+      setMenu(false);
+      if (inside) burger.focus();   /* 메뉴 안에서 닫으면 포커스를 메뉴 단추로 돌려 놓는다 */
+    });
   }
 
   /* 스크롤 등장: 첫 화면 아래에 있는 카드만, 같은 줄은 차례로(0.06초 간격). 스크립트가 없으면 그냥 보인다 */
