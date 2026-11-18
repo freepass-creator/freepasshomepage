@@ -4,7 +4,7 @@
 
   var START = {
     sales: {
-      title: "상품 찾는 시간은 줄이고, 고객에게 집중하세요.",
+      title: "상품 찾는 시간은 줄이고, 고객에게 집중해 주세요~",
       points: [
         "여러 공급사의 차량·기간·대여료·보증금·출고상태를 <b>같은 기준</b>으로 검색",
         "견적기와 고객용 화면으로 <b>바로 비교·제안</b>",
@@ -13,7 +13,7 @@
       msg: "[뮤카패스] 영업자입니다. 상품 찾기와 파트너 등록이 궁금해요."
     },
     team: {
-      title: "우리 이름으로, 같은 상품을 보여주세요.",
+      title: "우리 이름으로, 같은 상품을 보여 드릴 수 있어요.",
       points: [
         "회사 CI·담당자 정보로 보이는 <b>고객용 상품 화면(화이트라벨)</b>",
         "담당자별로 고객이 이어지는 <b>귀속 관리</b>",
@@ -22,7 +22,7 @@
       msg: "[뮤카패스] 영업팀(대리점)입니다. 화이트라벨과 팀 단위 이용이 궁금해요."
     },
     supplier: {
-      title: "차만 잘 준비하세요. 파는 길은 저희가 열어요.",
+      title: "차만 잘 준비해 주세요~ 파는 길은 저희가 열어 드릴게요.",
       points: [
         "차량·대여료·보증금·출고상태를 <b>영업자가 비교하기 쉬운 기준</b>으로 정리",
         "상품이 영업자의 <b>검색과 제안으로 바로 연결</b>",
@@ -98,8 +98,34 @@
     window.addEventListener("scroll", update, { passive: true }); update();
   }
 
+  /* 모바일 햄버거 메뉴 — 메뉴를 누르면 닫히고, 바깥을 누르거나 Esc 로도 닫힌다 */
+  var burger = document.getElementById("burger");
+  var nav = document.getElementById("top-nav");
+  if (burger && nav) {
+    function setMenu(open) {
+      nav.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", String(open));
+      burger.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    }
+    burger.addEventListener("click", function (e) { e.stopPropagation(); setMenu(!nav.classList.contains("open")); });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setMenu(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  }
+
   /* 머리띠: 스크롤하면 그림자 */
+  /* 머리띠: 내려가면 위로 접혀 올라가고, 올리면 다시 내려온다(대표 11-18 «스크롤할때 맨위에가 촤르륵 접혀 올라가야»).
+     메뉴가 열려 있거나 맨 위 근처에서는 항상 보인다. */
   var top = document.getElementById("top");
-  function onScroll() { top.classList.toggle("scr", window.scrollY > 8); }
+  var lastY = window.scrollY;
+  function onScroll() {
+    var y = window.scrollY;
+    top.classList.toggle("scr", y > 8);
+    var menuOpen = nav && nav.classList.contains("open");
+    if (y < 80 || menuOpen) top.classList.remove("tuck");
+    else if (y > lastY + 4) top.classList.add("tuck");
+    else if (y < lastY - 4) top.classList.remove("tuck");
+    if (Math.abs(y - lastY) > 4) lastY = y;
+  }
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
 })();
