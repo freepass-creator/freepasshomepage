@@ -64,6 +64,11 @@
     });
   });
 
+  /* 첫 화면 그림의 공급사·영업자 칸을 누르면 «어느 쪽이세요»에서 그 칸을 골라 둔 채로 내려간다 */
+  document.querySelectorAll("[data-start-go]").forEach(function (a) {
+    a.addEventListener("click", function () { pick(a.getAttribute("data-start-go")); });
+  });
+
   /* 문구 복사: 복사는 방문자가 직접 누를 때만 */
   var copyBtn = document.getElementById("start-copy");
   if (copyBtn) copyBtn.addEventListener("click", function () {

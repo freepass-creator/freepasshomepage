@@ -67,21 +67,23 @@
         <p class="hint">이미 함께하는 파트너는 <span class="bi-fpe" aria-label="프리패스이알피닷컴(freepasserp.com)"><b>프리패스</b><span>이알피닷컴</span></span>에서 바로 상품을 찾아보실 수 있어요.</p>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <p class="bubble">어느 쪽이세요?<small>공급사도, 영업자도 여기서 시작해요.</small></p>
+      <div class="hero-art">
+        <p class="bubble" aria-hidden="true">어느 쪽이세요?<small>눌러서 바로 시작해요</small></p>
         <div class="board">
-          <div class="board-col board-col--sup">
+          <a class="board-col board-col--sup" href="#start" data-start-go="supplier" aria-label="공급사예요 — 공급사 안내 보기">
             <span class="board-tag">공급사<small>차를 준비해요</small></span>
-            <div class="chip">렌터카사 A</div><div class="chip">렌터카사 B</div><div class="chip">렌터카사 C</div>
-          </div>
-          <span class="wire wire--in"></span>
-          <div class="board-hub"><img src="assets/brand/mewcar-pass-ko-white-trim.svg" alt="" width="530" height="112" /><small>상품 · 계약 · 정산</small></div>
-          <span class="wire wire--out"></span>
-          <div class="board-col board-col--sales">
+            <span class="chip">렌터카사 A</span><span class="chip">렌터카사 B</span><span class="chip">렌터카사 C</span>
+            <span class="board-go" aria-hidden="true">공급사예요 →</span>
+          </a>
+          <span class="wire wire--in" aria-hidden="true"></span>
+          <div class="board-hub" aria-hidden="true"><img src="assets/brand/mewcar-pass-ko-white-trim.svg" alt="" width="530" height="112" /><small>상품 · 계약 · 정산</small></div>
+          <span class="wire wire--out" aria-hidden="true"></span>
+          <a class="board-col board-col--sales" href="#start" data-start-go="sales" aria-label="영업자예요 — 영업자 안내 보기">
             <span class="board-tag">영업자<small>고객에게 제안해요</small></span>
-            <div class="chip">개인 영업자</div><div class="chip">영업팀 · 대리점</div><div class="chip">제휴 채널</div>
-          </div>
-          <ol class="board-steps"><li>검색·견적</li><li>전자계약</li><li>청구·정산</li></ol>
+            <span class="chip">개인 영업자</span><span class="chip">영업팀 · 대리점</span><span class="chip">제휴 채널</span>
+            <span class="board-go" aria-hidden="true">영업자예요 →</span>
+          </a>
+          <ol class="board-steps" aria-hidden="true"><li>검색·견적</li><li>전자계약</li><li>청구·정산</li></ol>
         </div>
       </div>
     </div>
