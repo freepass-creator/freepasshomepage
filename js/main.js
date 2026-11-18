@@ -43,7 +43,7 @@
     title.textContent = s.title;
     list.innerHTML = s.points.map(function (p) { return "<li>" + p + "</li>"; }).join("");
     msg.textContent = s.msg;
-    status.textContent = "문구를 복사해 붙여넣거나, 편하게 말씀해 주세요.";
+    status.textContent = "";
     buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.start === key)); });
   }
   buttons.forEach(function (b) {
