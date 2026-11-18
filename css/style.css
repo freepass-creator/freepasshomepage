@@ -435,3 +435,8 @@ html{-webkit-tap-highlight-color:transparent}
   .ai-band{grid-template-columns:1fr;padding:28px 20px 22px;border-radius:20px}
   .ai-list{grid-template-columns:1fr}
 }
+/* 첫 화면: 머리띠와 제목 사이가 멀다(대표 11-18 «상단이랑 좀 멀리 떨어져 있는거 같고 장기렌트 영업지원 플랫폼 위에 빼도») — 작은 윗줄을 빼고 위 여백을 줄인다 */
+.hero{padding:36px 0 72px}
+.hero-grid{align-items:center}
+@media (max-width:860px){.hero{padding:24px 0 40px}.hero-art{padding-top:78px}}
+.family .family-desc b{font-family:inherit;font-size:inherit;font-weight:800;color:var(--ink)}
