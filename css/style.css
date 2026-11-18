@@ -1,6 +1,6 @@
 /* 뮤카패스 — 2026-11 개편. 착한거래 느낌(포스터 제목 · 형광펜 · 큰 버튼 하나)을 뮤카 청록(#21B1BA)으로. */
 @font-face{font-family:"Pretendard Variable";font-weight:500 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2) format("woff2")}
-@font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2) format("woff2"),url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff) format("woff")}
+@font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2) format("woff2")}
 :root{
   --teal:#21B1BA;--teal-deep:#178a92;--teal-ink:#0e6a70;--mint:#c9f1f3;--mint-2:#e9f9fa;
   --ink:#0b0b0c;--ink-2:#3c3c40;--sub:#6b6f76;--line:#e3e3e3;--card-dark:#1b1d1f;--bg:#fff;--bg-2:#f6f7f7;
