@@ -55,7 +55,7 @@
     });
   });
 
-  /* 첫 화면 그림의 공급사·영업 채널 칸을 누르면 «어느 쪽이세요»에서 그 칸을 골라 둔 채로 내려간다 */
+  /* 첫 화면 그림의 공급사·영업 채널 칸을 누르면 이용 안내에서 그 칸을 골라 둔 채로 내려간다 */
   document.querySelectorAll("[data-start-go]").forEach(function (a) {
     a.addEventListener("click", function () { pick(a.getAttribute("data-start-go")); });
   });
