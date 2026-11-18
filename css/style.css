@@ -410,3 +410,12 @@ html{-webkit-tap-highlight-color:transparent}
 @keyframes erpGlow{0%,100%{box-shadow:0 4px 0 var(--teal-deep),0 0 0 0 rgba(33,177,186,0)}50%{box-shadow:0 4px 0 var(--teal-deep),0 0 22px 5px rgba(33,177,186,.6)}}
 @keyframes erpShine{0%,45%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
 .top-erp:hover,.top-erp:active{animation:none}
+/* 어느 쪽이세요: 왼쪽 고르기 단추 4개와 오른쪽 안내 카드의 위·아래 끝을 맞춘다(대표 11-18 «여기는 간격을 맞추면 좋을거 같은데»).
+   단추가 남는 높이를 똑같이 나눠 가진다. 폰에서는 세로로 쌓이므로 그대로. */
+@media (min-width:861px){
+  .start-grid{align-items:stretch}
+  .start-choices{gap:14px}
+  .start-choices button{flex:1 1 0;min-height:92px}
+  .start-answer{position:static;display:flex;flex-direction:column}
+  .start-answer ul + .label{margin-top:auto}  /* 카톡 문구·단추 묶음은 카드 아래쪽에 붙인다 */
+}
