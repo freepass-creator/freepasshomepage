@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "headers": [
+    { "source": "/:path((?!about$|about\.html$|assets/|css/|js/|robots\.txt$|sitemap\.xml$).+)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex" } ] }
+  ],
   "rewrites": [
     { "source": "/:path+", "destination": "https://freepasserp.com/:path+" }
   ]
