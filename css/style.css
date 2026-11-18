@@ -365,7 +365,7 @@ html{-webkit-tap-highlight-color:transparent}
 .family:hover .family-go,.fam-svc a:hover small{transform:translate(2px,-2px)}
 .fam-svc a{border-radius:10px;transition:background .16s;margin:-6px -8px;padding:6px 8px}
 .fam-svc a:hover{background:var(--bg-2)}
-/* 어느 쪽이세요: 고르는 단추 */
+
 .start-choices button{transition:border-color .15s,background .15s,transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .15s}
 .start-choices button:hover{transform:translateX(3px)}
 .start-choices button:active{transform:scale(.985);transition-duration:.05s}
@@ -388,12 +388,10 @@ html{-webkit-tap-highlight-color:transparent}
 .js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
 .js .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
-/* 눈으로 본 뒤 손본 간격(11-18) */
 .flow-steps li:not(:last-child)::after{top:33px}          /* → 를 번호 동그라미 한가운데 높이로 */
 .last h2.poster{margin-bottom:0}                          /* 마지막 제목↔안내 문장 70px → 22px */
 .last p{margin-top:22px}
-.foot-links{margin-top:18px}                              /* 회사 정보와 «운영하는 서비스» 묶음 사이를 벌린다 */
-.about-info .info>div{align-items:baseline}               /* 항목 이름과 값의 글자 밑선을 맞춘다 */
+.foot-links{margin-top:18px}                              .about-info .info>div{align-items:baseline}               /* 항목 이름과 값의 글자 밑선을 맞춘다 */
 .about-info dd.svc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
 .foot .foot-links{margin-top:18px}
 @media (max-width:860px){.about-acts{gap:18px}.hero-acts{gap:18px}}   /* 입체 그림자(6px) 때문에 세로로 쌓이면 단추끼리 붙어 보였다 */
@@ -435,7 +433,6 @@ html{-webkit-tap-highlight-color:transparent}
 @media (max-width:860px){.hero{padding:24px 0 40px}.hero-art{padding-top:78px}}
 .family .family-desc b{font-family:inherit;font-size:inherit;font-weight:800;color:var(--ink)}
 
-/* 점검 반영(11-18): 제목 h1(회사 소개), 바닥 법적 링크·누르기 쉬운 크기, 폰 그림 글자 최소 12px, 카톡 단추 색 통일, 회사 소개 띠 위치 */
 h1.h1-sec{font-size:clamp(30px,5vw,50px);margin-bottom:40px}
 h1.h1-sec .pre{display:block;font-size:.62em;color:var(--ink-2);margin-bottom:8px}
 h1.h1-sec .main{display:block}
@@ -452,9 +449,6 @@ h1.h1-sec .main{display:block}
   .top-nav .top-kakao{background:var(--teal);color:#fff}
   .about-strip{padding:0 0 76px}
 }
-/* 첫 화면 그림 다시 잡기(11-18 «어느 쪽이세요 … 크기나 비율»):
-   그림 칸을 넓히고(글 1.05 : 그림 .95), 말풍선은 보드 위 가운데 머리표로 — 공급사·영업자 제목을 가리지 않게.
-   두 칸은 누르면 «어느 쪽이세요»로 내려가며 그 칸을 골라 둔다. */
 @media (min-width:861px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:40px}}
 .hero-art{padding-top:46px}
 .board{padding:66px 22px 24px;grid-template-columns:1fr 26px auto 26px 1fr}
@@ -491,8 +485,6 @@ h1.h1-sec .main{display:block}
   .board-steps li{font-size:12px;padding:5px 9px 5px 5px}
 }
 @media (min-width:861px){.hero-acts .cta{white-space:nowrap;padding:0 18px;font-size:clamp(17px,1.45vw,20px);flex:1 1 0}}
-/* 구호: «차는 공급사가, 세일즈는 영업 채널이, 연결은 뮤카패스가!» — «나머지는»은 할 일이 없어 보인다는 지적(11-18).
-   마지막 줄을 꾸민다: «연결은» 밑에 보드 그림의 흐르는 연결선, «뮤카패스»는 청록 도장(흰 한글 로고). 한 줄씩 넘치지 않게 글자 크기를 맞춘다. */
 .hero h1{font-size:clamp(34px,3.95vw,57px);line-height:1.18}
 .wire-word{position:relative;display:inline-block}
 .wire-word::after{content:"";position:absolute;left:.02em;right:.04em;bottom:-.02em;height:.09em;min-height:4px;border-radius:3px;
