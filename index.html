@@ -2,9 +2,23 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>프리패스모빌리티 — 모빌리티 중개 플랫폼</title>
 <meta name="description" content="공급사와 영업 파트너 사이의 상품·계약·인도·정산을 하나의 흐름으로 연결하는 모빌리티 중개 플랫폼, 프리패스모빌리티." />
+<meta name="theme-color" content="#f6f8fc" />
+<link rel="canonical" href="https://freepassmobility.com/" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<!-- 카톡·문자·SNS 공유 미리보기. og:image 는 절대주소여야 카톡이 읽는다. -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="프리패스모빌리티" />
+<meta property="og:title" content="프리패스모빌리티 — 모빌리티 중개 플랫폼" />
+<meta property="og:description" content="여러 렌터카사의 상품을 한 곳에서 찾고 비교해 고객에게 바로 제안하세요. 상품부터 계약·청구·정산까지 잇는 장기렌트 중개 플랫폼." />
+<meta property="og:url" content="https://freepassmobility.com/" />
+<meta property="og:image" content="https://freepassmobility.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="ko_KR" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
@@ -22,7 +36,7 @@
       <a href="#vision">비전</a><a href="#mewcar">MEWCAR</a><a href="#contact">문의</a>
     </nav>
     <!--
-      ★상단 CTA = «상품 찾기» — 매물 화면(freepassmobility.com)으로 건너간다.
+      ★상단 CTA = «상품 찾기» — 매물 화면(freepasserp.com)으로 건너간다.
         여기 「파트너 시작」이 있었는데 그건 이 페이지 «안»의 #partner 로 내려가는 앵커였다.
         매물 화면이 메인이 됐으므로(2026-09-08), 머리에서 나가는 문은 그쪽이어야 한다.
         · 매물 화면 머리띠의 「회사 소개」와 짝이다 — 두 화면이 서로를 물고 있다.
@@ -271,17 +285,26 @@
     <p class="lead reveal">정해진 답을 파는 것보다 서로의 강점을 어떻게 연결할지부터 이야기합니다. 상품 공급, 영업 운영, 사업 제휴에 대해 함께 논의합니다.</p>
     <div class="contact">
       <div class="info reveal">
-        <div><span class="k">TEL</span><span class="v">010-6384-9260</span></div>
-        <div><span class="k">EMAIL</span><span class="v">pyh@teamjpk.com</span></div>
+        <div><span class="k">TEL</span><a class="v" href="tel:010-6384-9260">010-6384-9260</a></div>
+        <div><span class="k">EMAIL</span><a class="v" href="mailto:pyh@teamjpk.com">pyh@teamjpk.com</a></div>
         <div><span class="k">ADDRESS</span><span class="v">서울시 강서구 양천로 53길 30<br>서서울모터리움 1004호</span></div>
       </div>
-      <form class="form reveal" id="contact-form">
-        <div class="field"><label for="contact-company">회사명 / 소속</label><input id="contact-company" name="company" type="text" /></div>
-        <div class="field"><label for="contact-name">담당자</label><input id="contact-name" name="name" type="text" required /></div>
-        <div class="field"><label for="contact-phone">연락처</label><input id="contact-phone" name="phone" type="tel" inputmode="tel" /></div>
-        <div class="field"><label for="contact-type">문의 유형</label><select id="contact-type" name="type"><option>사업 제휴</option><option>공급사 협업</option><option>영업 파트너</option><option>일반 문의</option></select></div>
-        <div class="field full"><label for="contact-message">문의 내용</label><textarea id="contact-message" name="message" placeholder="자유롭게 작성해 주세요."></textarea></div>
-        <button class="btn btn-fill send" type="submit">이메일 문의 보내기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <!--
+        ★문의는 formsubmit.co 로 바로 전송된다(메일앱 불필요). 운영 중인 ERP4 /company-home 과 같은 방식·같은 수신 주소.
+          예전 mailto 방식은 폰에 메일앱이 없으면 문의가 조용히 사라져서 되돌렸다(2026-11-18).
+          _honey = 스팸봇 함정 칸(사람에게는 안 보임). _captcha=false 대신 이걸로 막는다.
+      -->
+      <form class="form reveal" id="contact-form" action="https://formsubmit.co/pyh@teamjpk.com" method="POST">
+        <input type="hidden" name="_subject" value="[프리패스모빌리티 홈페이지] 새 문의" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="field"><label for="contact-company">회사명 / 소속</label><input id="contact-company" name="회사명_소속" type="text" /></div>
+        <div class="field"><label for="contact-name">담당자</label><input id="contact-name" name="담당자" type="text" autocomplete="name" required /></div>
+        <div class="field"><label for="contact-phone">연락처</label><input id="contact-phone" name="연락처" type="tel" inputmode="tel" autocomplete="tel" required /></div>
+        <div class="field"><label for="contact-type">문의 유형</label><select id="contact-type" name="문의_유형"><option>사업 제휴</option><option>공급사 협업</option><option>영업 파트너</option><option>일반 문의</option></select></div>
+        <div class="field full"><label for="contact-message">문의 내용</label><textarea id="contact-message" name="문의_내용" placeholder="자유롭게 작성해 주세요."></textarea></div>
+        <button class="btn btn-fill send" type="submit">문의 보내기<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </form>
     </div>
   </div>

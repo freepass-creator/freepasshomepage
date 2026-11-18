@@ -76,28 +76,17 @@
   }
 
 
-  /* 문의 폼: 별도 서버 없이 기본 메일앱으로 구조화된 문의를 전달 */
+  /* 문의 폼: formsubmit.co 로 그대로 POST(index.html 의 action). 두 번 눌러 중복 발송되지 않게만 막는다. */
   var contactForm = $("#contact-form");
   if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var data = new FormData(contactForm);
-      var company = String(data.get("company") || "").trim();
-      var name = String(data.get("name") || "").trim();
-      var phone = String(data.get("phone") || "").trim();
-      var type = String(data.get("type") || "일반 문의").trim();
-      var message = String(data.get("message") || "").trim();
-      var subject = "[프리패스모빌리티] " + type + " - " + (company || name || "홈페이지 문의");
-      var body = [
-        "회사명 / 소속: " + (company || "-"),
-        "담당자: " + (name || "-"),
-        "연락처: " + (phone || "-"),
-        "문의 유형: " + type,
-        "",
-        "문의 내용",
-        message || "-"
-      ].join("\n");
-      window.location.href = "mailto:pyh@teamjpk.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    contactForm.addEventListener("submit", function () {
+      var btn = contactForm.querySelector("button[type=submit]");
+      if (btn) { btn.disabled = true; btn.firstChild.textContent = "보내는 중…"; }
+    });
+    /* 감사 페이지에서 «뒤로»로 돌아오면 버튼을 다시 살린다(브라우저가 이전 화면을 그대로 복원하는 경우). */
+    window.addEventListener("pageshow", function () {
+      var btn = contactForm.querySelector("button[type=submit]");
+      if (btn) { btn.disabled = false; btn.firstChild.textContent = "문의 보내기"; }
     });
   }
 
