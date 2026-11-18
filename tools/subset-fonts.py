@@ -1,6 +1,6 @@
 """홈페이지 글꼴 줄이기 — 문구를 바꾼 뒤 한 번 돌린다.
 
-본문(Pretendard)은 페이지에 실제 쓰인 글자만, 로고 영문(Exo 2)은 freepasserp.com 글자만, 제목(지마켓산스)도 페이지에 쓰인 글자만 남겨
+본문(Pretendard)은 페이지에 실제 쓰인 글자만, 제목(지마켓산스)도 페이지에 쓰인 글자만 남겨
 assets/fonts/ 에 woff2 로 둔다. 외부 글꼴 조각을 수십 개 받는 대신 파일 하나로 첫 화면을 빠르게 하려는 것.
 필요: python -m pip install fonttools brotli   /  실행: python tools/subset-fonts.py
 점검만: python tools/subset-fonts.py --check  (페이지 글자가 글꼴에 다 있는지, 빠지면 종료 코드 1)
@@ -12,9 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = {
     "pretendard": "https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/woff2/PretendardVariable.woff2",
     "gmarket": "https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff",
-    "exo2": "https://fonts.gstatic.com/s/exo2/v26/7cHmv4okm5zmbtYoK-4.woff2",   # freepasserp 로고 글자 전용(라틴 가변)
 }
-EXO_TEXT = "freepasserp.com"
 PAGES = ["index.html", "about.html", "js/main.js"]
 EXTRA = "·…—–‘’“”«»→←↗↓✓✕※"
 
@@ -51,9 +49,7 @@ with tempfile.TemporaryDirectory() as t:
     (t / "p.txt").write_text("".join(sorted(pc)), encoding="utf-8")
     (t / "g.txt").write_text("".join(sorted(pc)), encoding="utf-8")   # 제목 글꼴도 페이지 글자만(글자가 없으면 본문 글꼴로 보임)
     out = ROOT / "assets" / "fonts"
-    run("fontTools.subset", str(t / "pretendard.src"), f"--text-file={t/'p.txt'}", "--flavor=woff2", "--layout-features=*", f"--output-file={t/'p.woff2'}")
-    run("fontTools.varLib.instancer", str(t / "p.woff2"), "wght=300:800", "-o", str(out / "PretendardVariable-site.woff2"))
+    run("fontTools.subset", str(t / "pretendard.src"), f"--text-file={t/'p.txt'}", "--flavor=woff2", "--no-hinting", "--desubroutinize", f"--output-file={t/'p.woff2'}")
+    run("fontTools.varLib.instancer", str(t / "p.woff2"), "wght=500:800", "-o", str(out / "PretendardVariable-site.woff2"))   # 본문은 500~800만 쓴다(freepasserp 로고는 그림 — tools/make-bi-svg.py)
     run("fontTools.subset", str(t / "gmarket.src"), f"--text-file={t/'g.txt'}", "--flavor=woff2", "--layout-features=*", f"--output-file={out/'GmarketSansBold-sub.woff2'}")
-    run("fontTools.subset", str(t / "exo2.src"), f"--text={EXO_TEXT}", "--flavor=woff2", f"--output-file={t/'e.woff2'}")
-    run("fontTools.varLib.instancer", str(t / "e.woff2"), "wght=300:600", "-o", str(out / "Exo2-logo.woff2"))
     print("완료:", len(pc), "글자")

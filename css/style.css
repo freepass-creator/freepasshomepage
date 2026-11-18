@@ -1,6 +1,5 @@
 /* 뮤카패스 — 2026-11 개편. 착한거래 느낌(포스터 제목 · 형광펜 · 큰 버튼 하나)을 뮤카 청록(#21B1BA)으로. */
-@font-face{font-family:"Pretendard Variable";font-weight:300 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2) format("woff2")}
-@font-face{font-family:"Exo 2";font-weight:300 600;font-display:swap;src:url(/assets/fonts/Exo2-logo.woff2) format("woff2")}
+@font-face{font-family:"Pretendard Variable";font-weight:500 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2) format("woff2")}
 @font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2) format("woff2"),url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff) format("woff")}
 :root{
   --teal:#21B1BA;--teal-deep:#178a92;--teal-ink:#0e6a70;--mint:#c9f1f3;--mint-2:#e9f9fa;
@@ -672,3 +671,8 @@ h1,h2,h3,.say,.last p,.sec-lead,.lead,.family-desc,.ai-list p{text-wrap:balance}
 @view-transition{navigation:auto}
 @media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
 @media (max-width:860px){.hero-acts .cta{font-size:19px}}
+
+
+/* 100점 다듬기(11-19): freepasserp 로고는 그림(SVG)으로 — 글자 크기에 맞춰 같은 자리에 선다. FAQ 의 한글 읽기형은 글자라 명암 4.5:1 */
+.bi-fpe img{display:inline-block;height:1.2em;width:auto;max-width:none;vertical-align:-.201em}
+.faq .bi-fpe>span{color:#5f7396}
