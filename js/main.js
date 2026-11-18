@@ -79,16 +79,23 @@
     }
   });
 
-  /* 폰 하단 문의 버튼: 첫 화면·마지막 문의 버튼이 보이는 동안에는 숨긴다(겹침 방지) */
+  /* 폰 하단 문의 버튼: 설명(하는 일·일하는 방식)을 지나야 나타나고, 다른 문의 버튼이 보이는 동안에는 숨긴다.
+     대표 11-18 «설명도 없는데 카톡 문의하기가 바로 나오냐». */
   var dock = document.getElementById("dock");
-  var watch = document.querySelectorAll(".hero .cta, .last .cta, .start-answer .cta");
-  if (dock && "IntersectionObserver" in window) {
+  var gate = document.getElementById("flow");
+  var watch = document.querySelectorAll(".last .cta, .start-answer .cta");
+  if (dock && gate && "IntersectionObserver" in window) {
     var visible = new Set();
+    function update() {
+      var passed = gate.getBoundingClientRect().top < window.innerHeight * 0.5;
+      dock.classList.toggle("show", passed && visible.size === 0);
+    }
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) visible.add(e.target); else visible.delete(e.target); });
-      dock.classList.toggle("show", visible.size === 0);
+      update();
     });
     watch.forEach(function (el) { io.observe(el); });
+    window.addEventListener("scroll", update, { passive: true }); update();
   }
 
   /* 머리띠: 스크롤하면 그림자 */

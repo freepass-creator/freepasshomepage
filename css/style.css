@@ -19,7 +19,7 @@ b,strong{font-weight:700}
 .top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:box-shadow .2s}
 .top.scr{box-shadow:0 1px 0 var(--line)}
 .top-in{display:flex;align-items:center;justify-content:space-between;height:66px}
-.logo{display:block;line-height:0}.logo img{height:30px;width:auto}
+.logo{display:block;line-height:0}.logo img{height:36px;width:auto}
 .top-nav{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:700}
 .top-nav a{text-decoration:none;color:var(--ink-2)}.top-nav a:hover{color:var(--ink)}
 .top-nav .top-erp{color:var(--teal-ink);border:2px solid var(--teal);border-radius:999px;padding:6px 14px}
@@ -53,6 +53,32 @@ h2 .main{display:block}
 .hero h1 .l{display:block}
 .lead{margin:24px 0 0;font-size:clamp(18px,2.1vw,21px);line-height:1.7;color:var(--ink-2)}
 .hint{margin:16px 0 0;font-size:14px;color:var(--sub)}
+.hero-points{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:8px}
+.hero-points li{display:flex;gap:12px;align-items:baseline;font-size:16px;color:var(--ink-2)}
+.hero-points b{flex:none;min-width:72px;font-size:13px;font-weight:700;color:var(--teal-ink);background:var(--mint);border-radius:999px;padding:3px 10px;text-align:center}
+.hero-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-acts .cta{margin-top:0;width:auto;flex:1 1 260px;font-size:clamp(18px,2vw,21px);min-height:62px}
+.cta--line{background:#fff;color:var(--ink);border:2px solid var(--ink);box-shadow:0 6px 0 var(--ink)}
+.cta--line:active{box-shadow:0 2px 0 var(--ink)}
+
+/* freepasserp.com BI — 브랜드 센터 장부(fpe): Exo 2, freepass 600 #1B2A4A · erp.com 300 #7F93B3 */
+.bi-fpe{font-family:"Exo 2","Pretendard",sans-serif;letter-spacing:0;white-space:nowrap}
+.bi-fpe>b{font-weight:600;color:#1B2A4A}
+.bi-fpe>span{font-weight:300;color:#7F93B3}
+.bi-fpe--dark>b{color:#fff}
+
+/* 하는 일 */
+.sec-lead{max-width:720px;margin:-16px 0 40px;font-size:18px;color:var(--ink-2)}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.what-card{border:2px solid var(--ink);border-radius:24px;padding:32px 30px;background:#fff;box-shadow:6px 6px 0 var(--ink)}
+.what-card--supplier{background:var(--mint-2)}
+.what-who{display:inline-block;font-family:var(--poster);font-size:15px;color:#fff;background:var(--teal);border-radius:8px;padding:5px 12px;transform:rotate(-1.5deg)}
+.what-card h3{font-family:var(--poster);font-weight:700;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.045em;line-height:1.25;margin:16px 0 22px}
+.what-card ul{list-style:none;margin:0;padding:0}
+.what-card li{padding:14px 0 14px 30px;border-top:1px solid var(--line);position:relative}
+.what-card li::before{content:"✓";position:absolute;left:2px;top:13px;color:var(--teal);font-weight:800;font-size:18px}
+.what-card li b{display:block;font-size:17px}
+.what-card li p{margin:2px 0 0;font-size:15px;color:var(--ink-2)}
 .hint a{color:var(--teal-ink);font-weight:700}
 
 .hero-art{position:relative;padding-top:64px}
@@ -110,8 +136,11 @@ h2 .main{display:block}
 .tool span{display:block;font-size:13px;font-weight:700;color:var(--teal-ink);margin-bottom:10px}
 .tool b{display:block;font-family:var(--poster);font-weight:700;font-size:21px;letter-spacing:-.04em;margin-bottom:6px}
 .tool p{margin:0;font-size:15px;color:var(--ink-2)}
-.tool--main{background:var(--ink);border-color:var(--ink);color:#fff;transition:transform .15s}
-.tool--main span{color:#7fe3e9}.tool--main p{color:#cfd3d6}
+.tool--main{border-color:#1B2A4A;box-shadow:5px 5px 0 #1B2A4A;transition:transform .15s}
+.tool--main>span{color:#5B9FD4}
+.tool--main .bi-fpe{font-size:24px}
+.tool .bi-fpe>b{display:inline;font-family:inherit;font-size:inherit;margin:0;letter-spacing:0}
+.tool .bi-fpe>span{display:inline;margin:0;font-size:inherit}
 .tool--main:hover{transform:translateY(-3px)}
 .family{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:16px;padding:20px 22px;border-radius:var(--r);background:var(--bg-2);text-decoration:none}
 .family-tag{font-size:13px;font-weight:700;color:var(--sub)}
@@ -139,20 +168,24 @@ h2 .main{display:block}
 
 /* 바닥 */
 .foot{background:var(--card-dark);color:#9aa0a6;padding:52px 0 calc(52px + env(safe-area-inset-bottom));font-size:14px}
-.foot-logo{height:26px;width:auto;margin-bottom:18px}
+.foot-logo{height:32px;width:auto;margin-bottom:18px}
 .foot p{margin:0 0 8px}.foot a{color:#d3d7da;text-decoration:none}.foot a:hover{color:#fff}
 .copyright{color:#6b7076;margin-top:16px!important;font-size:13px}
 
 .dock{display:none}
 
 @media (max-width:860px){
-  .top-in{height:58px}.logo img{height:24px}
+  .top-in{height:58px}.logo img{height:29px}
   .top-nav a:not(.top-erp){display:none}
   .top-nav .top-erp{font-size:14px;padding:5px 12px}
   .sec{padding:76px 0}
   .hero{padding:36px 0 32px}
   .hero-grid{grid-template-columns:1fr;gap:28px}
   .cta{max-width:none}
+  .hero-acts .cta{flex:1 1 100%}
+  .what-grid{grid-template-columns:1fr}
+  .what-card{padding:26px 20px;box-shadow:4px 4px 0 var(--ink)}
+  .sec-lead{font-size:16px}
   .hero-art{padding-top:78px}
   .bubble{right:auto;left:8px;font-size:17px}
   .board{padding:26px 12px 20px;gap:8px}
