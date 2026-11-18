@@ -402,3 +402,11 @@ html{-webkit-tap-highlight-color:transparent}
 .about-info dd.svc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
 .foot .foot-links{margin-top:18px}
 @media (max-width:860px){.about-acts{gap:18px}.hero-acts{gap:18px}}   /* 입체 그림자(6px) 때문에 세로로 쌓이면 단추끼리 붙어 보였다 */
+/* 대표 11-18 «위치한 곳 밑줄 가있으면 좋겠고 상품찾기는 불이 징징 들어오면» */
+@media (min-width:861px){.top-nav a.on{color:var(--ink)}.top-nav a.on::after{transform:none}}
+@media (max-width:860px){.top-nav a.on{color:var(--teal-ink)}}
+.top-erp{position:relative;overflow:hidden;isolation:isolate;animation:erpGlow 2.2s ease-in-out infinite}
+.top-erp::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);transform:translateX(-130%);animation:erpShine 2.2s ease-in-out infinite}
+@keyframes erpGlow{0%,100%{box-shadow:0 4px 0 var(--teal-deep),0 0 0 0 rgba(33,177,186,0)}50%{box-shadow:0 4px 0 var(--teal-deep),0 0 22px 5px rgba(33,177,186,.6)}}
+@keyframes erpShine{0%,45%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+.top-erp:hover,.top-erp:active{animation:none}

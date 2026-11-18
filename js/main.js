@@ -138,6 +138,29 @@
     });
   }
 
+  /* 지금 보고 있는 구역의 메뉴에 밑줄(대표 11-18 «위치한곳 밑줄») — 화면 위쪽 40% 선을 지나는 구역을 고른다 */
+  if (nav) {
+    var spy = [];
+    nav.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      var sec = document.getElementById(a.getAttribute("href").slice(1));
+      if (sec) spy.push({ a: a, s: sec });
+    });
+    if (spy.length) {
+      var spyTick = false;
+      function spyUpdate() {
+        spyTick = false;
+        var line = window.innerHeight * 0.4, cur = null;
+        spy.forEach(function (o) { var r = o.s.getBoundingClientRect(); if (r.top <= line && r.bottom > line) cur = o; });
+        spy.forEach(function (o) {
+          var on = o === cur; o.a.classList.toggle("on", on);
+          if (on) o.a.setAttribute("aria-current", "location"); else if (o.a.getAttribute("aria-current") === "location") o.a.removeAttribute("aria-current");
+        });
+      }
+      window.addEventListener("scroll", function () { if (!spyTick) { spyTick = true; requestAnimationFrame(spyUpdate); } }, { passive: true });
+      spyUpdate();
+    }
+  }
+
   /* 머리띠: 내려가면 위로 접혀 올라가고, 올리면 다시 내려온다(대표 11-18 «스크롤할때 맨위에가 촤르륵 접혀 올라가야»).
      메뉴가 열려 있거나 맨 위 근처에서는 항상 보인다. */
   var top = document.getElementById("top");
