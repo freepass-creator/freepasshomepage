@@ -1,0 +1,22 @@
+{
+ "name": "뮤카패스",
+ "short_name": "뮤카패스",
+ "description": "장기렌트 영업지원 플랫폼",
+ "start_url": "/",
+ "display": "browser",
+ "lang": "ko",
+ "background_color": "#ffffff",
+ "theme_color": "#1a9aa2",
+ "icons": [
+  {
+   "src": "/assets/apple-touch-icon.png",
+   "sizes": "180x180",
+   "type": "image/png"
+  },
+  {
+   "src": "/assets/favicon.svg",
+   "sizes": "any",
+   "type": "image/svg+xml"
+  }
+ ]
+}

@@ -18,12 +18,18 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="ko_KR" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="preload" href="/assets/fonts/GmarketSansBold-sub.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&display=swap" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&display=swap" /></noscript>
 <link rel="stylesheet" href="css/style.css" />
+<link rel="manifest" href="/site.webmanifest" />
+<script type="speculationrules">{"prefetch":[{"source":"list","urls":["/","/about"],"eagerness":"moderate"}]}</script>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"뮤카패스 주식회사","alternateName":["MEWCAR PASS","뮤카패스","프리패스모빌리티"],"url":"https://freepassmobility.com/","logo":"https://freepassmobility.com/assets/og.png","telephone":"+82-2-6956-8835","address":{"@type":"PostalAddress","streetAddress":"양천로 53길 30, 서서울모터리움 804호","addressLocality":"강서구","addressRegion":"서울","addressCountry":"KR"},"parentOrganization":{"@type":"Organization","name":"뮤카"}}</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"뮤카패스","url":"https://freepassmobility.com/","inLanguage":"ko-KR"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"누가 이용할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"장기렌트 상품을 세일즈하는 영업 채널(영업팀·대리점·제휴 채널), 그리고 차량을 공급하는 렌터카사가 함께 이용해요. 카톡으로 어떤 일을 하시는지 알려 주시면 맞는 방법을 안내해 드려요."}},{"@type":"Question","name":"이미 파트너예요. 상품은 어디서 보나요?","acceptedAnswer":{"@type":"Answer","text":"freepasserp.com에서 바로 검색하실 수 있어요."}},{"@type":"Question","name":"공급사 입점은 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"카톡으로 회사명과 담당자를 남겨 주시면, 상품과 조건을 어떤 기준으로 올릴지부터 함께 정해요."}},{"@type":"Question","name":"고객 개인정보나 계약 접수는요?","acceptedAnswer":{"@type":"Answer","text":"고객의 주민등록번호·면허증 같은 개인정보는 카톡으로 보내지 말아 주세요. 계약에 필요한 정보는 전자계약에서 고객이 직접 입력하고 본인 확인을 거쳐요. 진행 상황이나 궁금한 점은 카카오톡 채널 1:1 대화로 물어봐 주시면 건별로 이력이 남아요."}},{"@type":"Question","name":"뮤카패스와 freepasserp.com은 무슨 관계예요?","acceptedAnswer":{"@type":"Answer","text":"뮤카패스는 회사 이름이고, freepasserp.com은 뮤카패스가 운영하는 영업지원 서비스예요. 전자계약 플랫폼 착한거래도 뮤카패스가 운영해요."}},{"@type":"Question","name":"프리패스모빌리티와는 어떤 관계예요?","acceptedAnswer":{"@type":"Answer","text":"프리패스모빌리티가 뮤카패스로 이름을 바꿨어요. 상품 찾기(freepasserp.com)와 카톡 채널은 그대로 쓰시면 돼요."}}]}]</script>
 </head>
 <body>
 <header class="top" id="top">
@@ -64,14 +70,14 @@
       <div class="hero-art">
         <p class="bubble" aria-hidden="true"><i class="sl" aria-hidden="true"></i>어떤 일을 하고 계세요?</p>
         <div class="board">
-          <a class="board-col board-col--sup" href="#start" data-start-go="supplier" aria-label="공급사예요 — 공급사 안내 보기">
+          <a class="board-col board-col--sup" href="#start" data-start-go="supplier" aria-label="공급사 — 공급사 안내 보기">
             <span class="board-tag">공급사 <i aria-hidden="true">→</i></span>
             <span class="chip">렌터카사 A</span><span class="chip">렌터카사 B</span><span class="chip">렌터카사 C</span>
           </a>
           <span class="wire wire--in" aria-hidden="true"></span>
           <div class="board-hub" aria-hidden="true"><img src="assets/brand/mewcar-pass-ko-white-trim.svg" alt="" width="530" height="112" /></div>
           <span class="wire wire--out" aria-hidden="true"></span>
-          <a class="board-col board-col--sales" href="#start" data-start-go="channel" aria-label="영업 채널이에요 — 영업 채널 안내 보기">
+          <a class="board-col board-col--sales" href="#start" data-start-go="channel" aria-label="영업 채널 — 영업 채널 안내 보기">
             <span class="board-tag">영업 채널 <i aria-hidden="true">→</i></span>
             <span class="chip">영업팀</span><span class="chip">대리점</span><span class="chip">제휴 채널</span>
           </a>
