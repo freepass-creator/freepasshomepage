@@ -603,3 +603,8 @@ h2.poster,h1.h1-sec{margin-bottom:var(--head)}
 .fam-role{font-size:14px;padding:5px 12px}
 /* 줄 끝에 한 단어만 남지 않게 — 제목·말풍선·안내 문장은 줄 길이를 고르게 */
 h1,h2,h3,.say,.last p,.sec-lead,.lead,.bubble,.family-desc,.ai-list p{text-wrap:balance}
+/* 착한거래 CI 규정: 카테고리형(착한거래 | 전자계약) 최소 높이 28px — 모든 자리 28px 이상 */
+.family-name img,.chakhan-ec img,.chakhan-ec--dark img,.foot-ci{height:28px;width:auto}
+.foot-ci{vertical-align:-8px}
+.foot-links .bi-fpe{font-size:20px}
+@media (max-width:860px){.foot-links .foot-dot{display:none}.foot-links{column-gap:18px}}
