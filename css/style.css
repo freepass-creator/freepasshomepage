@@ -554,3 +554,33 @@ h1.h1-sec .main{display:block}
 .ai-list li{padding:24px 22px 22px}
 .start-answer .label{font-size:15px}
 @media (max-width:860px){.ai-band{padding:28px 20px 24px}.ai-head{gap:14px}.ai-head h3 br{display:inline}}
+
+/* ── 간격 기준(한 곳에서 정한다) ──────────────────────────────
+   구역 위·아래 112px(폰 80) · 눈썹→제목 16 · 제목→내용 48(폰 36) · 제목→소개 20 · 소개→내용 48 · 카드 사이 20(폰 16).
+   흰 구역끼리 붙지 않게 바탕을 번갈아: 첫 화면·하는 일(흰) → 일하는 방식(회색) → 쓰는 도구(흰) → 이용 안내(회색) → FAQ(흰) → 마지막(민트). */
+:root{--sec:112px;--head:48px;--gap:20px}
+@media (max-width:860px){:root{--sec:80px;--head:36px;--gap:16px}}
+.sec,.tools + .start,.start + .sec{padding:var(--sec) 0}
+.start{background:var(--bg-2)}
+.start-choices button{background:#fff}
+.hero{padding:48px 0 0}
+.what{padding-top:var(--sec)}
+h2.poster,h1.h1-sec{margin-bottom:var(--head)}
+.sec-lead{margin:calc(20px - var(--head)) 0 var(--head)}
+.eyebrow{margin-bottom:16px}
+.what-grid,.tool-grid,.flow-steps,.start-grid,.fam-kids{gap:var(--gap)}
+.family,.ai-band{margin-top:var(--gap)}
+.sec .wrap > :last-child,.faq details:last-child p{margin-bottom:0}
+#faq{padding-bottom:64px}
+.about-strip{padding:0 0 var(--sec)}
+.last{padding:var(--sec) 0}
+.foot{padding-top:64px}
+@media (min-width:861px){.foot{padding-bottom:64px}}
+@media (max-width:860px){.hero{padding:28px 0 0}#faq{padding-bottom:48px}.about-page{padding-top:56px}}
+.about-page{padding-top:80px}
+/* 마우스 반응이 없던 곳 */
+.logo{transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.logo:hover{transform:translateY(-1px) scale(1.03)}
+.about-info dd a{border-radius:6px;transition:color .15s,background .15s;padding:2px 4px;margin:-2px -4px}
+.about-info dd a:hover{background:var(--mint-2);color:var(--teal-ink)}
+.about-info dd a:hover img,.about-info dd a:hover .bi-fpe{filter:brightness(1.1)}
