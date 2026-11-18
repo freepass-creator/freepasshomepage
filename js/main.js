@@ -4,7 +4,7 @@
 
   var START = {
     channel: {
-      title: "상품 찾는 시간은 줄이고, 고객에게 집중해 주세요~",
+      title: "상품 찾는 시간은 줄이고,<br>고객에게 <em class=\"pop\">집중</em>해 주세요~",
       points: [
         "여러 공급사의 차량·기간·대여료·보증금·출고상태를 <b>같은 기준</b>으로 검색",
         "견적기와 <b>우리 팀 이름을 단 고객용 화면(화이트라벨)</b>으로 바로 제안",
@@ -13,7 +13,7 @@
       msg: "[뮤카패스] 영업 채널(영업팀·대리점)입니다. 상품 찾기와 파트너 등록이 궁금해요."
     },
     supplier: {
-      title: "차만 잘 준비해 주세요~ 세일즈와 계약은 저희가 이어 드릴게요.",
+      title: "차만 <em class=\"pop\">잘</em> 준비해 주세요~<br>세일즈와 계약은 저희가 이어 드릴게요.",
       points: [
         "차량·대여료·보증금·출고상태를 <b>영업 채널이 비교하기 쉬운 기준</b>으로 정리",
         "상품이 영업 채널의 <b>검색과 제안으로 바로 연결</b>",
@@ -40,7 +40,7 @@
 
   function pick(key) {
     var s = START[key]; if (!s || !hasStart) return;
-    title.textContent = s.title;
+    title.innerHTML = s.title;  /* 고정 문구(START)만 넣는다 */
     list.innerHTML = s.points.map(function (p) { return "<li>" + p + "</li>"; }).join("");
     msg.textContent = s.msg;
     status.textContent = "";
