@@ -4,7 +4,7 @@
 
   var START = {
     channel: {
-      title: "상품 찾는 시간은 줄이고,<br>고객에게 <em class=\"pop\">집중</em>해 주세요~",
+      title: "상품 찾는 시간은 줄이고,<br>고객에게만 <em class=\"pop\">집중</em>할 수 있어요.",
       points: [
         "여러 공급사의 차량·기간·대여료·보증금·출고상태를 <b>같은 기준</b>으로 검색",
         "견적기와 <b>우리 팀 이름을 단 고객용 화면(화이트라벨)</b>으로 바로 제안",
@@ -13,7 +13,7 @@
       msg: "[뮤카패스] 영업 채널(영업팀·대리점)입니다. 상품 찾기와 파트너 등록이 궁금해요."
     },
     supplier: {
-      title: "차만 <em class=\"pop\">잘</em> 준비해 주세요~<br>세일즈와 계약은 저희가 이어 드릴게요.",
+      title: "차만 <em class=\"pop\">잘</em> 준비하시면 돼요.<br>세일즈와 계약은 저희가 이어 드릴게요.",
       points: [
         "차량·대여료·보증금·출고상태를 <b>영업 채널이 비교하기 쉬운 기준</b>으로 정리",
         "상품이 영업 채널의 <b>검색과 제안으로 바로 연결</b>",
@@ -65,7 +65,7 @@
   if (copyBtn) copyBtn.addEventListener("click", function () {
     var text = msg.textContent;
     function done() {
-      status.textContent = "복사했어요. 카톡 대화창에 붙여넣어 주세요.";
+      status.textContent = "복사했어요. 카톡 대화창에 붙여넣으시면 돼요.";
       var t0 = copyBtn.textContent; copyBtn.classList.add("done"); copyBtn.textContent = "복사됨 ✓";
       setTimeout(function () { copyBtn.classList.remove("done"); copyBtn.textContent = t0; }, 1600);
     }
@@ -75,7 +75,7 @@
     function fallback() {
       var t = document.createElement("textarea"); t.value = text; t.setAttribute("readonly", "");
       t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
-      try { document.execCommand("copy"); done(); } catch (e) { status.textContent = "복사가 안 되면 문구를 길게 눌러 복사해 주세요."; }
+      try { document.execCommand("copy"); done(); } catch (e) { status.textContent = "복사가 안 되면 문구를 길게 눌러 복사하시면 돼요."; }
       document.body.removeChild(t);
     }
   });
