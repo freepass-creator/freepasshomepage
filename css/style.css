@@ -251,7 +251,7 @@ h2 .main{display:block}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 /* 착한거래 CI — AI 스튜디오 브랜드 장부 vendor/chakhan (대표 11-18 «ai 스튜디오에 저장해둔 CI BI 확인해서 써») */
 .family-ci{height:22px;width:auto;display:block;flex:none}
-.foot-ci{height:17px;width:auto;vertical-align:-3px}
+.foot-ci{height:19px;width:auto;vertical-align:-4px}
 /* 브랜드 짜임(대표 11-18 «뮤카패스인데 우리 freepasserp.com 하는 회사»): 회사 CI = 뮤카pass, 서비스 BI = freepasserp.com·착한거래 */
 .foot-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
 .foot-svc{font-size:12.5px;color:#9aa0a6;font-weight:700;letter-spacing:.02em;width:100%}
@@ -287,12 +287,12 @@ h2 .main{display:block}
   .fam-logo{height:28px}.fam-logo--ci{height:32px}
   .fam-note{text-align:left}
 }
-/* 착한거래 전자계약 — 착한거래는 전자계약만 연다(대표 11-18 «착한거래는 전자계약만 오픈해», «착한거래 전자계약») */
-.family-name,.chakhan-ec{display:inline-flex;align-items:center;gap:7px}
-.family-name b,.chakhan-ec b{font-family:var(--poster);font-size:19px;letter-spacing:-.03em;color:#009867;line-height:1}
-.chakhan-ec img{height:20px;width:auto}
-.chakhan-ec--dark b{font-size:15px;color:#38CA91}
-.chakhan-ec--dark img{height:17px}
+/* 착한거래 전자계약 — 브랜드 장부 공식 짜임 chakhan-ci-econtract(대표 11-18 «착한거래 | 전자계약», «규격 확인해서 넣어»):
+   카테고리 글자 SUITE Heavy 0.47배·기준선 맞춤·로고와 한 색. 손으로 조립하지 않고 원본 SVG를 그대로 쓴다. */
+.family-name,.chakhan-ec{display:inline-flex;align-items:center}
+.family-name img{height:24px;width:auto;display:block}
+.chakhan-ec img{height:22px;width:auto;display:block}
+.chakhan-ec--dark img{height:19px}
 /* 회사 소개는 별도 페이지(about) — 대표 11-18 «이거는 별도 페이지로». 첫 페이지에는 링크 띠 하나 */
 .about-strip{padding:8px 0 104px}
 .about-link{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;padding:22px 26px;border:2px solid var(--ink);border-radius:var(--r);background:var(--mint-2);box-shadow:5px 5px 0 var(--ink);text-decoration:none;color:var(--ink);transition:transform .15s}
@@ -326,3 +326,79 @@ h2 .main{display:block}
 .fam-svc a{display:flex;align-items:center;gap:12px;flex-wrap:wrap;text-decoration:none;color:inherit}
 .fam-svc a:hover small{color:var(--ink)}
 .chakhan-ec--dark{text-decoration:none}
+
+/* ── 상하 간격·마이크로 인터랙션 정리(대표 11-18 «상하간격이랑 마이크로인터렉티브랑 제대로 챙겨봅시다») ──
+   간격: 같은 흰 바탕끼리 붙은 구역(도구→어느 쪽→FAQ)은 100+100=200px로 벌어져 끊겨 보였다 → 위쪽을 줄여 140px.
+   상호작용: 누를 수 있는 것만 반응한다(누를 수 없는 카드에 hover를 주지 않는다). 올라감=누를 수 있음, 눌림=눌렀음. */
+.tools + .start,.start + .sec{padding-top:40px}
+.last{padding:104px 0}
+@media (max-width:860px){
+  .tools + .start,.start + .sec{padding-top:28px}
+  .last{padding:72px 0}
+  .faq summary{padding:18px 40px 18px 0;font-size:17px}
+  .faq summary::after{top:12px}
+}
+/* 키보드 이동이 보이게 */
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+.cta:focus-visible,.top-erp:focus-visible{outline-offset:4px}
+html{-webkit-tap-highlight-color:transparent}
+/* 큰 버튼: 올라가고 → 눌림 */
+.cta{transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .14s,filter .14s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--teal-deep),0 20px 30px -12px rgba(23,138,146,.6)}
+.cta--line:hover{box-shadow:0 8px 0 var(--ink)}
+.cta:active,.cta--line:active{transform:translateY(5px);transition-duration:.05s}
+.cta--line:hover{background:var(--mint-2)}
+/* 머리띠 메뉴: 밑줄이 그어진다(데스크톱) */
+@media (min-width:861px){
+  .top-nav a:not(.top-kakao){position:relative;padding:6px 0}
+  .top-nav a:not(.top-kakao)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+  .top-nav a:not(.top-kakao):hover::after,.top-nav a[aria-current="page"]::after{transform:none}
+}
+@media (max-width:860px){.top-nav a:active{background:var(--mint-2)}.burger:active{transform:scale(.92)}.burger{transition:transform .1s}}
+/* 링크 카드: 올라가며 그림자가 길어지고 화살표가 나간다 */
+.about-link{transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .16s}
+.about-link:hover{transform:translate(-2px,-3px);box-shadow:8px 9px 0 var(--ink)}
+.about-link:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink);transition-duration:.05s}
+.tool--main{transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .16s}
+.tool--main:hover{transform:translate(-2px,-3px);box-shadow:8px 9px 0 #1B2A4A}
+.tool--main:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #1B2A4A;transition-duration:.05s}
+.family{transition:background .16s,box-shadow .16s,transform .16s}
+.family:hover{background:#e8f6ef;box-shadow:inset 0 0 0 2px #009867}
+.family:active{transform:scale(.99)}
+.about-link b,.family-go,.fam-svc small{display:inline-block;transition:transform .16s cubic-bezier(.2,.8,.2,1),color .16s}
+.about-link:hover b{transform:translateX(4px)}
+.family:hover .family-go,.fam-svc a:hover small{transform:translate(2px,-2px)}
+.fam-svc a{border-radius:10px;transition:background .16s;margin:-6px -8px;padding:6px 8px}
+.fam-svc a:hover{background:var(--bg-2)}
+/* 어느 쪽이세요: 고르는 단추 */
+.start-choices button{transition:border-color .15s,background .15s,transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .15s}
+.start-choices button:hover{transform:translateX(3px)}
+.start-choices button:active{transform:scale(.985);transition-duration:.05s}
+.start-choices button>span:last-child{transition:transform .16s}
+.start-choices button:hover>span:last-child,.start-choices button[aria-pressed=true]>span:last-child{transform:translateX(4px);color:var(--teal-ink)}
+.start-answer h3,.start-answer ul{animation:ansIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes ansIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.copy{transition:background .15s,border-color .15s,transform .1s}
+.copy:active{transform:scale(.97)}
+.copy.done{background:var(--teal);border-color:var(--teal)}
+/* FAQ: 마우스를 올리면 질문이 짙어지고, 열리면 + 가 돌아 − 가 되며 답이 내려온다 */
+.faq summary{transition:color .15s}
+.faq summary:hover{color:var(--teal-ink)}
+.faq summary::after{content:"+";transition:transform .22s cubic-bezier(.2,.8,.2,1)}
+.faq details[open] summary::after{content:"+";transform:rotate(45deg)}
+.faq details[open] p{animation:ansIn .26s cubic-bezier(.2,.8,.2,1)}
+/* 바닥 링크 */
+.foot a{transition:color .15s}
+/* 스크롤하면 카드가 살짝 떠오른다 — 스크립트가 있을 때만(없으면 그냥 보임) */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
+/* 눈으로 본 뒤 손본 간격(11-18) */
+.flow-steps li:not(:last-child)::after{top:33px}          /* → 를 번호 동그라미 한가운데 높이로 */
+.last h2.poster{margin-bottom:0}                          /* 마지막 제목↔안내 문장 70px → 22px */
+.last p{margin-top:22px}
+.foot-links{margin-top:18px}                              /* 회사 정보와 «운영하는 서비스» 묶음 사이를 벌린다 */
+.about-info .info>div{align-items:baseline}               /* 항목 이름과 값의 글자 밑선을 맞춘다 */
+.about-info dd.svc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.foot .foot-links{margin-top:18px}
+@media (max-width:860px){.about-acts{gap:18px}.hero-acts{gap:18px}}   /* 입체 그림자(6px) 때문에 세로로 쌓이면 단추끼리 붙어 보였다 */

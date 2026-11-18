@@ -68,7 +68,11 @@
   var copyBtn = document.getElementById("start-copy");
   if (copyBtn) copyBtn.addEventListener("click", function () {
     var text = msg.textContent;
-    function done() { status.textContent = "복사했어요. 카톡 대화창에 붙여넣어 주세요."; }
+    function done() {
+      status.textContent = "복사했어요. 카톡 대화창에 붙여넣어 주세요.";
+      var t0 = copyBtn.textContent; copyBtn.classList.add("done"); copyBtn.textContent = "복사됨 ✓";
+      setTimeout(function () { copyBtn.classList.remove("done"); copyBtn.textContent = t0; }, 1600);
+    }
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text).then(done, fallback);
     } else { fallback(); }
@@ -114,7 +118,26 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
   }
 
-  /* 머리띠: 스크롤하면 그림자 */
+  /* 스크롤 등장: 첫 화면 아래에 있는 카드만, 같은 줄은 차례로(0.06초 간격). 스크립트가 없으면 그냥 보인다 */
+  if ("IntersectionObserver" in window) {
+    document.documentElement.classList.add("js");
+    var rvSel = ".what-card, .about-link, .flow-steps li, .tool, .family, .start-choices button, .start-answer, .faq details, .fam-parent, .fam-card, .about-info .info > div, .about-acts";
+    var rvIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target; el.classList.add("in"); rvIo.unobserve(el);
+        /* 등장이 끝나면 표시를 걷어 원래의 hover·눌림 반응으로 돌려 놓는다 */
+        setTimeout(function () { el.classList.remove("rv", "in"); el.style.removeProperty("--d"); }, 900);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(rvSel).forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.setProperty("--d", Math.min(i, 5) * 0.06 + "s");
+      el.classList.add("rv"); rvIo.observe(el);
+    });
+  }
+
   /* 머리띠: 내려가면 위로 접혀 올라가고, 올리면 다시 내려온다(대표 11-18 «스크롤할때 맨위에가 촤르륵 접혀 올라가야»).
      메뉴가 열려 있거나 맨 위 근처에서는 항상 보인다. */
   var top = document.getElementById("top");
