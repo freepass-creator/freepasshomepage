@@ -61,7 +61,8 @@ h2 .main{display:block}
 .cta--line{background:#fff;color:var(--ink);border:2px solid var(--ink);box-shadow:0 6px 0 var(--ink)}
 .cta--line:active{box-shadow:0 2px 0 var(--ink)}
 
-/* freepasserp.com BI — 브랜드 센터 장부(fpe): Exo 2, freepass 600 #1B2A4A · erp.com 300 #7F93B3 */
+/* freepasserp.com BI — AI 스튜디오 브랜드 장부(프리패스이알피닷컴): Exo 2 계열, 국문 프리패스 600 #1B2A4A · 이알피닷컴 300 #7F93B3.
+   대표 11-18 «exo폰트로 써야하고 한글로 써». 영문 freepass 600 · erp.com 300 은 같은 규칙. */
 .bi-fpe{font-family:"Exo 2","Pretendard",sans-serif;letter-spacing:0;white-space:nowrap}
 .bi-fpe>b{font-weight:600;color:#1B2A4A}
 .bi-fpe>span{font-weight:300;color:#7F93B3}
@@ -139,10 +140,11 @@ h2 .main{display:block}
 .tool--main{border-color:#1B2A4A;box-shadow:5px 5px 0 #1B2A4A;transition:transform .15s}
 .tool--main>span{color:#5B9FD4}
 .tool--main .bi-fpe{font-size:24px}
-.tool .bi-fpe>b{display:inline;font-family:inherit;font-size:inherit;margin:0;letter-spacing:0}
-.tool .bi-fpe>span{display:inline;margin:0;font-size:inherit}
+.tool .bi-fpe{display:block;font-family:"Exo 2","Pretendard",sans-serif;letter-spacing:0;margin-bottom:6px}
+.tool .bi-fpe>b{display:inline;font-family:inherit;font-size:inherit;font-weight:600;color:#1B2A4A;margin:0;letter-spacing:0}
+.tool .bi-fpe>span{display:inline;margin:0;font-size:inherit;font-weight:300;color:#7F93B3}
 .tool--main:hover{transform:translateY(-3px)}
-.family{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:16px;padding:20px 22px;border-radius:var(--r);background:var(--bg-2);text-decoration:none}
+.family{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:16px;padding:20px 22px;border-radius:var(--r);background:var(--bg-2);text-decoration:none}
 .family-tag{font-size:13px;font-weight:700;color:var(--sub)}
 .family b{font-family:var(--poster);font-size:20px}
 .family-desc{font-size:15px;color:var(--ink-2)}
@@ -210,3 +212,6 @@ h2 .main{display:block}
   .tool-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* 착한거래 CI — AI 스튜디오 브랜드 장부 vendor/chakhan (대표 11-18 «ai 스튜디오에 저장해둔 CI BI 확인해서 써») */
+.family-ci{height:22px;width:auto;display:block;flex:none}
+.foot-ci{height:17px;width:auto;vertical-align:-3px}
