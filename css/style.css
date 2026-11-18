@@ -631,3 +631,22 @@ h1,h2,h3,.say,.last p,.sec-lead,.lead,.family-desc,.ai-list p{text-wrap:balance}
 .tool--main>span{color:#2d6ea6}
 .family .family-go{color:#00744f}
 .copyright{color:#9aa0a6}
+
+/* 모바일 정보 밀도(11-19): 단계마다 «누가», 도구마다 «언제 쓰는지», 바닥 정보 줄 머리 · 없애기 */
+.flow-steps em{display:inline-block;margin-bottom:8px;font-size:12.5px;padding:3px 10px}
+.flow-steps p{line-height:1.6}
+.tool span.nw{display:inline;font-size:inherit;font-weight:inherit;color:inherit;margin:0}
+.tool:not(.tool--main)>span{color:var(--teal-small)}
+.foot-info .fi+.fi::before{content:" · ";color:#6b7076}
+.foot-info .fbr+.fi::before{content:none}
+@media(max-width:860px){
+  .flow-steps li{gap:14px}
+  .flow-steps .n{width:34px;height:34px;font-size:15px}
+  .tool{padding:20px}
+  .tool b{margin-bottom:4px}
+  .foot-info .fi{display:block}
+  .foot-info .fi::before{content:none!important}
+  .foot-info .fbr{display:none}
+  .foot-links .foot-dot,.about-info .svc .foot-dot{display:none}
+  .about-info dd.svc{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+}
