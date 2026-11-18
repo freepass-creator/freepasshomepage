@@ -491,3 +491,17 @@ h1.h1-sec .main{display:block}
   .board-steps li{font-size:12px;padding:5px 9px 5px 5px}
 }
 @media (min-width:861px){.hero-acts .cta{white-space:nowrap;padding:0 18px;font-size:clamp(17px,1.45vw,20px);flex:1 1 0}}
+/* 구호: «차는 공급사가, 세일즈는 영업 채널이, 연결은 뮤카패스가!» — «나머지는»은 할 일이 없어 보인다는 지적(11-18).
+   마지막 줄을 꾸민다: «연결은» 밑에 보드 그림의 흐르는 연결선, «뮤카패스»는 청록 도장(흰 한글 로고). 한 줄씩 넘치지 않게 글자 크기를 맞춘다. */
+.hero h1{font-size:clamp(34px,3.95vw,57px);line-height:1.18}
+.wire-word{position:relative;display:inline-block}
+.wire-word::after{content:"";position:absolute;left:.02em;right:.04em;bottom:-.02em;height:.09em;min-height:4px;border-radius:3px;
+  background:repeating-linear-gradient(90deg,var(--teal) 0 .32em,transparent .32em .5em);background-size:.5em 100%;animation:wireWord .9s linear infinite}
+@keyframes wireWord{to{background-position:.5em 0}}
+.stamp{display:inline-flex;align-items:center;vertical-align:-.1em;margin:0 .04em 0 .06em;padding:.13em .26em .15em;background:var(--teal);
+  border:.05em solid var(--ink);border-radius:.2em;box-shadow:.07em .07em 0 var(--ink);transform:rotate(-2.5deg);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.stamp img{height:.74em;width:auto;display:block}
+.hero h1:hover .stamp,.last h2:hover .stamp{transform:rotate(0deg) scale(1.04)}
+.l--last{margin-top:.08em}
+.last h2 .stamp{border-width:.055em}
+.hero{padding-bottom:40px}
