@@ -126,7 +126,7 @@
 
   /* 스크롤 등장: 첫 화면 아래에 있는 카드만, 같은 줄은 차례로(0.06초 간격). 스크립트가 없으면 그냥 보인다 */
   if ("IntersectionObserver" in window) {
-    document.documentElement.classList.add("js");
+    /* «rv» 표시는 스크립트만 붙이므로 <html> 에 따로 표시하지 않는다(붙이면 문서 전체를 다시 계산해 첫 로딩이 막혔다) */
     var rvSel = ".what-card, .about-link, .flow-steps li, .tool, .family, .start-choices button, .start-answer, .faq details, .fam-parent, .fam-card, .about-info .info > div, .about-acts";
     var rvIo = new IntersectionObserver(function (es) {
       es.forEach(function (e) {

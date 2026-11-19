@@ -386,9 +386,9 @@ html{-webkit-tap-highlight-color:transparent}
 /* 바닥 링크 */
 .foot a{transition:color .15s}
 /* 스크롤하면 카드가 살짝 떠오른다 — 스크립트가 있을 때만(없으면 그냥 보임) */
-.js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
-.js .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .flow-steps li:not(:last-child)::after{top:33px}          /* → 를 번호 동그라미 한가운데 높이로 */
 .last h2.poster{margin-bottom:0}                          /* 마지막 제목↔안내 문장 70px → 22px */
 .last p{margin-top:22px}
