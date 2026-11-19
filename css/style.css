@@ -736,7 +736,10 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 .board{--cyc:6s;--reach:100px;--dy1:47px;--dy2:-25px;--dy3:-97px}
 .src,.std{position:relative;display:flex;flex-direction:column;justify-content:center;gap:2px;height:62px;padding:6px 10px;border:2px solid var(--ink);border-radius:12px;background:#fff;box-shadow:3px 3px 0 var(--ink)}
 .src b,.std b{font-size:12.5px;font-weight:800;line-height:1.2;white-space:nowrap}
-.src .car{width:46px;height:21px;align-self:center}
+.src .line{display:flex;align-items:center;justify-content:center;gap:6px}
+.src .car{flex:none;width:44px;height:20px}
+.fmt{font-style:normal;font-size:10.5px;font-weight:800;line-height:15px;color:var(--ink);border:1.5px solid var(--ink);border-radius:5px;padding:0 5px}
+.src--a .fmt{border-color:#a04a3c}.src--b .fmt{border-color:#a07a1c}.src--c .fmt{border-color:#4a5090}
 .src--a .car,.src--a .tok{color:#a04a3c}
 .src--b .car,.src--b .tok{color:#a07a1c}
 .src--c .car,.src--c .tok{color:#4a5090}
@@ -745,20 +748,22 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 .src--b .tok{animation-delay:.5s}.src--c .tok{animation-delay:1s}
 .src--a{--dy:var(--dy1)}.src--b{--dy:var(--dy2)}.src--c{--dy:var(--dy3)}
 @keyframes carGo{0%{opacity:0;translate:0 0;scale:1}3%{opacity:1}16%{opacity:1;translate:var(--reach) var(--dy);scale:.8}20%,100%{opacity:0;translate:var(--reach) var(--dy);scale:.5}}
-/* 영업 채널: 같은 크기·같은 양식 */
-.std{flex-direction:row;flex-wrap:wrap;align-content:center;align-items:center;justify-content:space-between;background:#fff;border-color:var(--teal-ink);box-shadow:3px 3px 0 var(--teal-ink)}
-.std b{flex:1 1 auto;min-width:0}
-.std .car{flex:none;width:34px;height:16px;color:var(--teal-small)}
-.std .rows{flex:0 0 100%;display:flex;flex-direction:column;gap:4px;margin-top:4px}
-.std .rows s{display:block;height:5px;border-radius:3px;background:var(--teal);transform-origin:left;animation:rowFill var(--cyc) infinite backwards}
-.std .rows s+s{width:64%}
-.std .ack{position:absolute;right:-8px;top:-9px;width:19px;height:19px;border-radius:50%;background:var(--teal-small);border:2px solid var(--ink);color:#fff;font-style:normal;font-size:10px;font-weight:800;line-height:15px;text-align:center;animation:ackStamp var(--cyc) infinite backwards}
+/* 영업 채널: 채널마다 색이 다른 머리띠, 받는 차·정보는 모두 같다 */
+.std{--ch:#14808a;padding:0;gap:0;justify-content:flex-start;align-items:stretch;border-color:var(--ch);box-shadow:3px 3px 0 var(--ch)}
+.std--1{--ch:#14808a}.std--2{--ch:#2d4f8a}.std--3{--ch:#6e4a7e}
+.std .hd{display:block;background:var(--ch);color:#fff;font-size:11.5px;line-height:1.25;padding:2px 9px 3px;border-radius:9px 9px 0 0}
+.std .body{flex:1;display:flex;align-items:center;gap:6px;padding:0 8px;animation:bodyIn var(--cyc) infinite backwards}
+.std .car{flex:none;width:36px;height:16px;color:#3d4a52}
+.spec{display:flex;flex-direction:column;min-width:0}
+.spec em{font-style:normal;font-size:11px;font-weight:700;line-height:1.3;white-space:nowrap}
+.spec em+em{color:var(--teal-ink)}
+.std .ack{position:absolute;right:-8px;top:-9px;width:19px;height:19px;border-radius:50%;background:var(--ch);border:2px solid var(--ink);color:#fff;font-style:normal;font-size:10px;font-weight:800;line-height:15px;text-align:center;animation:ackStamp var(--cyc) infinite backwards}
 .std{animation:cardPop var(--cyc) infinite backwards}
-.std:nth-child(2),.std:nth-child(2) .rows s,.std:nth-child(2) .ack{animation-delay:3.2s}
-.std:nth-child(3),.std:nth-child(3) .rows s,.std:nth-child(3) .ack{animation-delay:3.5s}
-.std:nth-child(4),.std:nth-child(4) .rows s,.std:nth-child(4) .ack{animation-delay:3.8s}
+.std:nth-child(2),.std:nth-child(2) .body,.std:nth-child(2) .ack{animation-delay:3.2s}
+.std:nth-child(3),.std:nth-child(3) .body,.std:nth-child(3) .ack{animation-delay:3.5s}
+.std:nth-child(4),.std:nth-child(4) .body,.std:nth-child(4) .ack{animation-delay:3.8s}
 @keyframes cardPop{0%{transform:scale(1.07)}6%,100%{transform:none}}
-@keyframes rowFill{0%{transform:scaleX(0)}5%,86%{transform:scaleX(1)}92%,100%{transform:scaleX(0)}}
+@keyframes bodyIn{0%{opacity:0;translate:-6px 0}6%,86%{opacity:1;translate:0 0}92%,100%{opacity:0;translate:0 0}}
 @keyframes ackStamp{0%{opacity:0;scale:.3}5%{opacity:1;scale:1.3}9%,80%{opacity:1;scale:1}88%,100%{opacity:0;scale:1}}
 /* 나가는 정제 카드 */
 .std::after{content:"✓";position:absolute;left:-16px;top:calc(50% - 8px);width:16px;height:16px;border-radius:4px;background:var(--teal-btn);border:1.5px solid var(--ink);color:#fff;font-size:10px;font-weight:800;line-height:13px;text-align:center;opacity:0;pointer-events:none;animation:outGo var(--cyc) ease-out infinite backwards}
@@ -788,10 +793,11 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 @media (max-width:860px){
   .board{--reach:58px;--dy1:42px;--dy2:-22px;--dy3:-86px}
   .src,.std{height:54px;padding:5px 7px;border-radius:10px;box-shadow:2px 2px 0 var(--ink)}
-  .std{box-shadow:2px 2px 0 var(--teal-ink)}
+  .std{padding:0;box-shadow:2px 2px 0 var(--ch)}
   .src b,.std b{font-size:11px}
-  .src .car{width:38px;height:17px}.std .car{width:28px;height:13px}
-  .std .rows{gap:3px;margin-top:3px}.std .rows s{height:4px}
+  .src .car{width:34px;height:15px}.std .car{width:26px;height:12px}
+  .src .line{gap:5px}.fmt{font-size:9.5px;line-height:13px;padding:0 4px}
+  .std .hd{font-size:10px;padding:1px 7px 2px;border-radius:7px 7px 0 0}.std .body{padding:0 6px;gap:4px}.spec em{font-size:9.5px}
   .std .ack{right:-7px;top:-8px;width:17px;height:17px;font-size:9px;line-height:13px}
   .board-hub{width:100px;border-radius:16px;box-shadow:4px 4px 0 var(--ink);gap:4px;padding-bottom:9px}
   .hub-bar{padding:4px 7px}.hub-bar i{width:5px;height:5px}.hub-bar em{display:none}
@@ -800,3 +806,31 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
   .board-hub::after{top:14px;height:22px}
 }
 @media (prefers-reduced-motion:reduce){.tok,.std::after,.board-hub::after{display:none}}
+
+/* 히어로 그림 아래 여정선 — 뮤카패스의 주 업무(정리 → 검색·견적 → 전자계약 → 월마감 정산)를 도형으로. 카드가 나가는 박자(3.2초)에 이어 진행선이 채워진다 */
+.board-flow{grid-column:1/-1;position:relative;list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.board-flow::before,.board-flow::after{content:"";position:absolute;left:12.5%;right:12.5%;top:17px;height:4px;border-radius:2px}
+.board-flow::before{background:repeating-linear-gradient(90deg,#b9c6c8 0 6px,transparent 6px 11px)}
+.board-flow::after{background:var(--teal);transform-origin:left;animation:flowFill var(--cyc) ease-in-out infinite 3.2s backwards}
+.board-flow li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1px}
+.board-flow .ico{position:relative;display:grid;place-items:center;width:38px;height:38px;margin-bottom:5px;border:2px solid var(--ink);border-radius:11px;background:#fff;box-shadow:2px 2px 0 var(--ink)}
+.board-flow .ico::after{content:"";position:absolute;inset:0;border-radius:9px;background:var(--mint);opacity:0;animation:nodeLit var(--cyc) infinite backwards}
+.board-flow .ico svg{position:relative;z-index:1}
+.board-flow li:nth-child(1) .ico,.board-flow li:nth-child(1) .ico::after{animation-delay:3.2s}
+.board-flow li:nth-child(2) .ico,.board-flow li:nth-child(2) .ico::after{animation-delay:4.1s}
+.board-flow li:nth-child(3) .ico,.board-flow li:nth-child(3) .ico::after{animation-delay:5s}
+.board-flow li:nth-child(4) .ico,.board-flow li:nth-child(4) .ico::after{animation-delay:5.9s}
+.board-flow .ico{animation:nodePop var(--cyc) infinite backwards}
+.board-flow b{font-size:12.5px;font-weight:800;line-height:1.25;white-space:nowrap}
+.board-flow small{font-size:11px;font-weight:600;color:var(--sub);line-height:1.2}
+@keyframes flowFill{0%{transform:scaleX(0)}47%,80%{transform:scaleX(1)}90%,100%{transform:scaleX(0)}}
+@keyframes nodePop{0%{transform:scale(1.14)}6%,100%{transform:none}}
+@keyframes nodeLit{0%{opacity:0}4%,78%{opacity:1}90%,100%{opacity:0}}
+@media (max-width:860px){
+  .board-flow{margin-top:20px}
+  .board-flow::before,.board-flow::after{top:14px}
+  .board-flow .ico{width:32px;height:32px;border-radius:9px;margin-bottom:4px;box-shadow:2px 2px 0 var(--ink)}
+  .board-flow .ico svg{width:18px;height:18px}
+  .board-flow b{font-size:10.5px}.board-flow small{display:none}
+}
+@media (prefers-reduced-motion:reduce){.board-flow::after{transform:none}}
