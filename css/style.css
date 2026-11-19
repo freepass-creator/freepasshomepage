@@ -704,3 +704,11 @@ main>section:nth-child(n+3):not(.cv-open),.foot:not(.cv-open){content-visibility
 @media (min-width:861px){:root{--sec:76px;--head:36px;--wrap:1200px}}
 #what,#flow,#tools,#start,#faq{scroll-margin-top:calc(20px - var(--sec))}
 @media (max-width:860px){#what,#flow,#tools,#start,#faq{scroll-margin-top:calc(4px - var(--sec))}}
+
+/* 드래그·글자 선택 막기(11-19 대표 지적): 누르는 것(메뉴·버튼·카드·칩·표시)과 그림은 끌리거나 파랗게 선택되지 않게 한다.
+   읽고 복사할 글(본문·제목·카톡 문구·주소·전화)은 그대로 선택된다. */
+img,svg,.stamp,.logo,.foot-logo{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
+a,button,summary{-webkit-user-drag:none}
+.top,.dock,.cta,button,summary,.chip,.eyebrow,.label,.n,.board,.board-tag,.bubble,.board-hub,.what-who,.fam-role,.ai-badge,.top-nav a,.foot-links a,
+a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire,.foot-ci,.family-ci,.fam-logo,.chakhan-ec{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#start-msg{user-select:text;-webkit-user-select:text;-webkit-touch-callout:default}
