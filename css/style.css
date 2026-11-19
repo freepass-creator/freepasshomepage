@@ -721,10 +721,8 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 .viz .arr{font-weight:800;color:var(--teal-ink)}
 /* 1 — 제각각 → 정돈 */
 .raw{display:flex;gap:4px}
-.raw i{font-size:11.5px;font-weight:800;color:#fff;border-radius:7px;padding:5px 7px}
-.raw .r1{background:#c23b2b;transform:rotate(-7deg)}
-.raw .r2{background:#9a6b00;transform:rotate(5deg) translateY(3px)}
-.raw .r3{background:#6a4de0;transform:rotate(-3deg)}
+.raw .r1{box-shadow:2px 2px 0 #a04a3c}.raw .r2{box-shadow:2px 2px 0 #a07a1c}.raw .r3{box-shadow:2px 2px 0 #4a5090}
+.raw i{font-size:11.5px;font-weight:800;color:var(--ink);background:#fff;border:2px solid var(--ink);border-radius:7px;padding:3px 7px}
 .tidy{display:flex;flex-direction:column;gap:4px;flex:1;min-width:64px;padding:7px 8px;border-radius:9px;background:var(--mint-2);border:2px solid var(--teal-ink)}
 .tidy s{display:block;height:5px;border-radius:3px;background:var(--teal)}
 /* 2 — 조건 → 비교 → 견적 */
@@ -757,58 +755,51 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
   .ease li{font-size:13px;padding:10px 10px 10px 34px}.ease li::before{left:9px}
 }
 
-/* 히어로 그림 — «정제 공장»(11-19 대표 지시): 공급사마다 제각각인 조건이 들어오고, 가운데 뮤가 톱니바퀴로 정리해서,
-   같은 모양의 깔끔한 ✓ 카드로 영업 채널에 전달되면 영업 채널이 웃으며 받는다. 6초 반복. 움직이는 것은 이동·회전·크기·투명도만. */
+/* 히어로 그림 — «정제 공장»(11-19 대표 지시, «유치원 같다» 지적으로 차분하게): 공급사마다 모양·색이 다른 조건이 들어오고,
+   가운데서 맞물린 톱니바퀴가 정리해, 같은 모양의 ✓ 카드로 영업 채널에 전달되면 «수신 확인» 배지가 찍힌다. 6초 반복. 이동·회전·크기·투명도만. */
 .board{--reach:100px;--dy1:41px;--dy2:-25px;--dy3:-90px;--cyc:6s}
 @media (max-width:1199px){.board{--reach:78px}}
 @media (max-width:860px){.board{--reach:58px;--dy1:34px;--dy2:-21px;--dy3:-77px}}
 .chip{position:relative}
-/* 공급사 칩: 색이 각각, 날것 조건이 모양·크기 다르게 출발 */
-.board-col--sup .chip:nth-child(2){box-shadow:3px 3px 0 #d9503f}
-.board-col--sup .chip:nth-child(3){box-shadow:3px 3px 0 #d99a00}
-.board-col--sup .chip:nth-child(4){box-shadow:3px 3px 0 #6a4de0}
-@media (max-width:860px){.board-col--sup .chip:nth-child(2){box-shadow:2px 2px 0 #d9503f}.board-col--sup .chip:nth-child(3){box-shadow:2px 2px 0 #d99a00}.board-col--sup .chip:nth-child(4){box-shadow:2px 2px 0 #6a4de0}}
-.board-col--sup .chip::after{content:"";position:absolute;right:-6px;top:calc(50% - 7px);width:14px;height:14px;opacity:0;pointer-events:none;animation:rawGo var(--cyc) ease-in infinite}
-.board-col--sup .chip:nth-child(2)::after{background:#ff6b57;border-radius:50%;--dy:var(--dy1)}
-.board-col--sup .chip:nth-child(3)::after{background:#f5b301;clip-path:polygon(50% 0,100% 100%,0 100%);width:16px;height:15px;animation-delay:.5s;--dy:var(--dy2)}
-.board-col--sup .chip:nth-child(4)::after{background:#8b6cff;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);width:15px;height:15px;animation-delay:1s;--dy:var(--dy3)}
-@keyframes rawGo{0%{opacity:0;translate:0 0;rotate:0deg;scale:1}3%{opacity:1}16%{opacity:1;translate:var(--reach) var(--dy);rotate:300deg;scale:.9}20%,100%{opacity:0;translate:var(--reach) var(--dy);rotate:300deg;scale:.4}}
+/* 공급사 칩: 색이 각각(채도 낮춘 먹색 계열), 날것 조건이 모양·크기 다르게 출발 */
+.board-col--sup .chip:nth-child(2){box-shadow:3px 3px 0 #a04a3c}
+.board-col--sup .chip:nth-child(3){box-shadow:3px 3px 0 #a07a1c}
+.board-col--sup .chip:nth-child(4){box-shadow:3px 3px 0 #4a5090}
+@media (max-width:860px){.board-col--sup .chip:nth-child(2){box-shadow:2px 2px 0 #a04a3c}.board-col--sup .chip:nth-child(3){box-shadow:2px 2px 0 #a07a1c}.board-col--sup .chip:nth-child(4){box-shadow:2px 2px 0 #4a5090}}
+.board-col--sup .chip::after{content:"";position:absolute;right:-6px;top:calc(50% - 6px);width:12px;height:12px;opacity:0;pointer-events:none;animation:rawGo var(--cyc) ease-in infinite}
+.board-col--sup .chip:nth-child(2)::after{background:#a04a3c;border-radius:50%;--dy:var(--dy1)}
+.board-col--sup .chip:nth-child(3)::after{background:#a07a1c;clip-path:polygon(50% 0,100% 100%,0 100%);width:14px;height:13px;animation-delay:.5s;--dy:var(--dy2)}
+.board-col--sup .chip:nth-child(4)::after{background:#4a5090;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);width:13px;height:13px;animation-delay:1s;--dy:var(--dy3)}
+@keyframes rawGo{0%{opacity:0;translate:0 0;rotate:0deg;scale:1}3%{opacity:1}16%{opacity:1;translate:var(--reach) var(--dy);rotate:240deg;scale:.9}20%,100%{opacity:0;translate:var(--reach) var(--dy);rotate:240deg;scale:.4}}
 .board-col--sup .chip{animation:sendPop var(--cyc) infinite}
 .board-col--sup .chip:nth-child(3){animation-delay:.5s}.board-col--sup .chip:nth-child(4){animation-delay:1s}
-@keyframes sendPop{0%{transform:none}2%{transform:scale(.96)}6%{transform:scale(1.03)}10%,100%{transform:none}}
-/* 영업 채널 칩: 정제된 같은 모양 ✓ 카드를 받고, 얼굴이 웃으며 통통 */
+@keyframes sendPop{0%{transform:none}2%{transform:scale(.97)}6%{transform:scale(1.02)}10%,100%{transform:none}}
+/* 영업 채널 칩: 청록·먹색 계열, 정제된 같은 모양 ✓ 카드를 받으면 «수신 확인» 배지 */
 .board-col--sales .chip:nth-child(2){background:var(--teal-small)}
-.board-col--sales .chip:nth-child(3){background:#2a5bd7;border-color:#173a99;box-shadow:3px 3px 0 #173a99}
-.board-col--sales .chip:nth-child(4){background:#c4357f;border-color:#8c1d5a;box-shadow:3px 3px 0 #8c1d5a}
-@media (max-width:860px){.board-col--sales .chip:nth-child(3){box-shadow:2px 2px 0 #173a99}.board-col--sales .chip:nth-child(4){box-shadow:2px 2px 0 #8c1d5a}}
-.board-col--sales .chip{padding-left:22px;animation:getPop var(--cyc) infinite}
+.board-col--sales .chip:nth-child(3){background:#0f4c55;border-color:#08323a;box-shadow:3px 3px 0 #08323a}
+.board-col--sales .chip:nth-child(4){background:#2c3e48;border-color:#18242b;box-shadow:3px 3px 0 #18242b}
+@media (max-width:860px){.board-col--sales .chip:nth-child(3){box-shadow:2px 2px 0 #08323a}.board-col--sales .chip:nth-child(4){box-shadow:2px 2px 0 #18242b}}
+.board-col--sales .chip{animation:getPop var(--cyc) infinite}
 .board-col--sales .chip:nth-child(2){animation-delay:2.4s}.board-col--sales .chip:nth-child(3){animation-delay:2.8s}.board-col--sales .chip:nth-child(4){animation-delay:3.2s}
-.face{position:absolute;left:7px;top:calc(50% - 8px);width:16px;height:16px;animation:faceHop var(--cyc) infinite}
-.board-col--sales .chip:nth-child(2) .face{animation-delay:2.4s}.board-col--sales .chip:nth-child(3) .face{animation-delay:2.8s}.board-col--sales .chip:nth-child(4) .face{animation-delay:3.2s}
-@media (max-width:860px){.face{left:5px;width:14px;height:14px;top:calc(50% - 7px)}.board-col--sales .chip{padding-left:18px}}
-@keyframes getPop{0%,14%{transform:none}18%{transform:scale(1.07)}24%,100%{transform:none}}
-@keyframes faceHop{0%,14%{translate:0 0;scale:1}18%{translate:0 -4px;scale:1.3}23%{translate:0 0;scale:1}100%{translate:0 0;scale:1}}
-.board-col--sales .chip::after{content:"✓";position:absolute;left:-15px;top:calc(50% - 8px);width:16px;height:16px;border-radius:5px;background:#1a9aa2;border:1.5px solid var(--ink);color:#fff;font-size:10px;font-weight:800;line-height:13px;text-align:center;opacity:0;pointer-events:none;animation:cleanGo var(--cyc) ease-out infinite}
+@keyframes getPop{0%,14%{transform:none}18%{transform:scale(1.05)}24%,100%{transform:none}}
+.board-col--sales .chip::before{content:"✓";position:absolute;right:-7px;top:-8px;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--ink);color:var(--ink);font-size:10px;font-weight:800;line-height:14px;text-align:center;opacity:0;scale:.4;pointer-events:none;animation:ackStamp var(--cyc) infinite}
+.board-col--sales .chip:nth-child(2)::before{animation-delay:2.4s}.board-col--sales .chip:nth-child(3)::before{animation-delay:2.8s}.board-col--sales .chip:nth-child(4)::before{animation-delay:3.2s}
+@keyframes ackStamp{0%,15%{opacity:0;scale:.4}19%{opacity:1;scale:1.25}23%,70%{opacity:1;scale:1}80%,100%{opacity:0;scale:1}}
+.board-col--sales .chip::after{content:"✓";position:absolute;left:-15px;top:calc(50% - 8px);width:16px;height:16px;border-radius:4px;background:#1a9aa2;border:1.5px solid var(--ink);color:#fff;font-size:10px;font-weight:800;line-height:13px;text-align:center;opacity:0;pointer-events:none;animation:cleanGo var(--cyc) ease-out infinite}
 .board-col--sales .chip:nth-child(2)::after{animation-delay:2.4s;--dy:var(--dy1)}.board-col--sales .chip:nth-child(3)::after{animation-delay:2.8s;--dy:var(--dy2)}.board-col--sales .chip:nth-child(4)::after{animation-delay:3.2s;--dy:var(--dy3)}
 @keyframes cleanGo{0%{opacity:0;translate:calc(var(--reach)*-1) var(--dy);scale:.6}4%{opacity:1;scale:1}15%{opacity:1;translate:0 0;scale:1}19%,100%{opacity:0;translate:0 0;scale:.6}}
-/* 가운데 뮤카패스 — 뮤가 일한다 */
+/* 가운데 뮤카패스 — 톱니바퀴가 맞물려 돈다 */
 .board-hub{position:relative}
 .board-hub::before{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid var(--teal);opacity:0;pointer-events:none;animation:hubRing var(--cyc) ease-out infinite 1.6s}
-.board-hub::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 62%);opacity:0;pointer-events:none;animation:hubGlow var(--cyc) ease-in-out infinite .9s}
+.board-hub::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.5) 0,rgba(255,255,255,0) 62%);opacity:0;pointer-events:none;animation:hubGlow var(--cyc) ease-in-out infinite .9s}
 @keyframes hubRing{0%{opacity:.8;scale:1}30%,100%{opacity:0;scale:1.4}}
 @keyframes hubGlow{0%,100%{opacity:0}18%,45%{opacity:1}}
-.bot{position:relative;z-index:1;width:72px;height:44px;margin-bottom:-2px}
-@media (max-width:860px){.bot{width:50px;height:31px}}
-.gear{transform-box:fill-box;transform-origin:center;animation:gearSpin 2.4s linear infinite}
-.gear-r{animation-direction:reverse}
+.bot{position:relative;z-index:1;width:64px;height:40px;margin-bottom:-2px}
+@media (max-width:860px){.bot{width:46px;height:29px}}
+.gear{transform-box:fill-box;transform-origin:center;animation:gearSpin 3.2s linear infinite}
+.gear-r{animation-direction:reverse;animation-duration:2.6s}
 @keyframes gearSpin{to{rotate:360deg}}
-.bot-head{transform-box:fill-box;transform-origin:50% 100%;animation:botWork var(--cyc) ease-in-out infinite}
-@keyframes botWork{0%,100%{rotate:0deg;translate:0 0}8%{rotate:-5deg}16%{rotate:5deg;translate:0 1px}24%{rotate:-4deg}32%{rotate:3deg;translate:0 1px}42%{rotate:0deg;translate:0 -2px}52%{translate:0 0}}
-.eye{transform-box:fill-box;transform-origin:center;animation:blink 3s infinite}
-@keyframes blink{0%,92%,100%{scale:1 1}96%{scale:1 .1}}
-.ant{animation:antBlink 1.2s steps(2,jump-none) infinite}
-@keyframes antBlink{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.board-col--sup .chip::after,.board-col--sales .chip::after{display:none}.board-hub::before,.board-hub::after{display:none}}
+@media (prefers-reduced-motion:reduce){.board-col--sup .chip::after,.board-col--sales .chip::after,.board-col--sales .chip::before{display:none}.board-hub::before,.board-hub::after{display:none}}
 .flow-steps em{align-self:flex-start}
 .flow-steps .viz b{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0;margin:0;display:inline}
 .flow-steps .viz .arr{font-size:16px}
