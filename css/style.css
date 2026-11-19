@@ -696,3 +696,6 @@ h1,h2,h3,.say,.last p,.sec-lead,.lead,.family-desc,.ai-list p{text-wrap:balance}
 .wire-word::after{left:-.5em;animation:wireWord2 .9s linear infinite}
 @keyframes wireWord2{to{transform:translateX(.5em)}}
 @media (prefers-reduced-motion:reduce){*::before,*::after{animation:none!important}}
+
+/* 화면 밖 구역은 글꼴이 올 때까지 배치를 건너뛴다(11-19) — main.js 가 글꼴 도착 뒤 한 구역씩 cv-open 으로 펼친다 */
+main>section:nth-child(n+3):not(.cv-open),.foot:not(.cv-open){content-visibility:auto;contain-intrinsic-size:auto 900px}

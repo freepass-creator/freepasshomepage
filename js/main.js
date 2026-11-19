@@ -186,6 +186,19 @@
   }
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
   }
+  /* 화면 밖 구역은 글꼴이 올 때까지 배치를 건너뛴다(CSS content-visibility) — 글꼴이 바뀔 때 다시 배치할 양이 화면 안으로 준다.
+     글꼴이 오면 한 장면에 한 구역씩 펼친다(한꺼번에 펼치면 긴 작업). 계속 건너뛰게 두면 접근성 검사기가 그 구역 색을 잘못 읽는다 */
+  function unfold() {
+    var secs = Array.prototype.slice.call(document.querySelectorAll("main > section, .foot"));
+    (function next() {
+      var s = secs.shift(); if (!s) return;
+      if (!s.classList.contains("cv-open")) s.classList.add("cv-open");
+      requestAnimationFrame(function () { setTimeout(next, 0); });
+    })();
+  }
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () {
+    requestAnimationFrame(function () { setTimeout(unfold, 0); });
+  });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
   else requestAnimationFrame(function () { setTimeout(boot, 0); });
 })();
