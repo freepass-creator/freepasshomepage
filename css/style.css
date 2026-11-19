@@ -699,3 +699,8 @@ h1,h2,h3,.say,.last p,.sec-lead,.lead,.family-desc,.ai-list p{text-wrap:balance}
 
 /* 화면 밖 구역은 글꼴이 올 때까지 배치를 건너뛴다(11-19) — main.js 가 글꼴 도착 뒤 한 구역씩 cv-open 으로 펼친다 */
 main>section:nth-child(n+3):not(.cv-open),.foot:not(.cv-open){content-visibility:auto;contain-intrinsic-size:auto 900px}
+
+/* 11-19 대표 지적: PC 도 휑하다 + 메뉴 착지가 어긋남 — 구역 여백 112→76, 제목→내용 48→36, 본문 폭 1120→1200. 메뉴를 누르면 제목(눈썹)이 헤더 바로 아래(약 92px)에 서게 착지 */
+@media (min-width:861px){:root{--sec:76px;--head:36px;--wrap:1200px}}
+#what,#flow,#tools,#start,#faq{scroll-margin-top:calc(20px - var(--sec))}
+@media (max-width:860px){#what,#flow,#tools,#start,#faq{scroll-margin-top:calc(4px - var(--sec))}}
