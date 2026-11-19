@@ -49,7 +49,11 @@ with tempfile.TemporaryDirectory() as t:
     (t / "p.txt").write_text("".join(sorted(pc)), encoding="utf-8")
     (t / "g.txt").write_text("".join(sorted(pc)), encoding="utf-8")   # 제목 글꼴도 페이지 글자만(글자가 없으면 본문 글꼴로 보임)
     out = ROOT / "assets" / "fonts"
-    run("fontTools.subset", str(t / "pretendard.src"), f"--text-file={t/'p.txt'}", "--flavor=woff2", "--no-hinting", "--desubroutinize", f"--output-file={t/'p.woff2'}")
+    run("fontTools.subset", str(t / "pretendard.src"), f"--text-file={t/'p.txt'}", "--flavor=woff2", "--no-hinting", "--desubroutinize",
+        "--layout-features=kern,liga,ccmp,locl,mark,mkmk,rlig,rvrn",   # 쓰는 기능만(분수·대체 글리프 등 빼서 62→55KB — 휴대폰 첫 로딩)
+        f"--output-file={t/'p.woff2'}")
     run("fontTools.varLib.instancer", str(t / "p.woff2"), "wght=500:800", "-o", str(out / "PretendardVariable-site.woff2"))   # 본문은 500~800만 쓴다(freepasserp 로고는 그림 — tools/make-bi-svg.py)
-    run("fontTools.subset", str(t / "gmarket.src"), f"--text-file={t/'g.txt'}", "--flavor=woff2", "--layout-features=*", f"--output-file={out/'GmarketSansBold-sub.woff2'}")
+    run("fontTools.subset", str(t / "gmarket.src"), f"--text-file={t/'g.txt'}", "--flavor=woff2", "--layout-features=*",
+        "--desubroutinize", "--drop-tables+=vhea,vmtx",   # 세로쓰기 표 없음, 풀어 쓴 윤곽이 더 잘 압축된다(26→24KB)
+        f"--output-file={out/'GmarketSansBold-sub.woff2'}")
     print("완료:", len(pc), "글자")
