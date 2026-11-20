@@ -127,13 +127,13 @@
   /* 스크롤 등장: 첫 화면 아래에 있는 카드만, 같은 줄은 차례로(0.06초 간격). 스크립트가 없으면 그냥 보인다 */
   if ("IntersectionObserver" in window) {
     /* «rv» 표시는 스크립트만 붙이므로 <html> 에 따로 표시하지 않는다(붙이면 문서 전체를 다시 계산해 첫 로딩이 막혔다) */
-    var rvSel = ".what-card, .about-link, .flow-steps li, .tool, .family, .start-choices button, .start-answer, .faq details, .fam-parent, .fam-card, .about-info .info > div, .about-acts";
+    var rvSel = ".sec > .wrap > .eyebrow, .sec h2.poster .pre, .sec h2.poster .main, .sec-lead, .what-card, .what-card li, .about-link, .flow-steps li, .ease li, .tool, .erp-guide, .erp-steps li, .family, .ai-band, .ai-list li, .start-choices button, .start-answer, .faq details, .fam-parent, .fam-card, .about-info .info > div, .about-acts, .last h2, .last p";
     var rvIo = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (!e.isIntersecting) return;
         var el = e.target; el.classList.add("in"); rvIo.unobserve(el);
         /* 등장이 끝나면 표시를 걷어 원래의 hover·눌림 반응으로 돌려 놓는다 */
-        setTimeout(function () { el.classList.remove("rv", "in"); el.style.removeProperty("--d"); }, 900);
+        setTimeout(function () { el.classList.remove("rv", "in"); el.style.removeProperty("--d"); }, 2400);
       });
     }, { rootMargin: "0px 0px -8% 0px" });
     /* 아래쪽 구역 속까지 재면 배치를 미리 다 하게 되므로, 구역(섹션) 위치로만 첫 화면 밖인지 판단한다 */
@@ -143,7 +143,7 @@
       if (!below.has(sec)) below.set(sec, sec.getBoundingClientRect().top >= vh);
       if (!below.get(sec)) return;
       var i = Array.prototype.indexOf.call(el.parentNode.children, el);
-      el.style.setProperty("--d", Math.min(i, 5) * 0.06 + "s");
+      el.style.setProperty("--d", Math.min(i, 8) * 0.11 + "s");
       el.classList.add("rv"); rvIo.observe(el);
     });
   }
