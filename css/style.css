@@ -898,3 +898,43 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
   .erp-open{width:100%;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.mock-q .caret{display:none}}
+
+/* 살아 있는 느낌(11-20 대표 지시: «홈페이지가 살아있다는 느낌이 들어야지») — 이동·크기·투명도만 쓰고, 움직임 줄이기 설정에서는 꺼진다 */
+/* 1 첫 화면 등장: 제목 줄은 이동만(투명도를 쓰면 첫 표시가 늦어져 점수가 떨어진다), 나머지는 떠오르며 나타난다 */
+@keyframes heroUp{from{translate:0 18px}to{translate:0 0}}
+@keyframes heroFade{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+@keyframes bubblePop{from{scale:.6;opacity:0}to{scale:1;opacity:1}}
+@keyframes bubbleSway{from{rotate:-1.2deg}to{rotate:1.2deg}}
+.hero .l{animation:heroUp .75s cubic-bezier(.2,.8,.2,1) backwards}
+.hero .l:nth-child(2){animation-delay:.08s}.hero .l:nth-child(3){animation-delay:.16s}
+.hero .lead{animation:heroFade .7s cubic-bezier(.2,.8,.2,1) .24s backwards}
+.hero-acts{animation:heroFade .7s cubic-bezier(.2,.8,.2,1) .34s backwards}
+.hero-art{--px:0;--py:0;animation:heroFade .8s cubic-bezier(.2,.8,.2,1) .2s backwards}
+.hero-art .bubble{transition:translate .3s ease-out;translate:calc(var(--px) * 8px) calc(var(--py) * 5px);animation:bubblePop .5s cubic-bezier(.3,1.6,.5,1) .9s backwards,bubbleSway 5s ease-in-out 1.4s infinite alternate}
+.hero-art .board{transition:translate .35s ease-out;translate:calc(var(--px) * -5px) calc(var(--py) * -3px)}
+/* 2 스크롤 진행 막대(CSS 스크롤 타임라인을 지원하는 브라우저에서) */
+@supports (animation-timeline:scroll()){
+  body::before{content:"";position:fixed;z-index:60;left:0;right:0;top:0;height:3px;pointer-events:none;background:linear-gradient(90deg,var(--teal),#2d6ea6);transform-origin:left;transform:scaleX(0);animation:scrollProg linear both;animation-timeline:scroll(root)}
+  @keyframes scrollProg{to{transform:scaleX(1)}}
+}
+/* 3 제목의 청록 강조 띠가 화면에 들어올 때 그어진다 */
+@supports (animation-timeline:view()){
+  .mark::before{animation:markSweep linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+  @keyframes markSweep{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+}
+/* 4 카드 위에서 빛이 마우스를 따라온다(main.js 가 --mx --my 를 준다) */
+@media (hover:hover){
+  .what-card,.tool,.flow-steps li,.erp-guide,.start-choices button{position:relative}
+  .what-card::before,.tool::before,.flow-steps li::before,.erp-guide::before,.start-choices button::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(33,177,186,.16),transparent 70%)}
+  .what-card:hover::before,.tool:hover::before,.flow-steps li:hover::before,.erp-guide:hover::before,.start-choices button:hover::before{opacity:1}
+  /* 5 큰 단추 위로 빛이 한 번 지나간다 */
+  .cta{position:relative;overflow:hidden}
+  .cta::after{content:"";position:absolute;top:0;bottom:0;left:0;width:36%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);translate:-160% 0}
+  .cta:hover::after{translate:420% 0;transition:translate .75s ease}
+  .logo{transition:transform .2s cubic-bezier(.3,1.6,.5,1)}.logo:hover{transform:scale(1.05) rotate(-1.5deg)}
+}
+/* 6 휴대폰 문의 단추는 가끔 파동으로 눈에 띄게 */
+@media (max-width:860px){
+  .dock::after{content:"";position:absolute;inset:0;border-radius:inherit;border:3px solid var(--teal);pointer-events:none;opacity:0;animation:dockRing 4.5s ease-out 2s infinite}
+  @keyframes dockRing{0%{opacity:.7;scale:1}35%,100%{opacity:0;scale:1.07}}
+}

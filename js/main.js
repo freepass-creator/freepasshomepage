@@ -172,6 +172,30 @@
   }
 
   
+  /* 살아 있는 느낌: 카드 위에서 빛이 마우스를 따라오고, 첫 화면 그림이 마우스 위치에 살짝 반응한다(마우스가 있고 움직임을 허용한 기기에서만) */
+  if (window.matchMedia("(hover:hover) and (prefers-reduced-motion:no-preference)").matches) {
+    var GLOW = ".what-card,.tool,.flow-steps li,.erp-guide,.start-choices button";
+    var heroArt = document.querySelector(".hero-art"), heroBox = document.querySelector(".hero");
+    var mx = 0, my = 0, glowEl = null, ticking = false;
+    var paint = function () {
+      ticking = false;
+      if (glowEl) {
+        var r = glowEl.getBoundingClientRect();
+        glowEl.style.setProperty("--mx", (mx - r.left) + "px"); glowEl.style.setProperty("--my", (my - r.top) + "px");
+      }
+      if (heroArt && heroBox) {
+        var h = heroBox.getBoundingClientRect(), inside = my >= h.top && my <= h.bottom;
+        heroArt.style.setProperty("--px", inside ? ((mx / window.innerWidth) * 2 - 1).toFixed(3) : "0");
+        heroArt.style.setProperty("--py", inside ? (((my - h.top) / h.height) * 2 - 1).toFixed(3) : "0");
+      }
+    };
+    document.addEventListener("pointermove", function (e) {
+      mx = e.clientX; my = e.clientY;
+      glowEl = e.target.closest ? e.target.closest(GLOW) : null;
+      if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+    }, { passive: true });
+  }
+
   var top = document.getElementById("top");
   if (!top) return;
   var lastY = window.scrollY;
