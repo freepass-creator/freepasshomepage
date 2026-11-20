@@ -809,20 +809,21 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 
 /* 히어로 그림 아래 여정선 — 뮤카패스의 주 업무(정리 → 검색·견적 → 전자계약 → 월마감 정산)를 도형으로. 카드가 나가는 박자(3.2초)에 이어 진행선이 채워진다 */
 .board-flow{grid-column:1/-1;position:relative;list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.board-flow::before,.board-flow::after{content:"";position:absolute;left:12.5%;right:12.5%;top:17px;height:4px;border-radius:2px}
-.board-flow::before{background:repeating-linear-gradient(90deg,#b9c6c8 0 6px,transparent 6px 11px)}
+.board-flow::before,.board-flow::after{content:"";position:absolute;left:12.5%;right:12.5%;top:20px;height:4px;border-radius:2px}
+.board-flow::before{background:#d9e2e3}
 .board-flow::after{background:var(--teal);transform-origin:left;animation:flowFill var(--cyc) ease-in-out infinite 3.2s backwards}
 .board-flow li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1px}
-.board-flow .ico{position:relative;display:grid;place-items:center;width:38px;height:38px;margin-bottom:5px;border:2px solid var(--ink);border-radius:11px;background:#fff;box-shadow:2px 2px 0 var(--ink)}
+.board-flow .ico{position:relative;display:grid;place-items:center;width:44px;height:44px;margin-bottom:7px;border:2px solid var(--ink);border-radius:12px;background:#fff;box-shadow:2px 2px 0 var(--ink)}
 .board-flow .ico::after{content:"";position:absolute;inset:0;border-radius:9px;background:var(--mint);opacity:0;animation:nodeLit var(--cyc) infinite backwards}
-.board-flow .ico svg{position:relative;z-index:1}
+.board-flow .ico svg{position:relative;z-index:1;width:24px;height:24px}
+.board-flow .sn{position:absolute;z-index:2;left:-8px;top:-8px;width:18px;height:18px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:10.5px;font-weight:800;line-height:18px;text-align:center}
 .board-flow li:nth-child(1) .ico,.board-flow li:nth-child(1) .ico::after{animation-delay:3.2s}
 .board-flow li:nth-child(2) .ico,.board-flow li:nth-child(2) .ico::after{animation-delay:4.1s}
 .board-flow li:nth-child(3) .ico,.board-flow li:nth-child(3) .ico::after{animation-delay:5s}
 .board-flow li:nth-child(4) .ico,.board-flow li:nth-child(4) .ico::after{animation-delay:5.9s}
 .board-flow .ico{animation:nodePop var(--cyc) infinite backwards}
-.board-flow b{font-size:12.5px;font-weight:800;line-height:1.25;white-space:nowrap}
-.board-flow small{font-size:11px;font-weight:600;color:var(--sub);line-height:1.2}
+.board-flow b{font-size:14px;font-weight:800;line-height:1.25;white-space:nowrap}
+.board-flow small{font-size:12.5px;font-weight:600;color:#454b52;line-height:1.25}
 @keyframes flowFill{0%{transform:scaleX(0)}47%,80%{transform:scaleX(1)}90%,100%{transform:scaleX(0)}}
 @keyframes nodePop{0%{transform:scale(1.14)}6%,100%{transform:none}}
 @keyframes nodeLit{0%{opacity:0}4%,78%{opacity:1}90%,100%{opacity:0}}
@@ -830,7 +831,30 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
   .board-flow{margin-top:20px}
   .board-flow::before,.board-flow::after{top:14px}
   .board-flow .ico{width:32px;height:32px;border-radius:9px;margin-bottom:4px;box-shadow:2px 2px 0 var(--ink)}
-  .board-flow .ico svg{width:18px;height:18px}
+  .board-flow .ico svg{width:19px;height:19px}
+  .board-flow .sn{left:-6px;top:-6px;width:15px;height:15px;font-size:9px;line-height:15px}
   .board-flow b{font-size:10.5px}.board-flow small{display:none}
 }
 @media (prefers-reduced-motion:reduce){.board-flow::after{transform:none}}
+
+/* 이용 안내 왼쪽 카드: 높이가 늘어나도 허전하지 않게 «받게 되는 것» 태그를 채운다(휴대폰은 밀도 때문에 숨김) */
+.start-choices .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.start-choices .tags i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--teal-ink);background:var(--mint);border-radius:999px;padding:3px 10px}
+.start-choices button[aria-pressed=true] .tags i{background:#fff}
+@media (max-width:860px){.start-choices .tags{display:none}}
+/* 마이크로 인터랙션 보강: 하는 일·일하는 방식·쓰는 도구 카드에 마우스 반응(마우스가 있는 기기에서만) */
+@media (hover:hover){
+  .what-card{transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+  .what-card:hover{transform:translate(-2px,-4px);box-shadow:8px 9px 0 var(--ink)}
+  .what-card li::before{transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+  .what-card li:hover::before{transform:scale(1.35) rotate(-8deg)}
+  .what-card li b{transition:color .15s}.what-card li:hover b{color:var(--teal-ink)}
+  .flow-steps li{transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+  .flow-steps li:hover{transform:translateY(-5px);box-shadow:0 16px 30px -18px rgba(11,11,12,.45)}
+  .flow-steps .n{transition:transform .22s cubic-bezier(.3,1.6,.5,1)}
+  .flow-steps li:hover .n{transform:rotate(-10deg) scale(1.12)}
+  .flow-steps li:not(:last-child)::after{transition:transform .18s}
+  .flow-steps li:hover::after{transform:translateX(5px)}
+  .tool:not(.tool--main){transition:transform .18s cubic-bezier(.2,.8,.2,1),border-color .15s,box-shadow .18s}
+  .tool:not(.tool--main):hover{transform:translateY(-4px);border-color:var(--ink);box-shadow:4px 5px 0 var(--ink)}
+}
