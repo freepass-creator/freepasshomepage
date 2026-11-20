@@ -374,8 +374,11 @@ html{-webkit-tap-highlight-color:transparent}
 /* 바닥 링크 */
 .foot a{transition:color .15s}
 /* 스크롤하면 카드가 살짝 떠오른다 — 스크립트가 있을 때만(없으면 그냥 보임) */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+/* 스크롤하면 조각들이 «촤라락» 펼쳐진다 — 제목·카드·카드 속 항목까지 모두, 같은 줄은 파도처럼(--d). 호버 전환에 덮이지 않게 .rv.rv.rv(.tool:not(.tool--main) 과 같은 우선순위를 이긴다) */
+.rv{opacity:0;transform:translateY(34px) scale(.97)}
+.rv.rv.rv{transition:opacity .75s cubic-bezier(.25,.8,.3,1),transform 1s cubic-bezier(.22,.85,.28,1);transition-delay:var(--d,0s)}
 .rv.in{opacity:1;transform:none}
+@media (max-width:860px){.rv{transform:translateY(22px) scale(.98)}}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .flow-steps li:not(:last-child)::after{top:33px}          /* → 를 번호 동그라미 한가운데 높이로 */
 .last h2.poster{margin-bottom:0}                          /* 마지막 제목↔안내 문장 70px → 22px */
@@ -898,3 +901,81 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
   .erp-open{width:100%;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.mock-q .caret{display:none}}
+
+/* 살아 있는 느낌(11-20 대표 지시: «홈페이지가 살아있다는 느낌이 들어야지») — 이동·크기·투명도만 쓰고, 움직임 줄이기 설정에서는 꺼진다 */
+/* 1 첫 화면 등장: 제목 줄은 이동만(투명도를 쓰면 첫 표시가 늦어져 점수가 떨어진다), 나머지는 떠오르며 나타난다 */
+@keyframes heroUp{from{translate:0 18px}to{translate:0 0}}
+@keyframes heroFade{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+@keyframes bubblePop{from{scale:.6;opacity:0}to{scale:1;opacity:1}}
+@keyframes bubbleSway{from{rotate:-1.2deg}to{rotate:1.2deg}}
+.hero .l{animation:heroUp .75s cubic-bezier(.2,.8,.2,1) backwards}
+.hero .l:nth-child(2){animation-delay:.08s}.hero .l:nth-child(3){animation-delay:.16s}
+.hero .lead{animation:heroFade .7s cubic-bezier(.2,.8,.2,1) .24s backwards}
+.hero-acts{animation:heroFade .7s cubic-bezier(.2,.8,.2,1) .34s backwards}
+.hero-art{--px:0;--py:0;animation:heroFade .8s cubic-bezier(.2,.8,.2,1) .2s backwards}
+.hero-art .bubble{transition:translate .3s ease-out;translate:calc(var(--px) * 8px) calc(var(--py) * 5px);animation:bubblePop .5s cubic-bezier(.3,1.6,.5,1) .9s backwards,bubbleSway 5s ease-in-out 1.4s infinite alternate}
+.hero-art .board{transition:translate .35s ease-out;translate:calc(var(--px) * -5px) calc(var(--py) * -3px)}
+/* 2 스크롤 진행 막대(CSS 스크롤 타임라인을 지원하는 브라우저에서) */
+@supports (animation-timeline:scroll()){
+  body::before{content:"";position:fixed;z-index:60;left:0;right:0;top:0;height:3px;pointer-events:none;background:linear-gradient(90deg,var(--teal),#2d6ea6);transform-origin:left;transform:scaleX(0);animation:scrollProg linear both;animation-timeline:scroll(root)}
+  @keyframes scrollProg{to{transform:scaleX(1)}}
+}
+/* 3 제목의 청록 강조 띠가 화면에 들어올 때 그어진다 */
+@supports (animation-timeline:view()){
+  .mark::before{animation:markSweep linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+  @keyframes markSweep{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+}
+/* 4 카드 위에서 빛이 마우스를 따라온다(main.js 가 --mx --my 를 준다) */
+@media (hover:hover){
+  .what-card,.tool,.flow-steps li,.erp-guide,.start-choices button{position:relative}
+  .what-card::before,.tool::before,.flow-steps li::before,.erp-guide::before,.start-choices button::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(33,177,186,.16),transparent 70%)}
+  .what-card:hover::before,.tool:hover::before,.flow-steps li:hover::before,.erp-guide:hover::before,.start-choices button:hover::before{opacity:1}
+  /* 5 큰 단추 위로 빛이 한 번 지나간다 */
+  .cta{position:relative;overflow:hidden}
+  .cta::after{content:"";position:absolute;top:0;bottom:0;left:0;width:36%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);translate:-160% 0}
+  .cta:hover::after{translate:420% 0;transition:translate .75s ease}
+  .logo{transition:transform .2s cubic-bezier(.3,1.6,.5,1)}.logo:hover{transform:scale(1.05) rotate(-1.5deg)}
+}
+/* 6 휴대폰 문의 단추는 가끔 파동으로 눈에 띄게 */
+@media (max-width:860px){
+  .dock::after{content:"";position:absolute;inset:0;border-radius:inherit;border:3px solid var(--teal);pointer-events:none;opacity:0;animation:dockRing 4.5s ease-out 2s infinite}
+  @keyframes dockRing{0%{opacity:.7;scale:1}35%,100%{opacity:0;scale:1.07}}
+}
+
+/* 살랑살랑 — 가만히 있어도 페이지가 숨 쉬는 느낌(11-20 대표 지시). 이동·회전·크기·투명도만, 위치별로 박자를 어긋나게 해서 한꺼번에 움직이지 않는다 */
+@keyframes sway{from{translate:0 -2px}to{translate:0 3px}}
+@keyframes swayR{from{rotate:-6deg}to{rotate:6deg}}
+@keyframes swayStamp{from{rotate:-1.3deg}to{rotate:1.3deg}}
+@keyframes nudge{from{translate:0 0}to{translate:4px 0}}
+@keyframes beat{0%,100%{scale:1}50%{scale:1.14}}
+@keyframes drift{from{rotate:-3deg;scale:1}to{rotate:3deg;scale:1.05}}
+@keyframes ctaSheen{0%,70%{translate:-160% 0}88%,100%{translate:420% 0}}
+.sl{animation:swayR 3.4s ease-in-out infinite alternate}
+.hero .stamp{animation:swayStamp 5.5s ease-in-out infinite alternate}
+.board-tag i{animation:nudge 1.5s ease-in-out infinite alternate}
+.cta{position:relative;overflow:hidden}
+.cta--go::after{content:"";position:absolute;top:0;bottom:0;left:0;width:36%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);translate:-160% 0;animation:ctaSheen 6s ease-in-out 2.5s infinite}
+.ease li::before{animation:beat 2.6s ease-in-out infinite}
+.ease li:nth-child(2)::before{animation-delay:.4s}.ease li:nth-child(3)::before{animation-delay:.8s}.ease li:nth-child(4)::before{animation-delay:1.2s}
+.flow-steps .n{animation:beat 3.2s ease-in-out infinite}
+.flow-steps li:nth-child(2) .n{animation-delay:.5s}.flow-steps li:nth-child(3) .n{animation-delay:1s}.flow-steps li:nth-child(4) .n{animation-delay:1.5s}
+@media (min-width:861px){
+  .what-card,.tool,.flow-steps li,.ai-list li,.erp-mock{animation:sway 6.4s ease-in-out infinite alternate}
+  .what-card--supplier{animation-delay:-2.1s}
+  .tool:nth-child(2){animation-delay:-1.1s}.tool:nth-child(3){animation-delay:-2.3s}.tool:nth-child(4){animation-delay:-3.4s}
+  .flow-steps li:nth-child(2){animation-delay:-1.3s}.flow-steps li:nth-child(3){animation-delay:-2.6s}.flow-steps li:nth-child(4){animation-delay:-3.9s}
+  .ai-list li:nth-child(2){animation-delay:-2s}.ai-list li:nth-child(3){animation-delay:-4s}
+  .erp-mock{animation-duration:7.2s;animation-delay:-1.7s}
+  /* 구역 배경의 큰 // 무늬: 천천히 떠다니고 스크롤에 따라 따라온다 */
+  .flow,.start,.last{position:relative;overflow:clip}
+  .flow .wrap,.start .wrap,.last .wrap{position:relative;z-index:1}
+  .flow::before,.start::before,.last::before{content:"";position:absolute;z-index:0;width:150px;height:380px;pointer-events:none;background:linear-gradient(90deg,var(--teal) 0 38%,transparent 38% 62%,var(--teal) 62%);opacity:.07;transform:skewX(-20deg);animation:drift 12s ease-in-out infinite alternate}
+  .flow::before{right:3%;top:60px}
+  .start::before{left:-2%;bottom:30px;animation-delay:-5s}
+  .last::before{right:8%;top:20px;animation-delay:-8s}
+  @supports (animation-timeline:view()){
+    .flow::before,.start::before,.last::before{animation:drift 12s ease-in-out infinite alternate,wmShift linear both;animation-timeline:auto,view();animation-range:normal,cover}
+    @keyframes wmShift{from{translate:0 70px}to{translate:0 -70px}}
+  }
+}
+@media (prefers-reduced-motion:reduce){.cta--go::after{display:none}}
