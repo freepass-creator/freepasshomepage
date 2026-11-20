@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/:path((?!(?:about|about[.]html|index[.]html|robots[.]txt|site[.]webmanifest|sitemap[.]xml)$|(?:assets|css|js)/).+)",
+      "source": "/:path((?!(?:about|about[.]html|privacy|privacy[.]html|index[.]html|robots[.]txt|site[.]webmanifest|sitemap[.]xml|738b017e14add81d3b84c98bf0cd48c7[.]txt)$|(?:assets|css|js)/).+)",
       "destination": "https://freepasserp.com/:path",
       "permanent": false
     }

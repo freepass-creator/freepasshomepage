@@ -13,7 +13,7 @@ SRC = {
     "pretendard": "https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/woff2/PretendardVariable.woff2",
     "gmarket": "https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff",
 }
-PAGES = ["index.html", "about.html", "js/main.js"]
+PAGES = ["index.html", "about.html", "privacy.html", "js/main.js"]
 EXTRA = "·…—–‘’“”«»→←↗↓✓✕※"
 
 def page_chars(extra=True):
