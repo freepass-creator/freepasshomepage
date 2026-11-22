@@ -93,7 +93,7 @@
   if (dock && gate && "IntersectionObserver" in window) {
     var visible = new Set();
     function update() {
-      var passed = gate.getBoundingClientRect().top < window.innerHeight * 0.5;
+      var passed = window.scrollY > 0 && gate.getBoundingClientRect().top < window.innerHeight * 0.5;
       dock.classList.toggle("show", passed && visible.size === 0);
     }
     var io = new IntersectionObserver(function (es) {
@@ -125,7 +125,7 @@
   }
 
   /* 스크롤 등장: 첫 화면 아래에 있는 카드만, 같은 줄은 차례로(0.06초 간격). 스크립트가 없으면 그냥 보인다 */
-  if ("IntersectionObserver" in window) {
+  if (!window.matchMedia("(max-width: 640px), (prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
     /* «rv» 표시는 스크립트만 붙이므로 <html> 에 따로 표시하지 않는다(붙이면 문서 전체를 다시 계산해 첫 로딩이 막혔다) */
     var rvSel = ".sec > .wrap > .eyebrow, .sec h2.poster .pre, .sec h2.poster .main, .sec-lead, .what-card, .what-card li, .about-link, .flow-steps li, .ease li, .tool, .erp-guide, .erp-steps li, .family, .ai-band, .ai-list li, .start-choices button, .start-answer, .faq details, .fam-parent, .fam-card, .about-info .info > div, .about-acts, .last h2, .last p";
     var rvIo = new IntersectionObserver(function (es) {
@@ -137,14 +137,17 @@
       });
     }, { rootMargin: "0px 0px -8% 0px" });
     /* 아래쪽 구역 속까지 재면 배치를 미리 다 하게 되므로, 구역(섹션) 위치로만 첫 화면 밖인지 판단한다 */
-    var vh = window.innerHeight, below = new Map();
+    var vh = window.innerHeight, below = new Map(), pendingReveal = [];
     document.querySelectorAll(rvSel).forEach(function (el) {
       var sec = el.closest("section, footer") || el;
       if (!below.has(sec)) below.set(sec, sec.getBoundingClientRect().top >= vh);
-      if (!below.get(sec)) return;
+      if (below.get(sec) && !el.closest("[hidden]")) pendingReveal.push(el);
+    });
+    pendingReveal.forEach(function (el) {
       var i = Array.prototype.indexOf.call(el.parentNode.children, el);
       el.style.setProperty("--d", Math.min(i, 8) * 0.11 + "s");
-      el.classList.add("rv"); rvIo.observe(el);
+      el.classList.add("rv");
+      rvIo.observe(el);
     });
   }
 
@@ -160,7 +163,7 @@
       function spyUpdate() {
         spyTick = false;
         var line = window.innerHeight * 0.4, cur = null;
-        spy.forEach(function (o) { var r = o.s.getBoundingClientRect(); if (r.top <= line && r.bottom > line) cur = o; });
+        if (window.scrollY > 0) spy.forEach(function (o) { var r = o.s.getBoundingClientRect(); if (r.top <= line && r.bottom > line) cur = o; });
         spy.forEach(function (o) {
           var on = o === cur; o.a.classList.toggle("on", on);
           if (on) o.a.setAttribute("aria-current", "location"); else if (o.a.getAttribute("aria-current") === "location") o.a.removeAttribute("aria-current");
@@ -212,16 +215,23 @@
   }
   /* 화면 밖 구역은 글꼴이 올 때까지 배치를 건너뛴다(CSS content-visibility) — 글꼴이 바뀔 때 다시 배치할 양이 화면 안으로 준다.
      글꼴이 오면 한 장면에 한 구역씩 펼친다(한꺼번에 펼치면 긴 작업). 계속 건너뛰게 두면 접근성 검사기가 그 구역 색을 잘못 읽는다 */
-  function unfold() {
+  function unfold(narrow) {
     var secs = Array.prototype.slice.call(document.querySelectorAll("main > section, .foot"));
     (function next() {
       var s = secs.shift(); if (!s) return;
       if (!s.classList.contains("cv-open")) s.classList.add("cv-open");
-      requestAnimationFrame(function () { setTimeout(next, 0); });
+      requestAnimationFrame(function () { setTimeout(next, narrow ? 115 : 0); });
     })();
   }
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () {
-    requestAnimationFrame(function () { setTimeout(unfold, 0); });
+    var narrow = window.matchMedia("(max-width: 640px)").matches;
+    requestAnimationFrame(function () {
+      if (!narrow) { setTimeout(function () { unfold(false); }, 0); return; }
+      setTimeout(function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(function () { unfold(true); }, {timeout: 800});
+        else unfold(true);
+      }, 1550);
+    });
   });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
   else requestAnimationFrame(function () { setTimeout(boot, 0); });
@@ -318,7 +328,7 @@
     });
   };
   if (matchMedia('(max-width: 640px) and (prefers-reduced-motion: no-preference)').matches) {
-    const delayed = () => setTimeout(initialize, 1500);
+    const delayed = () => setTimeout(initialize, 4200);
     if (document.readyState === 'complete') delayed();
     else window.addEventListener('load', delayed, {once: true});
   } else {
