@@ -137,14 +137,17 @@
       });
     }, { rootMargin: "0px 0px -8% 0px" });
     /* 아래쪽 구역 속까지 재면 배치를 미리 다 하게 되므로, 구역(섹션) 위치로만 첫 화면 밖인지 판단한다 */
-    var vh = window.innerHeight, below = new Map();
+    var vh = window.innerHeight, below = new Map(), pendingReveal = [];
     document.querySelectorAll(rvSel).forEach(function (el) {
       var sec = el.closest("section, footer") || el;
       if (!below.has(sec)) below.set(sec, sec.getBoundingClientRect().top >= vh);
-      if (!below.get(sec)) return;
+      if (below.get(sec) && !el.closest("[hidden]")) pendingReveal.push(el);
+    });
+    pendingReveal.forEach(function (el) {
       var i = Array.prototype.indexOf.call(el.parentNode.children, el);
       el.style.setProperty("--d", Math.min(i, 8) * 0.11 + "s");
-      el.classList.add("rv"); rvIo.observe(el);
+      el.classList.add("rv");
+      rvIo.observe(el);
     });
   }
 
@@ -217,11 +220,12 @@
     (function next() {
       var s = secs.shift(); if (!s) return;
       if (!s.classList.contains("cv-open")) s.classList.add("cv-open");
-      requestAnimationFrame(function () { setTimeout(next, 0); });
+      requestAnimationFrame(function () { setTimeout(next, 45); });
     })();
   }
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () {
-    requestAnimationFrame(function () { setTimeout(unfold, 0); });
+    var narrow = window.matchMedia("(max-width: 640px)").matches;
+    requestAnimationFrame(function () { setTimeout(unfold, narrow ? 500 : 0); });
   });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
   else requestAnimationFrame(function () { setTimeout(boot, 0); });
@@ -318,7 +322,7 @@
     });
   };
   if (matchMedia('(max-width: 640px) and (prefers-reduced-motion: no-preference)').matches) {
-    const delayed = () => setTimeout(initialize, 1500);
+    const delayed = () => setTimeout(initialize, 2800);
     if (document.readyState === 'complete') delayed();
     else window.addEventListener('load', delayed, {once: true});
   } else {
