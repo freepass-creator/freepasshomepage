@@ -93,7 +93,7 @@
   if (dock && gate && "IntersectionObserver" in window) {
     var visible = new Set();
     function update() {
-      var passed = gate.getBoundingClientRect().top < window.innerHeight * 0.5;
+      var passed = window.scrollY > 0 && gate.getBoundingClientRect().top < window.innerHeight * 0.5;
       dock.classList.toggle("show", passed && visible.size === 0);
     }
     var io = new IntersectionObserver(function (es) {
@@ -163,7 +163,7 @@
       function spyUpdate() {
         spyTick = false;
         var line = window.innerHeight * 0.4, cur = null;
-        spy.forEach(function (o) { var r = o.s.getBoundingClientRect(); if (r.top <= line && r.bottom > line) cur = o; });
+        if (window.scrollY > 0) spy.forEach(function (o) { var r = o.s.getBoundingClientRect(); if (r.top <= line && r.bottom > line) cur = o; });
         spy.forEach(function (o) {
           var on = o === cur; o.a.classList.toggle("on", on);
           if (on) o.a.setAttribute("aria-current", "location"); else if (o.a.getAttribute("aria-current") === "location") o.a.removeAttribute("aria-current");
@@ -225,7 +225,13 @@
   }
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () {
     var narrow = window.matchMedia("(max-width: 640px)").matches;
-    requestAnimationFrame(function () { setTimeout(function () { unfold(narrow); }, narrow ? 850 : 0); });
+    requestAnimationFrame(function () {
+      if (!narrow) { setTimeout(function () { unfold(false); }, 0); return; }
+      setTimeout(function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(function () { unfold(true); }, {timeout: 800});
+        else unfold(true);
+      }, 1550);
+    });
   });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
   else requestAnimationFrame(function () { setTimeout(boot, 0); });
