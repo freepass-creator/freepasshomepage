@@ -311,13 +311,19 @@
     button.title = label;
     button.textContent = paused ? '▶' : 'Ⅱ';
   });
-  document.fonts.ready.then(() => {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(start, {timeout: 1500});
-    } else {
-      setTimeout(start, 0);
-    }
-  });
+  const initialize = () => {
+    document.fonts.ready.then(() => {
+      if ('requestIdleCallback' in window) requestIdleCallback(start, {timeout: 1500});
+      else start();
+    });
+  };
+  if (matchMedia('(max-width: 640px) and (prefers-reduced-motion: no-preference)').matches) {
+    const delayed = () => setTimeout(initialize, 1500);
+    if (document.readyState === 'complete') delayed();
+    else window.addEventListener('load', delayed, {once: true});
+  } else {
+    initialize();
+  }
 })();
 
 
