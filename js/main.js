@@ -89,7 +89,7 @@
   
   var dock = document.getElementById("dock");
   var gate = document.getElementById("flow");
-  var watch = document.querySelectorAll(".last .cta, .start-answer .cta");
+  var watch = document.querySelectorAll(".last .cta, .start-answer .cta, footer.foot");
   if (dock && gate && "IntersectionObserver" in window) {
     var visible = new Set();
     function update() {

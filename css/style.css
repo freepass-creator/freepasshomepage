@@ -1,6 +1,6 @@
 /* 뮤카패스 — 2026-11 개편. 착한거래 느낌(포스터 제목 · 형광펜 · 큰 버튼 하나)을 뮤카 청록(#21B1BA)으로. */
-@font-face{font-family:"Pretendard Variable";font-weight:500 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2?v=20261122) format("woff2")}
-@font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2?v=20261122) format("woff2")}
+@font-face{font-family:"Pretendard Variable";font-weight:500 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2?v=20261122-trust) format("woff2")}
+@font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2?v=20261122-trust) format("woff2")}
 :root{
   --teal:#21B1BA;--teal-deep:#178a92;--teal-ink:#0e6a70;--mint:#c9f1f3;--mint-2:#e9f9fa;
   --ink:#0b0b0c;--ink-2:#3c3c40;--sub:#6b6f76;--line:#e3e3e3;--card-dark:#1b1d1f;--bg:#fff;--bg-2:#f6f7f7;
@@ -229,7 +229,7 @@ h2 .main{display:block}
   .tool--main{grid-column:1/-1}
   .dock{display:flex;position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:30;min-height:58px;align-items:center;justify-content:center;border-radius:16px;background:var(--teal);color:#fff;font-family:var(--poster);font-size:19px;text-decoration:none;box-shadow:0 5px 0 var(--teal-deep),0 14px 28px -10px rgba(23,138,146,.7);transform:translateY(160%);transition:transform .25s}
   .dock.show{transform:none}
-  .foot{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  .foot{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
 }
 @media (max-width:420px){
   .wrap{padding:0 16px}
@@ -1224,3 +1224,70 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 @media(prefers-reduced-motion:reduce){
   .board > .flow-toggle {display:none}
 }
+
+/* 브랜드 소개와 업무 도구에 공통으로 쓰는 담백한 윤곽 */
+.hero-company{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 12px;margin:18px 0 0;color:var(--ink-2);font-size:13px;font-weight:650}
+.hero-company a{color:var(--teal-ink);font-weight:800;text-underline-offset:3px;white-space:nowrap}
+.hero .board{border-radius:15px;box-shadow:4px 4px 0 var(--ink)}
+.hero .board::before{border-radius:13px;opacity:.74}
+.hero .board-hub{border-radius:12px;box-shadow:3px 3px 0 var(--ink)}
+.hero .src,.hero .std{border-radius:8px}
+.hero .src{box-shadow:1px 2px 0 var(--ink)}
+.hero .std{box-shadow:1px 2px 0 var(--ch)}
+.hero .std .hd{border-radius:5px 5px 0 0}
+.hero .board-example{grid-column:1/-1;margin:13px 0 -4px;color:#454b52;font-size:12px;text-align:center}
+.hero-acts .cta{min-height:54px;border-radius:10px;box-shadow:0 3px 0 var(--teal-btn-edge)}
+.hero-acts .cta--line{box-shadow:0 3px 0 var(--ink)}
+.what-card,.flow-steps>li,.tool-select .tool,.erp-guide,.start-answer{border-radius:12px}
+.erp-guide{border-color:#abc5c4;box-shadow:3px 3px 0 #d1e5e3}
+@media(max-width:640px){
+  .hero-company{margin-top:10px;font-size:12px}
+  .hero-acts .cta{min-height:47px}
+  .hero .board-example{font-size:11px;margin:9px 0 0}
+}
+@media(max-width:355px){
+  .hero .lead{margin-top:12px}
+  .hero-grid{gap:12px}
+  .hero .board{padding-top:34px;padding-bottom:10px}
+  .hero .board-example{margin-top:5px}
+}
+
+/* 기존 구조에서 브랜드 강조색과 업무 화면의 표면만 정돈 */
+.hero .stamp {background:#0d6870}
+.top-erp,.hero-acts .cta--go,.last .cta {
+  background:#0d6d75;
+  box-shadow:0 3px 0 #094a51,0 7px 16px #11343d24;
+}
+.top-erp:active,.hero-acts .cta--go:active,.last .cta:active {box-shadow:0 1px 0 #094a51}
+.hero-acts .cta--line {
+  border-color:#697e84;
+  box-shadow:0 2px 0 #1c343827;
+}
+.hero .bubble {
+  color:#15282e;
+  border-color:#40575c;
+  box-shadow:0 2px 4px #1c343826,0 7px 14px #1c34381a;
+}
+.hero .bubble::after {border-color:#40575c}
+.hero .board {
+  background:#f7faf9;
+  border-color:#33484e;
+  box-shadow:0 3px 5px #273e472b,0 14px 26px #273e4724;
+}
+.hero .board::before {
+  background:radial-gradient(circle at 50% 46%,#cfebeb 0,transparent 55%),radial-gradient(#15596316 1px,transparent 1.2px) 0 0/16px 16px;
+}
+.hero .board-hub {
+  background:#10666e;
+  border-color:#21373d;
+  box-shadow:0 3px 0 #21373d55;
+}
+.hero .hub-bar {background:#1a2d34}
+.hero .src {border-color:#596a70;box-shadow:0 2px 0 #273e471c}
+.hero .std {box-shadow:0 2px 0 #273e4723}
+.hero .std--1 {--ch:#126770}
+.hero .std--2 {--ch:#365376}
+.hero .std--3 {--ch:#594865}
+.hero .board-flow .ico {border-color:#41565d;box-shadow:0 2px 0 #273e472b}
+.hero .board-flow .sn {background:#293d44}
+.hero .hero-company {color:#354750}
