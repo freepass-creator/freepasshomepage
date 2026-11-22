@@ -125,7 +125,7 @@
   }
 
   /* 스크롤 등장: 첫 화면 아래에 있는 카드만, 같은 줄은 차례로(0.06초 간격). 스크립트가 없으면 그냥 보인다 */
-  if ("IntersectionObserver" in window) {
+  if (!window.matchMedia("(max-width: 640px), (prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
     /* «rv» 표시는 스크립트만 붙이므로 <html> 에 따로 표시하지 않는다(붙이면 문서 전체를 다시 계산해 첫 로딩이 막혔다) */
     var rvSel = ".sec > .wrap > .eyebrow, .sec h2.poster .pre, .sec h2.poster .main, .sec-lead, .what-card, .what-card li, .about-link, .flow-steps li, .ease li, .tool, .erp-guide, .erp-steps li, .family, .ai-band, .ai-list li, .start-choices button, .start-answer, .faq details, .fam-parent, .fam-card, .about-info .info > div, .about-acts, .last h2, .last p";
     var rvIo = new IntersectionObserver(function (es) {
@@ -215,17 +215,17 @@
   }
   /* 화면 밖 구역은 글꼴이 올 때까지 배치를 건너뛴다(CSS content-visibility) — 글꼴이 바뀔 때 다시 배치할 양이 화면 안으로 준다.
      글꼴이 오면 한 장면에 한 구역씩 펼친다(한꺼번에 펼치면 긴 작업). 계속 건너뛰게 두면 접근성 검사기가 그 구역 색을 잘못 읽는다 */
-  function unfold() {
+  function unfold(narrow) {
     var secs = Array.prototype.slice.call(document.querySelectorAll("main > section, .foot"));
     (function next() {
       var s = secs.shift(); if (!s) return;
       if (!s.classList.contains("cv-open")) s.classList.add("cv-open");
-      requestAnimationFrame(function () { setTimeout(next, 45); });
+      requestAnimationFrame(function () { setTimeout(next, narrow ? 115 : 0); });
     })();
   }
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () {
     var narrow = window.matchMedia("(max-width: 640px)").matches;
-    requestAnimationFrame(function () { setTimeout(unfold, narrow ? 500 : 0); });
+    requestAnimationFrame(function () { setTimeout(function () { unfold(narrow); }, narrow ? 850 : 0); });
   });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
   else requestAnimationFrame(function () { setTimeout(boot, 0); });
@@ -322,7 +322,7 @@
     });
   };
   if (matchMedia('(max-width: 640px) and (prefers-reduced-motion: no-preference)').matches) {
-    const delayed = () => setTimeout(initialize, 2800);
+    const delayed = () => setTimeout(initialize, 4200);
     if (document.readyState === 'complete') delayed();
     else window.addEventListener('load', delayed, {once: true});
   } else {

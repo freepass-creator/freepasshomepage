@@ -1176,7 +1176,8 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 @media(max-width:860px){.quote-actions{order:2;gap:4px}}
 
 @media (max-width:640px){
-  .hero .hero-copy .l,.hero .lead,.hero-acts,.hero-art{animation:none}
+  .hero .hero-copy .l,.hero .lead,.hero-acts,.hero-art,
+  .sec .sl,.what-card,.ai-list li,.tool,.flow-steps .n,.dock::after{animation:none}
   .hero .lead{font-size:clamp(16px,4.5vw,19px);line-height:1.5;margin-top:20px;text-wrap:pretty}
   .hero .lead br{display:none}
   .hero-grid{gap:22px}
