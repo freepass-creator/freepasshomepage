@@ -226,3 +226,159 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(function () { setTimeout(boot, 0); }); });
   else requestAnimationFrame(function () { setTimeout(boot, 0); });
 })();
+
+
+(() => {
+  const board = document.querySelector('.board');
+  if (!board || !board.querySelector('.route-layer')) return;
+  const hub = board.querySelector('.board-hub');
+  const overlay = board.querySelector('.route-layer');
+  const sources = [...board.querySelectorAll('.src')];
+  const outputs = [...board.querySelectorAll('.std')];
+  const makePath = (path, kind, delay) => {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    el.setAttribute('d', path);
+    el.setAttribute('class', kind);
+    el.setAttribute('pathLength', '100');
+    el.style.setProperty('--delay', delay + 's');
+    return el;
+  };
+
+  const inputLabels = ['엑셀', 'PDF', '카톡'];
+  const packets = [];
+  function makePacket(index, delay) {
+    const inPacket = index < inputLabels.length;
+    const el = document.createElementNS('http://www.w3.org/2000/svg','g');
+    el.setAttribute('class', 'route-packet ' + (inPacket ? 'in-' + index : 'out'));
+    el.style.setProperty('--delay', delay + 's');
+    if (inPacket) {
+      el.innerHTML = '<rect x="-14" y="-6.5" width="28" height="13" rx="3"/><text x="0" y="3">' + inputLabels[index] + '</text>';
+    } else {
+      el.innerHTML = '<rect x="-6.5" y="-6.5" width="13" height="13" rx="3"/><path d="M -3,0 L -1,2 L 3,-2"/>';
+    }
+    overlay.append(el);
+    return el;
+  }
+  function draw() {
+    const origin = overlay.getBoundingClientRect();
+    const bounds = el => {
+      const rect = el.getBoundingClientRect();
+      return {
+        left: rect.left - origin.left, right: rect.right - origin.left,
+        center: rect.top + rect.height / 2 - origin.top
+      };
+    };
+    const box = bounds(hub);
+    const routes = [
+      ...sources.map((item, index) => [bounds(item).right, bounds(item).center, box.left, box.center + (index - 1) * 12, index * .44]),
+      ...outputs.map((item, index) => [box.right, box.center + (index - 1) * 12, bounds(item).left, bounds(item).center, 4.55 + index * .44])
+    ];
+    overlay.setAttribute('viewBox', '0 0 ' + origin.width + ' ' + origin.height);
+    for (const [index, route] of routes.entries()) {
+      const [x1, y1, x2, y2, delay] = route;
+      const elbow = x1 + (x2 - x1) * .57;
+      const direction = Math.sign(y2 - y1);
+      const bend = Math.min(9, Math.max(2, (x2 - x1) / 3), Math.abs(y2 - y1) / 2);
+      const path = 'M ' + x1 + ',' + y1 + ' H ' + (elbow - bend)
+        + ' Q ' + elbow + ',' + y1 + ' ' + elbow + ',' + (y1 + bend * direction)
+        + ' V ' + (y2 - bend * direction) + ' Q ' + elbow + ',' + y2 + ' ' + (elbow + bend) + ',' + y2
+        + ' H ' + x2;
+      for (const [offset, kind] of [[0, 'rail'],[1, 'pulse']]) {
+        const current = overlay.querySelectorAll('.rail, .pulse')[index * 2 + offset];
+        if (current) current.setAttribute('d', path);
+        else overlay.insertBefore(makePath(path, kind, delay), packets[0] || null);
+      }
+      const packet = packets[index] || (packets[index] = makePacket(index, delay));
+      packet.style.offsetPath = 'path("' + path + '")';
+    }
+  }
+  sources.forEach((item,index) => item.style.setProperty('--delay', index * .44 + 's'));
+  outputs.forEach((item,index) => item.style.setProperty('--delay', index * .44 + 's'));
+  const start = () => {
+    draw();
+    if ('ResizeObserver' in window) new ResizeObserver(draw).observe(board);
+    board.classList.add('flow-ready');
+    button.hidden = false;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => board.classList.toggle('is-offscreen', !entries[0].isIntersecting)).observe(board);
+    }
+  };
+  const button = document.querySelector('.flow-toggle');
+  button.addEventListener('click', () => {
+    const paused = board.classList.toggle('is-paused');
+    const label = paused ? '정제 흐름 재생' : '정제 흐름 일시정지';
+    button.setAttribute('aria-label', label);
+    button.title = label;
+    button.textContent = paused ? '▶' : 'Ⅱ';
+  });
+  const initialize = () => {
+    document.fonts.ready.then(() => {
+      if ('requestIdleCallback' in window) requestIdleCallback(start, {timeout: 1500});
+      else start();
+    });
+  };
+  if (matchMedia('(max-width: 640px) and (prefers-reduced-motion: no-preference)').matches) {
+    const delayed = () => setTimeout(initialize, 1500);
+    if (document.readyState === 'complete') delayed();
+    else window.addEventListener('load', delayed, {once: true});
+  } else {
+    initialize();
+  }
+})();
+
+
+
+(() => {
+  const list = document.querySelector('.tool-select');
+  if (!list) return;
+  const tabs = [...list.querySelectorAll('[role=tab]')];
+  function select(tab, focus = false) {
+    for (const item of tabs) {
+      const chosen = item === tab;
+      item.setAttribute('aria-selected', String(chosen));
+      item.tabIndex = chosen ? 0 : -1;
+      document.getElementById(item.getAttribute('aria-controls')).hidden = !chosen;
+    }
+    if (focus) tab.focus();
+  }
+  tabs.forEach(tab => tab.addEventListener('click', () => select(tab)));
+  list.addEventListener('keydown', event => {
+    const active = tabs.indexOf(event.target);
+    if (active < 0) return;
+    const keys = {ArrowRight: (active + 1) % tabs.length, ArrowLeft: (active + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1};
+    if (!(event.key in keys)) return;
+    event.preventDefault();
+    select(tabs[keys[event.key]], true);
+  });
+  const deepLinks = {'#erp-guide-h': 'tool-search', '#quote-guide-h': 'tool-quote', '#contract-tool': 'contract-tool', '#white-preview-h': 'tool-white'};
+  function followHash() {
+    const id = deepLinks[location.hash];
+    if (!id) return;
+    select(document.getElementById(id));
+    requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView({block:'start'}));
+  }
+  document.querySelectorAll('a[href="#quote-guide-h"],a[href="#contract-tool"],a[href="#white-preview-h"]').forEach(link => link.addEventListener('click', () => select(document.getElementById(deepLinks[link.hash]))));
+  window.addEventListener('hashchange', followHash);
+  followHash();
+})();
+
+
+
+(() => {
+  const fields = document.querySelectorAll('.quote-options select');
+  const announcement = document.querySelector('.quote-announce');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const rows = new WeakMap();
+  for (const field of fields) field.addEventListener('change', () => {
+    const output = document.getElementById(field.id + '-value');
+    output.textContent = field.value;
+    const customerValue = document.querySelector('[data-quote-mirror="' + field.id + '"]');
+    customerValue.textContent = field.value;
+    announcement.textContent = field.labels[0].firstChild.textContent.trim() + ' ' + field.value + ' 반영됨';
+    if (!reduceMotion.matches && output.animate) {
+      const row = output.closest('.tool-preview-row');
+      rows.get(row)?.cancel();
+      rows.set(row, row.animate([{backgroundColor:'#d6f5ee'}, {backgroundColor:'#fff'}], {duration:420,easing:'ease-out'}));
+    }
+  });
+})();
