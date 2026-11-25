@@ -262,9 +262,9 @@
     el.setAttribute('class', 'route-packet ' + (inPacket ? 'in-' + index : 'out'));
     el.style.setProperty('--delay', delay + 's');
     if (inPacket) {
-      el.innerHTML = '<rect x="-14" y="-6.5" width="28" height="13" rx="3"/><text x="0" y="3">' + inputLabels[index] + '</text>';
+      el.innerHTML = '<rect x="-14" y="-6.5" width="28" height="13"/><text x="0" y="3">' + inputLabels[index] + '</text>';
     } else {
-      el.innerHTML = '<rect x="-6.5" y="-6.5" width="13" height="13" rx="3"/><path d="M -3,0 L -1,2 L 3,-2"/>';
+      el.innerHTML = '<rect x="-6.5" y="-6.5" width="13" height="13"/><path d="M -3,0 L -1,2 L 3,-2"/>';
     }
     overlay.append(el);
     return el;
