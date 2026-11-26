@@ -1,6 +1,6 @@
 /* 뮤카패스 — 2026-11 개편. 착한거래 느낌(포스터 제목 · 형광펜 · 큰 버튼 하나)을 뮤카 청록(#21B1BA)으로. */
-@font-face{font-family:"Pretendard Variable";font-weight:500 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2?v=20261122-trust) format("woff2")}
-@font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2?v=20261122-trust) format("woff2")}
+@font-face{font-family:"Pretendard Variable";font-weight:500 800;font-display:swap;src:url(/assets/fonts/PretendardVariable-site.woff2?v=20261126-cloa-v2) format("woff2")}
+@font-face{font-family:"Poster";font-weight:700;font-display:swap;src:url(/assets/fonts/GmarketSansBold-sub.woff2?v=20261126-cloa-v2) format("woff2")}
 :root{
   --teal:#21B1BA;--teal-deep:#178a92;--teal-ink:#0e6a70;--mint:#c9f1f3;--mint-2:#e9f9fa;
   --ink:#0b0b0c;--ink-2:#3c3c40;--sub:#6b6f76;--line:#e3e3e3;--card-dark:#1b1d1f;--bg:#fff;--bg-2:#f6f7f7;
@@ -187,9 +187,7 @@ h2 .main{display:block}
 /* 마지막 */
 .last{padding:96px 0;background:var(--mint-2);text-align:center}
 .last-in{display:flex;flex-direction:column;align-items:center}
-.last h2{font-size:clamp(28px,4.6vw,48px)}
-.last h2 .l{display:block}
-.last p{margin:18px 0 0;font-size:18px;color:var(--ink-2)}
+.last p{margin:0;font-size:18px;color:var(--ink-2)}
 
 /* 바닥 */
 .foot{background:var(--card-dark);color:#9aa0a6;padding:52px 0 calc(52px + env(safe-area-inset-bottom));font-size:14px}
@@ -388,8 +386,6 @@ html{-webkit-tap-highlight-color:transparent}
 @media (max-width:860px){.rv{transform:translateY(22px) scale(.98)}}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .flow-steps li:not(:last-child)::after{top:33px}          /* → 를 번호 동그라미 한가운데 높이로 */
-.last h2.poster{margin-bottom:0}                          /* 마지막 제목↔안내 문장 70px → 22px */
-.last p{margin-top:22px}
 .foot-links{margin-top:18px}                              .about-info .info>div{align-items:baseline}               /* 항목 이름과 값의 글자 밑선을 맞춘다 */
 .about-info dd.svc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
 .foot .foot-links{margin-top:18px}
@@ -488,7 +484,7 @@ h1.h1-sec .main{display:block}
 .stamp{display:inline-flex;align-items:center;vertical-align:-.1em;margin:0 .04em 0 .06em;padding:.13em .26em .15em;background:var(--teal);
   border:1px solid var(--line-frame);box-shadow:var(--shadow-low);transform:rotate(-2.5deg);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 .stamp img{height:.74em;width:auto;display:block}
-.hero h1:hover .stamp,.last h2:hover .stamp{transform:rotate(0deg) scale(1.04)}
+.hero h1:hover .stamp{transform:rotate(0deg) scale(1.04)}
 .l--last{margin-top:.08em}
 .hero{padding-bottom:40px}
 
@@ -1302,3 +1298,39 @@ a.family,a.about-link,a.board-col,.start-choices,.tool>span,.flow-steps em,.wire
 .hero .board-flow .ico {border-color:var(--line-frame);box-shadow:var(--shadow-low)}
 .hero .board-flow .sn {background:#293d44}
 .hero .hero-company {color:#354750}
+
+.cloa-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:clamp(12px,4vw,48px);
+  margin-bottom:var(--head);
+}
+.cloa-heading h2.poster{margin:0}
+.cloa-cut{display:block;height:auto;margin:0;justify-self:end}
+.cloa-cut--review{width:clamp(78px,12vw,156px);text-align:center}
+.cloa-cut--review img{display:block;width:100%;height:auto}
+.cloa-cut--review figcaption{
+  margin-top:4px;
+  color:var(--teal-ink);
+  font-size:clamp(10px,1vw,13px);
+  font-weight:750;
+  white-space:nowrap;
+}
+.cloa-cut--face{
+  width:clamp(52px,7vw,88px);
+  border:1px solid var(--line-frame);
+  box-shadow:var(--shadow-low);
+}
+.cloa-cut--guide{width:clamp(66px,10vw,132px)}
+@media(min-width:861px){
+  .cloa-heading{
+    grid-template-columns:minmax(0,max-content) auto;
+    justify-content:start;
+    gap:clamp(40px,6vw,88px);
+  }
+}
+@media(max-width:480px){
+  .cloa-heading h2.poster{font-size:clamp(25px,6.4vw,30px)}
+  .cloa-heading h2 .pre{font-size:clamp(15px,4.1vw,19px)}
+}
